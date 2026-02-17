@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::{ExprMethodCall, ImplItemFn, Macro};
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct PanicUsageDetector;
 
 impl Detector for PanicUsageDetector {
-    fn id(&self) -> &'static str { "INK-007" }
-    fn name(&self) -> &'static str { "ink-panic-usage" }
+    fn id(&self) -> &'static str {
+        "INK-007"
+    }
+    fn name(&self) -> &'static str {
+        "ink-panic-usage"
+    }
     fn description(&self) -> &'static str {
         "Detects unwrap(), expect(), panic!() in ink message/constructor functions"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Ink }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Ink
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -114,7 +124,8 @@ impl<'ast, 'a> Visit<'ast> for PanicVisitor<'a> {
                     line,
                     column: span_to_column(&seg.ident.span()),
                     snippet: snippet_at_line(&self.ctx.source, line),
-                    recommendation: "Return a proper error instead of panicking in ink! messages".to_string(),
+                    recommendation: "Return a proper error instead of panicking in ink! messages"
+                        .to_string(),
                     chain: Chain::Ink,
                 });
             }
@@ -162,7 +173,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag checked_add().unwrap()");
+        assert!(
+            findings.is_empty(),
+            "Should not flag checked_add().unwrap()"
+        );
     }
 
     #[test]

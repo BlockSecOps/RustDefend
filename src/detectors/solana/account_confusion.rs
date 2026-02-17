@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct AccountConfusionDetector;
 
 impl Detector for AccountConfusionDetector {
-    fn id(&self) -> &'static str { "SOL-004" }
-    fn name(&self) -> &'static str { "account-confusion" }
+    fn id(&self) -> &'static str {
+        "SOL-004"
+    }
+    fn name(&self) -> &'static str {
+        "account-confusion"
+    }
     fn description(&self) -> &'static str {
         "Detects manual account deserialization without discriminator check"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Solana }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Solana
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -144,6 +154,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag with discriminator check");
+        assert!(
+            findings.is_empty(),
+            "Should not flag with discriminator check"
+        );
     }
 }

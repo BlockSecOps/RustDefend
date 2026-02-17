@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct InsecureAccountCloseDetector;
 
 impl Detector for InsecureAccountCloseDetector {
-    fn id(&self) -> &'static str { "SOL-005" }
-    fn name(&self) -> &'static str { "insecure-account-close" }
+    fn id(&self) -> &'static str {
+        "SOL-005"
+    }
+    fn name(&self) -> &'static str {
+        "insecure-account-close"
+    }
     fn description(&self) -> &'static str {
         "Detects account closure that doesn't zero data and set discriminator"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Solana }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Solana
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();

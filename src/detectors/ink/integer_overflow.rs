@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::{BinOp, ExprBinary, ItemFn};
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct IntegerOverflowDetector;
 
 impl Detector for IntegerOverflowDetector {
-    fn id(&self) -> &'static str { "INK-002" }
-    fn name(&self) -> &'static str { "ink-integer-overflow" }
+    fn id(&self) -> &'static str {
+        "INK-002"
+    }
+    fn name(&self) -> &'static str {
+        "ink-integer-overflow"
+    }
     fn description(&self) -> &'static str {
         "Detects unchecked arithmetic on Balance/u128 types (cargo-contract enables overflow-checks by default)"
     }
-    fn severity(&self) -> Severity { Severity::Low }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Ink }
+    fn severity(&self) -> Severity {
+        Severity::Low
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Ink
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -56,8 +66,12 @@ impl<'ast, 'a> Visit<'ast> for OverflowVisitor<'a> {
 
         let is_arithmetic = matches!(
             expr.op,
-            BinOp::Add(_) | BinOp::Sub(_) | BinOp::Mul(_)
-                | BinOp::AddAssign(_) | BinOp::SubAssign(_) | BinOp::MulAssign(_)
+            BinOp::Add(_)
+                | BinOp::Sub(_)
+                | BinOp::Mul(_)
+                | BinOp::AddAssign(_)
+                | BinOp::SubAssign(_)
+                | BinOp::MulAssign(_)
         );
 
         if !is_arithmetic {
@@ -131,7 +145,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect unchecked Balance arithmetic");
+        assert!(
+            !findings.is_empty(),
+            "Should detect unchecked Balance arithmetic"
+        );
     }
 
     #[test]

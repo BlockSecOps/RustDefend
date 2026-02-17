@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct UnsafePdaSeedsDetector;
 
 impl Detector for UnsafePdaSeedsDetector {
-    fn id(&self) -> &'static str { "SOL-010" }
-    fn name(&self) -> &'static str { "unsafe-pda-seeds" }
+    fn id(&self) -> &'static str {
+        "SOL-010"
+    }
+    fn name(&self) -> &'static str {
+        "unsafe-pda-seeds"
+    }
     fn description(&self) -> &'static str {
         "Detects PDA seeds without user-specific components (collision risk)"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Solana }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Solana
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -44,7 +54,9 @@ impl<'ast, 'a> Visit<'ast> for PdaVisitor<'a> {
         let body_src = fn_body_source(func);
 
         // Look for find_program_address or create_program_address calls
-        if !body_src.contains("find_program_address") && !body_src.contains("create_program_address") {
+        if !body_src.contains("find_program_address")
+            && !body_src.contains("create_program_address")
+        {
             return;
         }
 

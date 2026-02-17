@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ImplItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct MissingCallerCheckDetector;
 
 impl Detector for MissingCallerCheckDetector {
-    fn id(&self) -> &'static str { "INK-003" }
-    fn name(&self) -> &'static str { "ink-missing-caller-check" }
+    fn id(&self) -> &'static str {
+        "INK-003"
+    }
+    fn name(&self) -> &'static str {
+        "ink-missing-caller-check"
+    }
     fn description(&self) -> &'static str {
         "Detects #[ink(message)] functions that write storage without caller check"
     }
-    fn severity(&self) -> Severity { Severity::Critical }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Ink }
+    fn severity(&self) -> Severity {
+        Severity::Critical
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Ink
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -81,8 +91,10 @@ impl<'ast, 'a> Visit<'ast> for CallerVisitor<'a> {
             || body_src.contains("assert!")
             || body_src.contains("only_owner")
             || body_src.contains("authorize")
-            || (body_src.contains("owner") && (body_src.contains("== ") || body_src.contains("!= ")))
-            || (body_src.contains("admin") && (body_src.contains("== ") || body_src.contains("!= ")));
+            || (body_src.contains("owner")
+                && (body_src.contains("== ") || body_src.contains("!= ")))
+            || (body_src.contains("admin")
+                && (body_src.contains("== ") || body_src.contains("!= ")));
 
         if has_caller_check {
             return;
@@ -99,10 +111,15 @@ impl<'ast, 'a> Visit<'ast> for CallerVisitor<'a> {
         let written_fields = extract_self_field_names(&body_src);
         let has_sensitive_write = written_fields.iter().any(|f| {
             let fl = f.to_lowercase();
-            fl.contains("owner") || fl.contains("admin") || fl.contains("authority")
-                || fl.contains("manager") || fl.contains("controller")
-                || fl.contains("paused") || fl.contains("frozen")
-                || fl.contains("config") || fl.contains("operator")
+            fl.contains("owner")
+                || fl.contains("admin")
+                || fl.contains("authority")
+                || fl.contains("manager")
+                || fl.contains("controller")
+                || fl.contains("paused")
+                || fl.contains("frozen")
+                || fl.contains("config")
+                || fl.contains("operator")
         });
 
         // Caller-scoped writes: mapping insert keyed by caller
@@ -116,10 +133,18 @@ impl<'ast, 'a> Visit<'ast> for CallerVisitor<'a> {
             (Severity::Critical, Confidence::High, " (transfers value)")
         } else if has_sensitive_write {
             // Writing to admin/owner fields without auth is Critical
-            (Severity::Critical, Confidence::High, " (modifies sensitive field)")
+            (
+                Severity::Critical,
+                Confidence::High,
+                " (modifies sensitive field)",
+            )
         } else if has_caller_scoped_write || is_payable {
             // Caller-scoped or payable methods are low risk
-            (Severity::Medium, Confidence::Low, " (likely permissionless by design)")
+            (
+                Severity::Medium,
+                Confidence::Low,
+                " (likely permissionless by design)",
+            )
         } else {
             // General storage write — flag but at reduced confidence
             (Severity::High, Confidence::Medium, "")
@@ -154,7 +179,9 @@ fn extract_self_field_names(body: &str) -> Vec<String> {
         if &bytes[i..i + pat.len()] == pat {
             let rest = &body[i + pat.len()..].trim_start();
             // Extract the field name (alphanumeric + underscore)
-            let field_end = rest.find(|c: char| !c.is_alphanumeric() && c != '_').unwrap_or(rest.len());
+            let field_end = rest
+                .find(|c: char| !c.is_alphanumeric() && c != '_')
+                .unwrap_or(rest.len());
             let field_name = &rest[..field_end];
             if !field_name.is_empty() {
                 // Check if this is an assignment (not comparison, not method call)
@@ -247,7 +274,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag read-only &self methods");
+        assert!(
+            findings.is_empty(),
+            "Should not flag read-only &self methods"
+        );
     }
 
     #[test]
@@ -276,7 +306,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect missing caller check on owner write");
+        assert!(
+            !findings.is_empty(),
+            "Should detect missing caller check on owner write"
+        );
         assert_eq!(findings[0].severity, Severity::Critical);
     }
 

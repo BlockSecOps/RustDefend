@@ -1,13 +1,13 @@
+mod frontrunning;
+mod integer_overflow;
+mod missing_deposit_check;
+mod missing_private;
 mod promise_reentrancy;
+mod self_callback;
 mod signer_vs_predecessor;
 mod storage_staking;
 mod unhandled_promise;
-mod integer_overflow;
-mod missing_private;
-mod self_callback;
-mod frontrunning;
 mod unsafe_storage_keys;
-mod missing_deposit_check;
 
 use super::Detector;
 

@@ -7,14 +7,24 @@ use crate::scanner::finding::*;
 pub struct OutdatedDepsDetector;
 
 impl Detector for OutdatedDepsDetector {
-    fn id(&self) -> &'static str { "DEP-001" }
-    fn name(&self) -> &'static str { "outdated-dependencies" }
+    fn id(&self) -> &'static str {
+        "DEP-001"
+    }
+    fn name(&self) -> &'static str {
+        "outdated-dependencies"
+    }
     fn description(&self) -> &'static str {
         "Detects known-vulnerable dependency versions in Cargo.toml"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Solana } // Listed under Solana but applies cross-chain
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Solana
+    } // Listed under Solana but applies cross-chain
 
     fn detect(&self, _ctx: &ScanContext) -> Vec<Finding> {
         // DEP-001 operates on Cargo.toml, not .rs files
@@ -33,7 +43,11 @@ struct VulnerableRange {
 }
 
 fn parse_version(v: &str) -> Option<(u32, u32, u32)> {
-    let v = v.trim().trim_start_matches('^').trim_start_matches('~').trim_start_matches('=');
+    let v = v
+        .trim()
+        .trim_start_matches('^')
+        .trim_start_matches('~')
+        .trim_start_matches('=');
     let parts: Vec<&str> = v.split('.').collect();
     let major = parts.first()?.parse().ok()?;
     let minor = parts.get(1).and_then(|p| p.parse().ok()).unwrap_or(0);
@@ -73,10 +87,7 @@ const VULNERABLE_RANGES: &[VulnerableRange] = &[
         crate_name: "cosmwasm-vm",
         description: "CWA-2025-001: VM memory safety issue",
         advisory: "CWA-2025-001",
-        is_vulnerable: |v| {
-            version_lt(v, (1, 5, 8))
-                || version_in_range(v, (2, 0, 0), (2, 0, 6))
-        },
+        is_vulnerable: |v| version_lt(v, (1, 5, 8)) || version_in_range(v, (2, 0, 0), (2, 0, 6)),
         chain: Chain::CosmWasm,
     },
     VulnerableRange {
@@ -264,7 +275,10 @@ version = "0.1.0"
 cosmwasm-std = "1.4.0"
 "#;
         let findings = run_detector(cargo_toml);
-        assert!(!findings.is_empty(), "Should detect vulnerable cosmwasm-std");
+        assert!(
+            !findings.is_empty(),
+            "Should detect vulnerable cosmwasm-std"
+        );
         assert_eq!(findings[0].detector_id, "DEP-001");
     }
 

@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::{FnArg, ItemFn};
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct MissingSignerDetector;
 
 impl Detector for MissingSignerDetector {
-    fn id(&self) -> &'static str { "SOL-001" }
-    fn name(&self) -> &'static str { "missing-signer-check" }
+    fn id(&self) -> &'static str {
+        "SOL-001"
+    }
+    fn name(&self) -> &'static str {
+        "missing-signer-check"
+    }
     fn description(&self) -> &'static str {
         "Detects functions accepting AccountInfo without verifying is_signer"
     }
-    fn severity(&self) -> Severity { Severity::Critical }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Solana }
+    fn severity(&self) -> Severity {
+        Severity::Critical
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Solana
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -41,7 +51,8 @@ impl<'ast, 'a> Visit<'ast> for SignerVisitor<'a> {
 
         // Skip if this uses Anchor's Signer<'info> or Account<'info, T> patterns
         let fn_src = func.to_token_stream().to_string();
-        if fn_src.contains("Signer") || fn_src.contains("Context <") || fn_src.contains("Context<") {
+        if fn_src.contains("Signer") || fn_src.contains("Context <") || fn_src.contains("Context<")
+        {
             return;
         }
 
@@ -86,8 +97,7 @@ impl<'ast, 'a> Visit<'ast> for SignerVisitor<'a> {
         }
 
         // Check if body verifies is_signer
-        let has_signer_check = body_src.contains("is_signer")
-            || body_src.contains("has_signer");
+        let has_signer_check = body_src.contains("is_signer") || body_src.contains("has_signer");
 
         // Check if the function does any state mutations
         // Note: lamports() alone is a read-only getter;
@@ -103,7 +113,8 @@ impl<'ast, 'a> Visit<'ast> for SignerVisitor<'a> {
             let params_str = if unchecked_params.len() == 1 {
                 format!("'{}'", unchecked_params[0])
             } else {
-                unchecked_params.iter()
+                unchecked_params
+                    .iter()
                     .map(|p| format!("'{}'", p))
                     .collect::<Vec<_>>()
                     .join(", ")
@@ -168,7 +179,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag when is_signer is checked");
+        assert!(
+            findings.is_empty(),
+            "Should not flag when is_signer is checked"
+        );
     }
 
     #[test]
@@ -182,7 +196,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag &[AccountInfo] slice parameter");
+        assert!(
+            findings.is_empty(),
+            "Should not flag &[AccountInfo] slice parameter"
+        );
     }
 
     #[test]
@@ -193,6 +210,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag Anchor Context pattern");
+        assert!(
+            findings.is_empty(),
+            "Should not flag Anchor Context pattern"
+        );
     }
 }

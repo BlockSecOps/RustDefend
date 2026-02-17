@@ -99,7 +99,10 @@ pub fn source_contains_any(source: &str, patterns: &[&str]) -> bool {
 }
 
 /// Find all method calls with a specific name in a block of statements.
-pub fn find_method_calls_in_stmts<'a>(stmts: &'a [Stmt], method_name: &str) -> Vec<&'a ExprMethodCall> {
+pub fn find_method_calls_in_stmts<'a>(
+    stmts: &'a [Stmt],
+    method_name: &str,
+) -> Vec<&'a ExprMethodCall> {
     struct Finder<'b> {
         name: &'b str,
         found: Vec<*const ExprMethodCall>,
@@ -121,11 +124,7 @@ pub fn find_method_calls_in_stmts<'a>(stmts: &'a [Stmt], method_name: &str) -> V
         finder.visit_stmt(stmt);
     }
     // Safety: pointers are valid for lifetime 'a since stmts outlives finder
-    finder
-        .found
-        .into_iter()
-        .map(|p| unsafe { &*p })
-        .collect()
+    finder.found.into_iter().map(|p| unsafe { &*p }).collect()
 }
 
 /// Check if source text contains a check for a specific field/method before a given line.

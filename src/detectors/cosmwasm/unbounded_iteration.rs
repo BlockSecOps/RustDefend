@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct UnboundedIterationDetector;
 
 impl Detector for UnboundedIterationDetector {
-    fn id(&self) -> &'static str { "CW-007" }
-    fn name(&self) -> &'static str { "unbounded-iteration" }
+    fn id(&self) -> &'static str {
+        "CW-007"
+    }
+    fn name(&self) -> &'static str {
+        "unbounded-iteration"
+    }
     fn description(&self) -> &'static str {
         "Detects .range()/.iter() without .take() in execute handlers"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::CosmWasm }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::CosmWasm
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();

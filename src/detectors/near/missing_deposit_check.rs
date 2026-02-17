@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ImplItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct MissingDepositCheckDetector;
 
 impl Detector for MissingDepositCheckDetector {
-    fn id(&self) -> &'static str { "NEAR-010" }
-    fn name(&self) -> &'static str { "missing-deposit-check" }
+    fn id(&self) -> &'static str {
+        "NEAR-010"
+    }
+    fn name(&self) -> &'static str {
+        "missing-deposit-check"
+    }
     fn description(&self) -> &'static str {
         "Detects #[payable] methods that don't check env::attached_deposit()"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Near }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Near
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();

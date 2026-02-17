@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ImplItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct UnboundedStorageDetector;
 
 impl Detector for UnboundedStorageDetector {
-    fn id(&self) -> &'static str { "INK-005" }
-    fn name(&self) -> &'static str { "ink-unbounded-storage" }
+    fn id(&self) -> &'static str {
+        "INK-005"
+    }
+    fn name(&self) -> &'static str {
+        "ink-unbounded-storage"
+    }
     fn description(&self) -> &'static str {
         "Detects unbounded Vec push or Mapping insert without length check"
     }
-    fn severity(&self) -> Severity { Severity::Medium }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Ink }
+    fn severity(&self) -> Severity {
+        Severity::Medium
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Ink
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();

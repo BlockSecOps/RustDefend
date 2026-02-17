@@ -1,13 +1,13 @@
-mod reentrancy;
+mod cross_contract;
+mod error_handling;
 mod integer_overflow;
 mod missing_caller_check;
+mod missing_payable_check;
+mod panic_usage;
+mod reentrancy;
 mod timestamp_dependence;
 mod unbounded_storage;
-mod cross_contract;
-mod panic_usage;
-mod error_handling;
 mod unsafe_delegate_call;
-mod missing_payable_check;
 
 use super::Detector;
 
