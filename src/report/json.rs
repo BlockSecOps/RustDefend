@@ -1,7 +1,7 @@
 use anyhow::Result;
 
-use crate::scanner::finding::Finding;
 use super::Reporter;
+use crate::scanner::finding::Finding;
 
 pub struct JsonReporter;
 

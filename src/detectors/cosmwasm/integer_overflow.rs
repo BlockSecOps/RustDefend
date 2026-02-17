@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::{BinOp, ExprBinary, ItemFn};
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct IntegerOverflowDetector;
 
 impl Detector for IntegerOverflowDetector {
-    fn id(&self) -> &'static str { "CW-001" }
-    fn name(&self) -> &'static str { "cosmwasm-integer-overflow" }
+    fn id(&self) -> &'static str {
+        "CW-001"
+    }
+    fn name(&self) -> &'static str {
+        "cosmwasm-integer-overflow"
+    }
     fn description(&self) -> &'static str {
         "Detects unchecked arithmetic on Uint128/Uint256 types (panics safely but checked_* enables graceful handling)"
     }
-    fn severity(&self) -> Severity { Severity::Medium }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::CosmWasm }
+    fn severity(&self) -> Severity {
+        Severity::Medium
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::CosmWasm
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -41,8 +51,10 @@ impl<'ast, 'a> Visit<'ast> for OverflowVisitor<'a> {
     fn visit_item_fn(&mut self, func: &'ast ItemFn) {
         let fn_src = func.to_token_stream().to_string();
         // Check if function signature involves Uint128/Uint256 types
-        let involves_uint = fn_src.contains("Uint128") || fn_src.contains("Uint256")
-            || fn_src.contains("uint128") || fn_src.contains("uint256");
+        let involves_uint = fn_src.contains("Uint128")
+            || fn_src.contains("Uint256")
+            || fn_src.contains("uint128")
+            || fn_src.contains("uint256");
         if involves_uint {
             self.in_uint_fn = true;
             syn::visit::visit_item_fn(self, func);
@@ -131,7 +143,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect unchecked Uint128 arithmetic");
+        assert!(
+            !findings.is_empty(),
+            "Should detect unchecked Uint128 arithmetic"
+        );
     }
 
     #[test]

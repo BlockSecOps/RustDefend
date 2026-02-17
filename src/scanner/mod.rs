@@ -7,8 +7,8 @@ use anyhow::Result;
 use rayon::prelude::*;
 use walkdir::WalkDir;
 
-use crate::detectors::DetectorRegistry;
 use crate::detectors::common::outdated_deps::OutdatedDepsDetector;
+use crate::detectors::DetectorRegistry;
 use crate::utils::chain_detect;
 use context::ScanContext;
 use finding::{Chain, Confidence, Finding, Severity};
@@ -95,12 +95,8 @@ impl Scanner {
                 // Run each chain's detectors against this file
                 let mut file_findings = Vec::new();
                 for &chain in &active_chains {
-                    let ctx = ScanContext::new(
-                        file_path.clone(),
-                        source.clone(),
-                        ast.clone(),
-                        chain,
-                    );
+                    let ctx =
+                        ScanContext::new(file_path.clone(), source.clone(), ast.clone(), chain);
 
                     for detector in &detectors {
                         if detector.chain() != chain {
@@ -170,8 +166,7 @@ impl Scanner {
             .filter_map(|e| e.ok())
             .filter(|e| {
                 let p = e.path().to_string_lossy();
-                e.path().file_name().map_or(false, |n| n == "Cargo.toml")
-                    && !p.contains("/target/")
+                e.path().file_name().map_or(false, |n| n == "Cargo.toml") && !p.contains("/target/")
             })
             .map(|e| e.path().to_path_buf())
             .collect()

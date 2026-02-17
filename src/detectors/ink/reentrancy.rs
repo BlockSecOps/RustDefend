@@ -5,14 +5,24 @@ use crate::scanner::finding::*;
 pub struct ReentrancyDetector;
 
 impl Detector for ReentrancyDetector {
-    fn id(&self) -> &'static str { "INK-001" }
-    fn name(&self) -> &'static str { "ink-reentrancy" }
+    fn id(&self) -> &'static str {
+        "INK-001"
+    }
+    fn name(&self) -> &'static str {
+        "ink-reentrancy"
+    }
     fn description(&self) -> &'static str {
         "Detects set_allow_reentry(true) which enables reentrancy"
     }
-    fn severity(&self) -> Severity { Severity::Critical }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Ink }
+    fn severity(&self) -> Severity {
+        Severity::Critical
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Ink
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -63,7 +73,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect set_allow_reentry(true)");
+        assert!(
+            !findings.is_empty(),
+            "Should detect set_allow_reentry(true)"
+        );
     }
 
     #[test]
@@ -75,6 +88,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag set_allow_reentry(false)");
+        assert!(
+            findings.is_empty(),
+            "Should not flag set_allow_reentry(false)"
+        );
     }
 }

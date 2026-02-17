@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct MissingOwnerDetector;
 
 impl Detector for MissingOwnerDetector {
-    fn id(&self) -> &'static str { "SOL-002" }
-    fn name(&self) -> &'static str { "missing-owner-check" }
+    fn id(&self) -> &'static str {
+        "SOL-002"
+    }
+    fn name(&self) -> &'static str {
+        "missing-owner-check"
+    }
     fn description(&self) -> &'static str {
         "Detects deserialization of account data without verifying account owner"
     }
-    fn severity(&self) -> Severity { Severity::Critical }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Solana }
+    fn severity(&self) -> Severity {
+        Severity::Critical
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Solana
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();

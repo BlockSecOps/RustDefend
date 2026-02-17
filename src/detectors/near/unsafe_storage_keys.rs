@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct UnsafeStorageKeysDetector;
 
 impl Detector for UnsafeStorageKeysDetector {
-    fn id(&self) -> &'static str { "NEAR-009" }
-    fn name(&self) -> &'static str { "unsafe-storage-keys" }
+    fn id(&self) -> &'static str {
+        "NEAR-009"
+    }
+    fn name(&self) -> &'static str {
+        "unsafe-storage-keys"
+    }
     fn description(&self) -> &'static str {
         "Detects storage key construction from user input (collision risk)"
     }
-    fn severity(&self) -> Severity { Severity::Medium }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Near }
+    fn severity(&self) -> Severity {
+        Severity::Medium
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Near
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -44,11 +54,11 @@ impl<'ast, 'a> Visit<'ast> for StorageKeyVisitor<'a> {
         let body_src = fn_body_source(func);
 
         // Look for storage write with format! or string concatenation in key
-        let has_storage_write = body_src.contains("storage_write")
-            || body_src.contains("storage_read");
+        let has_storage_write =
+            body_src.contains("storage_write") || body_src.contains("storage_read");
 
-        let has_dynamic_key = (body_src.contains("format !") || body_src.contains("format!"))
-            && has_storage_write;
+        let has_dynamic_key =
+            (body_src.contains("format !") || body_src.contains("format!")) && has_storage_write;
 
         if !has_dynamic_key {
             return;

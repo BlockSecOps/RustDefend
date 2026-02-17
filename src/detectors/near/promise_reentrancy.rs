@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct PromiseReentrancyDetector;
 
 impl Detector for PromiseReentrancyDetector {
-    fn id(&self) -> &'static str { "NEAR-001" }
-    fn name(&self) -> &'static str { "promise-reentrancy" }
+    fn id(&self) -> &'static str {
+        "NEAR-001"
+    }
+    fn name(&self) -> &'static str {
+        "promise-reentrancy"
+    }
     fn description(&self) -> &'static str {
         "Detects state mutation before Promise::new() / ext_* calls without #[private] callback"
     }
-    fn severity(&self) -> Severity { Severity::Critical }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Near }
+    fn severity(&self) -> Severity {
+        Severity::Critical
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Near
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -56,7 +66,8 @@ impl<'ast, 'a> Visit<'ast> for ReentrancyVisitor<'a> {
             let stmt_str = stmt.to_token_stream().to_string();
 
             // State mutation patterns
-            if stmt_str.contains("self .") && stmt_str.contains('=')
+            if stmt_str.contains("self .")
+                && stmt_str.contains('=')
                 && !stmt_str.contains("==")
                 && !stmt_str.contains("!=")
             {
@@ -115,7 +126,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect state mutation before Promise");
+        assert!(
+            !findings.is_empty(),
+            "Should detect state mutation before Promise"
+        );
     }
 
     #[test]
@@ -126,6 +140,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag when no state mutation");
+        assert!(
+            findings.is_empty(),
+            "Should not flag when no state mutation"
+        );
     }
 }

@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct SignerVsPredecessorDetector;
 
 impl Detector for SignerVsPredecessorDetector {
-    fn id(&self) -> &'static str { "NEAR-002" }
-    fn name(&self) -> &'static str { "signer-vs-predecessor" }
+    fn id(&self) -> &'static str {
+        "NEAR-002"
+    }
+    fn name(&self) -> &'static str {
+        "signer-vs-predecessor"
+    }
     fn description(&self) -> &'static str {
         "Detects env::signer_account_id() misuse in access control (should use predecessor)"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Near }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Near
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -82,12 +92,17 @@ impl<'ast, 'a> Visit<'ast> for SignerVisitor<'a> {
         if used_in_access_control {
             let line = span_to_line(&func.sig.ident.span());
             // Find the actual line with signer_account_id for better reporting
-            let signer_line = self.ctx.source
+            let signer_line = self
+                .ctx
+                .source
                 .lines()
                 .enumerate()
                 .find(|(_, l)| {
                     let t = l.trim();
-                    t.contains("signer_account_id") && !t.starts_with("//") && !t.starts_with("///") && !t.starts_with("*")
+                    t.contains("signer_account_id")
+                        && !t.starts_with("//")
+                        && !t.starts_with("///")
+                        && !t.starts_with("*")
                 })
                 .map(|(i, _)| i + 1)
                 .unwrap_or(line);
@@ -135,7 +150,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect signer_account_id misuse");
+        assert!(
+            !findings.is_empty(),
+            "Should detect signer_account_id misuse"
+        );
     }
 
     #[test]
@@ -147,6 +165,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag predecessor_account_id");
+        assert!(
+            findings.is_empty(),
+            "Should not flag predecessor_account_id"
+        );
     }
 }

@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct UncheckedResponseDetector;
 
 impl Detector for UncheckedResponseDetector {
-    fn id(&self) -> &'static str { "CW-005" }
-    fn name(&self) -> &'static str { "unchecked-query-response" }
+    fn id(&self) -> &'static str {
+        "CW-005"
+    }
+    fn name(&self) -> &'static str {
+        "unchecked-query-response"
+    }
     fn description(&self) -> &'static str {
         "Detects query responses used without validation"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::Low }
-    fn chain(&self) -> Chain { Chain::CosmWasm }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Low
+    }
+    fn chain(&self) -> Chain {
+        Chain::CosmWasm
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -44,8 +54,7 @@ impl<'ast, 'a> Visit<'ast> for ResponseVisitor<'a> {
         }
 
         // Check for direct query response usage without validation
-        let has_query = body_src.contains(".query(")
-            || body_src.contains("query_wasm_smart");
+        let has_query = body_src.contains(".query(") || body_src.contains("query_wasm_smart");
 
         if !has_query {
             return;
@@ -105,7 +114,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect unchecked query response");
+        assert!(
+            !findings.is_empty(),
+            "Should detect unchecked query response"
+        );
     }
 
     #[test]

@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct MissingAddressValidationDetector;
 
 impl Detector for MissingAddressValidationDetector {
-    fn id(&self) -> &'static str { "CW-009" }
-    fn name(&self) -> &'static str { "cosmwasm-missing-addr-validation" }
+    fn id(&self) -> &'static str {
+        "CW-009"
+    }
+    fn name(&self) -> &'static str {
+        "cosmwasm-missing-addr-validation"
+    }
     fn description(&self) -> &'static str {
         "Detects Addr::unchecked() usage in non-test code (address validation bypass)"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::CosmWasm }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::CosmWasm
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();

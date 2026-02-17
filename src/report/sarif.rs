@@ -1,8 +1,8 @@
 use anyhow::Result;
 use serde_json::json;
 
-use crate::scanner::finding::{Finding, Severity};
 use super::Reporter;
+use crate::scanner::finding::{Finding, Severity};
 
 pub struct SarifReporter;
 

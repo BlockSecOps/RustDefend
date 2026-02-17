@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ImplItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct UnsafeDelegateCallDetector;
 
 impl Detector for UnsafeDelegateCallDetector {
-    fn id(&self) -> &'static str { "INK-009" }
-    fn name(&self) -> &'static str { "ink-unsafe-delegate-call" }
+    fn id(&self) -> &'static str {
+        "INK-009"
+    }
+    fn name(&self) -> &'static str {
+        "ink-unsafe-delegate-call"
+    }
     fn description(&self) -> &'static str {
         "Detects delegate_call with user-controlled code hash (arbitrary code execution)"
     }
-    fn severity(&self) -> Severity { Severity::Critical }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Ink }
+    fn severity(&self) -> Severity {
+        Severity::Critical
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Ink
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -46,9 +56,8 @@ impl<'ast, 'a> Visit<'ast> for DelegateVisitor<'a> {
 
         // Check if the delegate target comes from function parameters
         let sig_src = method.sig.to_token_stream().to_string();
-        let has_hash_param = sig_src.contains("Hash")
-            || sig_src.contains("code_hash")
-            || sig_src.contains("target");
+        let has_hash_param =
+            sig_src.contains("Hash") || sig_src.contains("code_hash") || sig_src.contains("target");
 
         // Check for hardcoded hash verification
         let has_verification = body_src.contains("assert_eq !")
@@ -124,6 +133,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag with hash verification");
+        assert!(
+            findings.is_empty(),
+            "Should not flag with hash verification"
+        );
     }
 }

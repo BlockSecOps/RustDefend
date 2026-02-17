@@ -45,12 +45,8 @@ impl DetectorRegistry {
         self.detectors
             .iter()
             .filter(|d| chains.contains(&d.chain()))
-            .filter(|d| {
-                severities.map_or(true, |sevs| sevs.contains(&d.severity()))
-            })
-            .filter(|d| {
-                detector_ids.map_or(true, |ids| ids.iter().any(|id| id == d.id()))
-            })
+            .filter(|d| severities.map_or(true, |sevs| sevs.contains(&d.severity())))
+            .filter(|d| detector_ids.map_or(true, |ids| ids.iter().any(|id| id == d.id())))
             .map(|d| d.as_ref())
             .collect()
     }

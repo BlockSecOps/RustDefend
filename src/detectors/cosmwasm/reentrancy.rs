@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct ReentrancyDetector;
 
 impl Detector for ReentrancyDetector {
-    fn id(&self) -> &'static str { "CW-002" }
-    fn name(&self) -> &'static str { "cosmwasm-reentrancy" }
+    fn id(&self) -> &'static str {
+        "CW-002"
+    }
+    fn name(&self) -> &'static str {
+        "cosmwasm-reentrancy"
+    }
     fn description(&self) -> &'static str {
         "Detects storage writes followed by add_message/add_submessage (CEI violation) - informational: CosmWasm is non-reentrant by design"
     }
-    fn severity(&self) -> Severity { Severity::Low }
-    fn confidence(&self) -> Confidence { Confidence::Low }
-    fn chain(&self) -> Chain { Chain::CosmWasm }
+    fn severity(&self) -> Severity {
+        Severity::Low
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Low
+    }
+    fn chain(&self) -> Chain {
+        Chain::CosmWasm
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -126,6 +136,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect save before add_message");
+        assert!(
+            !findings.is_empty(),
+            "Should detect save before add_message"
+        );
     }
 }

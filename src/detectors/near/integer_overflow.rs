@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::{ExprMethodCall, ItemFn};
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct IntegerOverflowDetector;
 
 impl Detector for IntegerOverflowDetector {
-    fn id(&self) -> &'static str { "NEAR-005" }
-    fn name(&self) -> &'static str { "near-wrapping-arithmetic" }
+    fn id(&self) -> &'static str {
+        "NEAR-005"
+    }
+    fn name(&self) -> &'static str {
+        "near-wrapping-arithmetic"
+    }
     fn description(&self) -> &'static str {
         "Detects wrapping_*/saturating_* on balance/amount variables"
     }
-    fn severity(&self) -> Severity { Severity::Critical }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Near }
+    fn severity(&self) -> Severity {
+        Severity::Critical
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Near
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -111,7 +121,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect wrapping_add on balance");
+        assert!(
+            !findings.is_empty(),
+            "Should detect wrapping_add on balance"
+        );
     }
 
     #[test]

@@ -1,8 +1,8 @@
 use anyhow::Result;
 use colored::Colorize;
 
-use crate::scanner::finding::{Finding, Severity};
 use super::Reporter;
+use crate::scanner::finding::{Finding, Severity};
 
 pub struct TextReporter;
 
@@ -65,11 +65,7 @@ impl Reporter for TextReporter {
                     f.line
                 ));
                 if !f.snippet.is_empty() {
-                    output.push_str(&format!(
-                        "  {} {}\n",
-                        "|".dimmed(),
-                        f.snippet.dimmed()
-                    ));
+                    output.push_str(&format!("  {} {}\n", "|".dimmed(), f.snippet.dimmed()));
                 }
                 output.push_str(&format!(
                     "  {} {}\n",

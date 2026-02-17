@@ -1,4 +1,3 @@
-
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
 use crate::scanner::finding::*;
@@ -6,14 +5,24 @@ use crate::scanner::finding::*;
 pub struct UnhandledPromiseDetector;
 
 impl Detector for UnhandledPromiseDetector {
-    fn id(&self) -> &'static str { "NEAR-004" }
-    fn name(&self) -> &'static str { "callback-unwrap-usage" }
+    fn id(&self) -> &'static str {
+        "NEAR-004"
+    }
+    fn name(&self) -> &'static str {
+        "callback-unwrap-usage"
+    }
     fn description(&self) -> &'static str {
         "Detects #[callback_unwrap] usage (should use #[callback_result] with Result)"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Near }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Near
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();

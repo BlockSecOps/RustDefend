@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::{ExprMethodCall, ItemFn, Macro};
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct ImproperErrorDetector;
 
 impl Detector for ImproperErrorDetector {
-    fn id(&self) -> &'static str { "CW-006" }
-    fn name(&self) -> &'static str { "improper-error-handling" }
+    fn id(&self) -> &'static str {
+        "CW-006"
+    }
+    fn name(&self) -> &'static str {
+        "improper-error-handling"
+    }
     fn description(&self) -> &'static str {
         "Detects unwrap(), expect(), panic!() in CosmWasm entry points"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::CosmWasm }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::CosmWasm
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -120,7 +130,9 @@ impl<'ast, 'a> Visit<'ast> for ErrorVisitor<'a> {
                 line,
                 column: span_to_column(&mac.path.segments.first().unwrap().ident.span()),
                 snippet: snippet_at_line(&self.ctx.source, line),
-                recommendation: "Return a proper error instead of panicking in contract entry points".to_string(),
+                recommendation:
+                    "Return a proper error instead of panicking in contract entry points"
+                        .to_string(),
                 chain: Chain::CosmWasm,
             });
         }
@@ -162,7 +174,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag unwrap in test-like functions");
+        assert!(
+            findings.is_empty(),
+            "Should not flag unwrap in test-like functions"
+        );
     }
 
     #[test]
@@ -173,6 +188,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag unwrap in helper functions");
+        assert!(
+            findings.is_empty(),
+            "Should not flag unwrap in helper functions"
+        );
     }
 }

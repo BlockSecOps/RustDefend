@@ -25,7 +25,11 @@ fn main() -> Result<()> {
 fn run_scan(args: rustdefend::cli::ScanArgs) -> Result<()> {
     let path = Path::new(&args.path);
     if !path.exists() {
-        eprintln!("{} Path does not exist: {}", "Error:".red().bold(), args.path);
+        eprintln!(
+            "{} Path does not exist: {}",
+            "Error:".red().bold(),
+            args.path
+        );
         process::exit(2);
     }
 

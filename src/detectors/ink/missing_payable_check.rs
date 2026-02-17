@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::ImplItemFn;
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct MissingPayableCheckDetector;
 
 impl Detector for MissingPayableCheckDetector {
-    fn id(&self) -> &'static str { "INK-010" }
-    fn name(&self) -> &'static str { "ink-missing-payable-check" }
+    fn id(&self) -> &'static str {
+        "INK-010"
+    }
+    fn name(&self) -> &'static str {
+        "ink-missing-payable-check"
+    }
     fn description(&self) -> &'static str {
         "Detects non-payable #[ink(message)] methods that reference transferred_value()"
     }
-    fn severity(&self) -> Severity { Severity::Medium }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Ink }
+    fn severity(&self) -> Severity {
+        Severity::Medium
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Ink
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -108,7 +118,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect non-payable using transferred_value");
+        assert!(
+            !findings.is_empty(),
+            "Should detect non-payable using transferred_value"
+        );
     }
 
     #[test]

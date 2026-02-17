@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::{ItemFn, Stmt};
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct CpiReentrancyDetector;
 
 impl Detector for CpiReentrancyDetector {
-    fn id(&self) -> &'static str { "SOL-009" }
-    fn name(&self) -> &'static str { "cpi-reentrancy" }
+    fn id(&self) -> &'static str {
+        "SOL-009"
+    }
+    fn name(&self) -> &'static str {
+        "cpi-reentrancy"
+    }
     fn description(&self) -> &'static str {
         "Detects state mutations after CPI calls (CEI violation) - mitigated by Solana's account locking"
     }
-    fn severity(&self) -> Severity { Severity::Medium }
-    fn confidence(&self) -> Confidence { Confidence::Low }
-    fn chain(&self) -> Chain { Chain::Solana }
+    fn severity(&self) -> Severity {
+        Severity::Medium
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Low
+    }
+    fn chain(&self) -> Chain {
+        Chain::Solana
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -91,7 +101,11 @@ fn get_stmt_line(stmt: &Stmt) -> usize {
         Stmt::Expr(expr, _) => {
             // Best effort line extraction
             let tokens = expr.to_token_stream();
-            let span = tokens.into_iter().next().map(|t| t.span()).unwrap_or_else(proc_macro2::Span::call_site);
+            let span = tokens
+                .into_iter()
+                .next()
+                .map(|t| t.span())
+                .unwrap_or_else(proc_macro2::Span::call_site);
             span_to_line(&span)
         }
         Stmt::Item(_) => 0,
@@ -107,7 +121,10 @@ trait PathSpan {
 
 impl PathSpan for syn::Path {
     fn span(&self) -> Span {
-        self.segments.first().map(|s| s.ident.span()).unwrap_or_else(Span::call_site)
+        self.segments
+            .first()
+            .map(|s| s.ident.span())
+            .unwrap_or_else(Span::call_site)
     }
 }
 
@@ -137,7 +154,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect state mutation after CPI");
+        assert!(
+            !findings.is_empty(),
+            "Should detect state mutation after CPI"
+        );
     }
 
     #[test]
@@ -151,6 +171,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag state mutation before CPI");
+        assert!(
+            findings.is_empty(),
+            "Should not flag state mutation before CPI"
+        );
     }
 }

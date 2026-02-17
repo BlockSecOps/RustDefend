@@ -1,4 +1,3 @@
-
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
 use crate::scanner::finding::*;
@@ -6,14 +5,24 @@ use crate::scanner::finding::*;
 pub struct TimestampDependenceDetector;
 
 impl Detector for TimestampDependenceDetector {
-    fn id(&self) -> &'static str { "INK-004" }
-    fn name(&self) -> &'static str { "ink-timestamp-dependence" }
+    fn id(&self) -> &'static str {
+        "INK-004"
+    }
+    fn name(&self) -> &'static str {
+        "ink-timestamp-dependence"
+    }
     fn description(&self) -> &'static str {
         "Detects block_timestamp() usage in decision logic"
     }
-    fn severity(&self) -> Severity { Severity::Medium }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Ink }
+    fn severity(&self) -> Severity {
+        Severity::Medium
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Ink
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -75,7 +84,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect timestamp in comparison");
+        assert!(
+            !findings.is_empty(),
+            "Should detect timestamp in comparison"
+        );
     }
 
     #[test]

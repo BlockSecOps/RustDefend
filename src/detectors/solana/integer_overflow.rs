@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::{BinOp, Expr, ExprBinary, ImplItemFn, ItemFn};
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct IntegerOverflowDetector;
 
 impl Detector for IntegerOverflowDetector {
-    fn id(&self) -> &'static str { "SOL-003" }
-    fn name(&self) -> &'static str { "integer-overflow" }
+    fn id(&self) -> &'static str {
+        "SOL-003"
+    }
+    fn name(&self) -> &'static str {
+        "integer-overflow"
+    }
     fn description(&self) -> &'static str {
         "Detects unchecked arithmetic operations on integer types"
     }
-    fn severity(&self) -> Severity { Severity::Critical }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Solana }
+    fn severity(&self) -> Severity {
+        Severity::Critical
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Solana
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -106,8 +116,14 @@ impl<'ast, 'a> Visit<'ast> for OverflowVisitor<'a> {
 
         let is_arithmetic = matches!(
             expr.op,
-            BinOp::Add(_) | BinOp::Sub(_) | BinOp::Mul(_) | BinOp::Div(_)
-                | BinOp::AddAssign(_) | BinOp::SubAssign(_) | BinOp::MulAssign(_) | BinOp::DivAssign(_)
+            BinOp::Add(_)
+                | BinOp::Sub(_)
+                | BinOp::Mul(_)
+                | BinOp::Div(_)
+                | BinOp::AddAssign(_)
+                | BinOp::SubAssign(_)
+                | BinOp::MulAssign(_)
+                | BinOp::DivAssign(_)
         );
 
         if !is_arithmetic {
@@ -171,7 +187,11 @@ impl<'ast, 'a> Visit<'ast> for OverflowVisitor<'a> {
 
         // Division cannot overflow (only divide-by-zero) — use Low confidence
         let is_division = matches!(expr.op, BinOp::Div(_) | BinOp::DivAssign(_));
-        let confidence = if is_division { Confidence::Low } else { Confidence::Medium };
+        let confidence = if is_division {
+            Confidence::Low
+        } else {
+            Confidence::Medium
+        };
 
         self.findings.push(Finding {
             detector_id: "SOL-003".to_string(),
@@ -306,7 +326,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag adding a literal constant");
+        assert!(
+            findings.is_empty(),
+            "Should not flag adding a literal constant"
+        );
     }
 
     #[test]
@@ -330,7 +353,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag widening cast multiplication");
+        assert!(
+            findings.is_empty(),
+            "Should not flag widening cast multiplication"
+        );
     }
 
     #[test]
@@ -342,7 +368,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag pack/serialization functions");
+        assert!(
+            findings.is_empty(),
+            "Should not flag pack/serialization functions"
+        );
     }
 
     #[test]
@@ -355,6 +384,10 @@ mod tests {
         "#;
         let findings = run_detector(source);
         assert!(!findings.is_empty(), "Should still detect division");
-        assert_eq!(findings[0].confidence, Confidence::Low, "Division should have Low confidence");
+        assert_eq!(
+            findings[0].confidence,
+            Confidence::Low,
+            "Division should have Low confidence"
+        );
     }
 }

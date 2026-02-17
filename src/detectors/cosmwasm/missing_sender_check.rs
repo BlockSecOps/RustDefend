@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct MissingSenderCheckDetector;
 
 impl Detector for MissingSenderCheckDetector {
-    fn id(&self) -> &'static str { "CW-003" }
-    fn name(&self) -> &'static str { "missing-sender-check" }
+    fn id(&self) -> &'static str {
+        "CW-003"
+    }
+    fn name(&self) -> &'static str {
+        "missing-sender-check"
+    }
     fn description(&self) -> &'static str {
         "Detects execute handler match arms that mutate storage without checking info.sender"
     }
-    fn severity(&self) -> Severity { Severity::Critical }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::CosmWasm }
+    fn severity(&self) -> Severity {
+        Severity::Critical
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::CosmWasm
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();

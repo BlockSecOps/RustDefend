@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct SelfCallbackDetector;
 
 impl Detector for SelfCallbackDetector {
-    fn id(&self) -> &'static str { "NEAR-007" }
-    fn name(&self) -> &'static str { "self-callback-state" }
+    fn id(&self) -> &'static str {
+        "NEAR-007"
+    }
+    fn name(&self) -> &'static str {
+        "self-callback-state"
+    }
     fn description(&self) -> &'static str {
         "Detects pending state field writes before ext_self:: calls without guard checks"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Near }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Near
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -44,9 +54,8 @@ impl<'ast, 'a> Visit<'ast> for SelfCallbackVisitor<'a> {
         }
 
         // Check for pending_ field writes
-        let has_pending_write = body_src.contains("pending_")
-            && body_src.contains("self .")
-            && body_src.contains('=');
+        let has_pending_write =
+            body_src.contains("pending_") && body_src.contains("self .") && body_src.contains('=');
 
         if !has_pending_write {
             return;
@@ -105,7 +114,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect unguarded pending state");
+        assert!(
+            !findings.is_empty(),
+            "Should detect unguarded pending state"
+        );
     }
 
     #[test]

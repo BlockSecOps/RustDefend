@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct MissingRentExemptDetector;
 
 impl Detector for MissingRentExemptDetector {
-    fn id(&self) -> &'static str { "SOL-011" }
-    fn name(&self) -> &'static str { "missing-rent-exempt" }
+    fn id(&self) -> &'static str {
+        "SOL-011"
+    }
+    fn name(&self) -> &'static str {
+        "missing-rent-exempt"
+    }
     fn description(&self) -> &'static str {
         "Detects create_account calls without rent-exemption checks"
     }
-    fn severity(&self) -> Severity { Severity::Medium }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Solana }
+    fn severity(&self) -> Severity {
+        Severity::Medium
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Solana
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -44,8 +54,7 @@ impl<'ast, 'a> Visit<'ast> for RentVisitor<'a> {
         let body_src = fn_body_source(func);
 
         // Check for account creation patterns
-        let has_create = body_src.contains("create_account")
-            || body_src.contains("CreateAccount");
+        let has_create = body_src.contains("create_account") || body_src.contains("CreateAccount");
 
         if !has_create {
             return;
@@ -75,7 +84,9 @@ impl<'ast, 'a> Visit<'ast> for RentVisitor<'a> {
             line,
             column: span_to_column(&func.sig.ident.span()),
             snippet: snippet_at_line(&self.ctx.source, line),
-            recommendation: "Use Rent::get()?.minimum_balance(space) to ensure accounts are rent-exempt".to_string(),
+            recommendation:
+                "Use Rent::get()?.minimum_balance(space) to ensure accounts are rent-exempt"
+                    .to_string(),
             chain: Chain::Solana,
         });
     }

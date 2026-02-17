@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct StorageStakingDetector;
 
 impl Detector for StorageStakingDetector {
-    fn id(&self) -> &'static str { "NEAR-003" }
-    fn name(&self) -> &'static str { "storage-staking-auth" }
+    fn id(&self) -> &'static str {
+        "NEAR-003"
+    }
+    fn name(&self) -> &'static str {
+        "storage-staking-auth"
+    }
     fn description(&self) -> &'static str {
         "Detects storage_deposit/storage_withdraw without predecessor_account_id check"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Near }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Near
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -95,7 +105,10 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(!findings.is_empty(), "Should detect missing predecessor check");
+        assert!(
+            !findings.is_empty(),
+            "Should detect missing predecessor check"
+        );
     }
 
     #[test]
@@ -108,6 +121,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag with predecessor check");
+        assert!(
+            findings.is_empty(),
+            "Should not flag with predecessor check"
+        );
     }
 }

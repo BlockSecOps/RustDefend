@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct FrontrunningDetector;
 
 impl Detector for FrontrunningDetector {
-    fn id(&self) -> &'static str { "NEAR-008" }
-    fn name(&self) -> &'static str { "frontrunning-risk" }
+    fn id(&self) -> &'static str {
+        "NEAR-008"
+    }
+    fn name(&self) -> &'static str {
+        "frontrunning-risk"
+    }
     fn description(&self) -> &'static str {
         "Detects Promise::new().transfer() in functions that take user-provided parameters"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::Low }
-    fn chain(&self) -> Chain { Chain::Near }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Low
+    }
+    fn chain(&self) -> Chain {
+        Chain::Near
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -117,6 +127,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag with deadline protection");
+        assert!(
+            findings.is_empty(),
+            "Should not flag with deadline protection"
+        );
     }
 }

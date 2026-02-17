@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::{Pat, Stmt};
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct ErrorHandlingDetector;
 
 impl Detector for ErrorHandlingDetector {
-    fn id(&self) -> &'static str { "INK-008" }
-    fn name(&self) -> &'static str { "ink-result-suppression" }
+    fn id(&self) -> &'static str {
+        "INK-008"
+    }
+    fn name(&self) -> &'static str {
+        "ink-result-suppression"
+    }
     fn description(&self) -> &'static str {
         "Detects `let _ = expr` where expr returns Result (error suppression)"
     }
-    fn severity(&self) -> Severity { Severity::Medium }
-    fn confidence(&self) -> Confidence { Confidence::Medium }
-    fn chain(&self) -> Chain { Chain::Ink }
+    fn severity(&self) -> Severity {
+        Severity::Medium
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::Medium
+    }
+    fn chain(&self) -> Chain {
+        Chain::Ink
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -135,6 +145,9 @@ mod tests {
             }
         "#;
         let findings = run_detector(source);
-        assert!(findings.is_empty(), "Should not flag properly handled Result");
+        assert!(
+            findings.is_empty(),
+            "Should not flag properly handled Result"
+        );
     }
 }

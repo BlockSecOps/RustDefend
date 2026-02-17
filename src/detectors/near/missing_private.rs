@@ -9,14 +9,24 @@ use crate::utils::ast_helpers::*;
 pub struct MissingPrivateDetector;
 
 impl Detector for MissingPrivateDetector {
-    fn id(&self) -> &'static str { "NEAR-006" }
-    fn name(&self) -> &'static str { "missing-private-callback" }
+    fn id(&self) -> &'static str {
+        "NEAR-006"
+    }
+    fn name(&self) -> &'static str {
+        "missing-private-callback"
+    }
     fn description(&self) -> &'static str {
         "Detects public callback methods (on_* / *_callback) without #[private] attribute"
     }
-    fn severity(&self) -> Severity { Severity::Critical }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Near }
+    fn severity(&self) -> Severity {
+        Severity::Critical
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Near
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();

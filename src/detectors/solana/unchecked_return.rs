@@ -1,6 +1,6 @@
+use quote::ToTokens;
 use syn::visit::Visit;
 use syn::{Expr, Pat, Stmt};
-use quote::ToTokens;
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -10,14 +10,24 @@ use crate::utils::ast_helpers::*;
 pub struct UncheckedReturnDetector;
 
 impl Detector for UncheckedReturnDetector {
-    fn id(&self) -> &'static str { "SOL-008" }
-    fn name(&self) -> &'static str { "unchecked-cpi-return" }
+    fn id(&self) -> &'static str {
+        "SOL-008"
+    }
+    fn name(&self) -> &'static str {
+        "unchecked-cpi-return"
+    }
     fn description(&self) -> &'static str {
         "Detects CPI calls whose return value is discarded"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::Solana }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::Solana
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -42,9 +52,7 @@ impl<'ast, 'a> Visit<'ast> for ReturnVisitor<'a> {
             if let Pat::Wild(_) = &local.pat {
                 if let Some(init) = &local.init {
                     let expr_str = init.expr.to_token_stream().to_string();
-                    if expr_str.contains("invoke")
-                        || expr_str.contains("invoke_signed")
-                    {
+                    if expr_str.contains("invoke") || expr_str.contains("invoke_signed") {
                         let line = span_to_line(&local.pat.span());
                         self.findings.push(Finding {
                             detector_id: "SOL-008".to_string(),
@@ -55,7 +63,9 @@ impl<'ast, 'a> Visit<'ast> for ReturnVisitor<'a> {
                             line,
                             column: span_to_column(&local.pat.span()),
                             snippet: snippet_at_line(&self.ctx.source, line),
-                            recommendation: "Propagate the error using `?` operator: `invoke(...)?.`".to_string(),
+                            recommendation:
+                                "Propagate the error using `?` operator: `invoke(...)?.`"
+                                    .to_string(),
                             chain: Chain::Solana,
                         });
                     }
@@ -66,7 +76,8 @@ impl<'ast, 'a> Visit<'ast> for ReturnVisitor<'a> {
         // Also check for bare invoke() without ? or error handling (expression statement)
         if let Stmt::Expr(expr, Some(_semi)) = stmt {
             let expr_str = expr.to_token_stream().to_string();
-            if (expr_str.contains("invoke (") || expr_str.contains("invoke(")
+            if (expr_str.contains("invoke (")
+                || expr_str.contains("invoke(")
                 || expr_str.contains("invoke_signed"))
                 && !expr_str.contains('?')
                 && !expr_str.contains("unwrap")
@@ -83,7 +94,9 @@ impl<'ast, 'a> Visit<'ast> for ReturnVisitor<'a> {
                     line,
                     column: span_to_column(&expr.span()),
                     snippet: snippet_at_line(&self.ctx.source, line),
-                    recommendation: "Handle the CPI result with `?` operator or explicit error handling".to_string(),
+                    recommendation:
+                        "Handle the CPI result with `?` operator or explicit error handling"
+                            .to_string(),
                     chain: Chain::Solana,
                 });
             }

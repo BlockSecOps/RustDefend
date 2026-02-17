@@ -1,7 +1,7 @@
-use syn::visit::Visit;
-use syn::{Expr, ExprCall, ExprLit, Lit};
 use quote::ToTokens;
 use std::collections::HashMap;
+use syn::visit::Visit;
+use syn::{Expr, ExprCall, ExprLit, Lit};
 
 use crate::detectors::Detector;
 use crate::scanner::context::ScanContext;
@@ -11,14 +11,24 @@ use crate::utils::ast_helpers::*;
 pub struct StorageCollisionDetector;
 
 impl Detector for StorageCollisionDetector {
-    fn id(&self) -> &'static str { "CW-004" }
-    fn name(&self) -> &'static str { "storage-collision" }
+    fn id(&self) -> &'static str {
+        "CW-004"
+    }
+    fn name(&self) -> &'static str {
+        "storage-collision"
+    }
     fn description(&self) -> &'static str {
         "Detects duplicate storage prefixes in Map::new() / Item::new()"
     }
-    fn severity(&self) -> Severity { Severity::High }
-    fn confidence(&self) -> Confidence { Confidence::High }
-    fn chain(&self) -> Chain { Chain::CosmWasm }
+    fn severity(&self) -> Severity {
+        Severity::High
+    }
+    fn confidence(&self) -> Confidence {
+        Confidence::High
+    }
+    fn chain(&self) -> Chain {
+        Chain::CosmWasm
+    }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
         let mut findings = Vec::new();
@@ -46,7 +56,9 @@ impl Detector for StorageCollisionDetector {
                         line,
                         column: 1,
                         snippet: snippet_at_line(&ctx.source, line),
-                        recommendation: "Each storage item must have a unique prefix to prevent data collisions".to_string(),
+                        recommendation:
+                            "Each storage item must have a unique prefix to prevent data collisions"
+                                .to_string(),
                         chain: Chain::CosmWasm,
                     });
                 }
