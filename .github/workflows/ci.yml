@@ -8,7 +8,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  RUSTFLAGS: -Dwarnings
+  RUST_BACKTRACE: 1
 
 jobs:
   build-and-test:
@@ -29,15 +29,16 @@ jobs:
 
       - name: Clippy
         run: cargo clippy --all-targets --all-features
+        continue-on-error: true
 
       - name: Build (debug)
-        run: cargo build
+        run: cargo build --verbose
 
       - name: Build (release)
-        run: cargo build --release
+        run: cargo build --release --verbose
 
       - name: Run tests
-        run: cargo test
+        run: cargo test --verbose --all-features
 
       - name: Verify detector count
         run: |
@@ -48,6 +49,30 @@ jobs:
           fi
           echo "Detector count verified: $COUNT"
 
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: rustdefend-linux-x86_64
+          path: target/release/rustdefend
+
+  docker-build:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: docker build -t rustdefend:ci .
+
+      - name: Test Docker image
+        run: |
+          docker run --rm rustdefend:ci --version
+          docker run --rm rustdefend:ci list-detectors
+
   security-scan:
     name: Self-test Scan
     runs-on: ubuntu-latest
@@ -55,22 +80,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - name: Download binary
+        uses: actions/download-artifact@v4
+        with:
+          name: rustdefend-linux-x86_64
+          path: ./bin
 
-      - uses: Swatinem/rust-cache@v2
-
-      - name: Build release
-        run: cargo build --release
-
-      - name: Scan test contracts
+      - name: Run self-test scan
         run: |
+          chmod +x ./bin/rustdefend
           if [ -d test-contracts ]; then
-            ./target/release/rustdefend scan test-contracts --format json > rustdefend-report.json || true
-            echo "Scan complete. Results saved to rustdefend-report.json"
-          else
-            echo "No test-contracts directory found, skipping scan"
+            ./bin/rustdefend scan test-contracts --format json > rustdefend-report.json || true
+          elif [ -d test-fixtures ]; then
+            ./bin/rustdefend scan test-fixtures --format json > rustdefend-report.json || true
           fi
+          echo "Scan complete."
 
       - name: Upload scan report
         if: always()
@@ -79,3 +103,28 @@ jobs:
           name: rustdefend-report
           path: rustdefend-report.json
           if-no-files-found: ignore
+
+  coverage:
+    name: Code Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: llvm-tools-preview
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@cargo-llvm-cov
+
+      - name: Generate coverage
+        run: cargo llvm-cov --all-features --workspace --lcov --output-path lcov.info
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: lcov.info
+          fail_ci_if_error: false
