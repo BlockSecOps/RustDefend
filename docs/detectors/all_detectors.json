@@ -358,5 +358,45 @@
     "severity": "High",
     "confidence": "High",
     "chain": "common"
+  },
+  {
+    "id": "CW-010",
+    "name": "unguarded-migrate-entry",
+    "description": "Detects migrate handler without admin/sender check or version validation",
+    "severity": "Medium",
+    "confidence": "Medium",
+    "chain": "cosmwasm"
+  },
+  {
+    "id": "CW-011",
+    "name": "missing-reply-id-validation",
+    "description": "Detects reply handler not matching on msg.id, processing all submessage replies identically",
+    "severity": "Medium",
+    "confidence": "Medium",
+    "chain": "cosmwasm"
+  },
+  {
+    "id": "NEAR-011",
+    "name": "unguarded-storage-unregister",
+    "description": "Detects storage_unregister without checking non-zero token balances",
+    "severity": "Medium",
+    "confidence": "Medium",
+    "chain": "near"
+  },
+  {
+    "id": "NEAR-012",
+    "name": "missing-gas-for-callbacks",
+    "description": "Detects cross-contract calls without explicit gas specification",
+    "severity": "Medium",
+    "confidence": "Medium",
+    "chain": "near"
+  },
+  {
+    "id": "INK-011",
+    "name": "unguarded-set-code-hash",
+    "description": "Detects set_code_hash usage without admin/owner verification",
+    "severity": "Medium",
+    "confidence": "Medium",
+    "chain": "ink"
   }
 ]

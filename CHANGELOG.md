@@ -4,6 +4,18 @@ All notable changes to RustDefend will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] - 2026-02-16
+
+### Added
+
+- **5 new detectors** for medium-priority coverage gaps (50 total)
+  - CW-010: Unguarded migrate entry — detects migrate handler without admin/sender check or version validation
+  - CW-011: Missing reply ID validation — detects reply handler not matching on msg.id
+  - NEAR-011: Unguarded storage unregister — detects storage_unregister without balance/force checks
+  - NEAR-012: Missing gas for callbacks — detects cross-contract calls without explicit gas specification
+  - INK-011: Unguarded set_code_hash — detects set_code_hash usage without admin/owner verification
+- Test fixtures for all 5 new detectors
+
 ## [0.2.0] - 2026-02-16
 
 ### Added
