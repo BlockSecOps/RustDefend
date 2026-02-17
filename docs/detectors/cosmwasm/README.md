@@ -24,6 +24,7 @@
 - Detects unchecked arithmetic on `Uint128`/`Uint256` types.
 - Low severity because CosmWasm's types panic on overflow (safe revert, not exploitable). Use `checked_*` for graceful error handling.
 - Skips test/mock/helper functions.
+- Skips test/mock file paths (`/testing/`, `/mock/`, `/testutils/`, `integration_tests/`, `multitest/`).
 
 ## CW-002: cosmwasm-reentrancy
 

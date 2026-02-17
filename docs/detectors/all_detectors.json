@@ -18,7 +18,7 @@
   {
     "id": "SOL-003",
     "name": "integer-overflow",
-    "description": "Detects unchecked arithmetic operations on integer types in Solana BPF programs",
+    "description": "Detects unchecked arithmetic operations on integer types in Solana programs (requires Solana source markers)",
     "severity": "Critical",
     "confidence": "Medium",
     "chain": "solana"
