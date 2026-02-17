@@ -1,6 +1,6 @@
 # CosmWasm Detectors
 
-9 detectors for CosmWasm smart contracts.
+11 detectors for CosmWasm smart contracts.
 
 | ID | Name | Severity | Confidence |
 |----|------|----------|------------|
@@ -13,6 +13,8 @@
 | CW-007 | Unbounded iteration | High | Medium |
 | CW-008 | Unsafe IBC entry points | High | Medium |
 | CW-009 | Missing address validation (`Addr::unchecked`) | High | Medium |
+| CW-010 | Unguarded migrate entry | Medium | Medium |
+| CW-011 | Missing reply ID validation | Medium | Medium |
 
 ---
 
@@ -70,3 +72,17 @@
 - Detects `Addr::unchecked()` usage in non-test code.
 - Unvalidated addresses can have bech32 case variations that bypass storage key lookups.
 - Use `deps.api.addr_validate()` instead.
+
+## CW-010: unguarded-migrate-entry
+
+- **Severity:** Medium | **Confidence:** Medium
+- Detects `migrate` handler without admin/sender check or version validation.
+- Checks for `info.sender` authorization patterns and `cw2::set_contract_version` / `get_contract_version` version validation.
+- Skips trivial/stub implementations (less than 60 non-whitespace characters).
+
+## CW-011: missing-reply-id-validation
+
+- **Severity:** Medium | **Confidence:** Medium
+- Detects `reply` handler not matching on `msg.id`, processing all submessage replies identically.
+- Checks for `msg.id`, `reply.id`, `REPLY_ID`, `SubMsgResult`, `match msg`/`match reply` patterns.
+- Skips trivial implementations (less than 50 non-whitespace characters).

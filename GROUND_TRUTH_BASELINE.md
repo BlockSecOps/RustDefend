@@ -1,8 +1,8 @@
 # RustDefend Ground Truth Baseline
 
 **Generated:** 2026-02-16
-**Scanner Version:** 0.2.0
-**Total Detectors:** 45
+**Scanner Version:** 0.3.0
+**Total Detectors:** 50
 
 ---
 
@@ -31,7 +31,7 @@
 
 ---
 
-### CosmWasm — 9 detectors, **7 relevant for 2024+**
+### CosmWasm — 11 detectors, **9 relevant for 2024+**
 
 | ID | Name | Severity | 2024+ Relevant? | Notes |
 |---|---|---|---|---|
@@ -44,12 +44,14 @@
 | CW-007 | unbounded-iteration | High | **Yes** | Gas limits exist but unbounded `.range()` can exceed block gas limits, causing permanent DoS on affected functionality. |
 | CW-008 | unsafe-ibc-entry-points | High | **Yes** | IBC receive/ack/timeout handlers without packet validation. $150M at risk in 2024 IBC reentrancy bug. |
 | CW-009 | cosmwasm-missing-addr-validation | High | **Yes** | `Addr::unchecked()` in non-test code allows bech32 case-variation attacks (Halborn zero-day 2024). Added in Task 4 for 2024+ threats. |
+| CW-010 | unguarded-migrate-entry | Medium | **Yes** | Migrate handler without admin/sender check or version validation allows unauthorized contract upgrades. |
+| CW-011 | missing-reply-id-validation | Medium | **Yes** | Reply handler not matching on msg.id processes all submessage replies identically, causing logic bugs. |
 
-**Summary:** 7 of 9 detectors fully relevant. CW-001 (Medium) is a code quality issue. CW-002 (Low) is informational due to architectural non-reentrancy.
+**Summary:** 9 of 11 detectors fully relevant. CW-001 (Medium) is a code quality issue. CW-002 (Low) is informational due to architectural non-reentrancy.
 
 ---
 
-### NEAR — 10 detectors, **10 relevant for 2024+**
+### NEAR — 12 detectors, **12 relevant for 2024+**
 
 | ID | Name | Severity | 2024+ Relevant? | Notes |
 |---|---|---|---|---|
@@ -63,12 +65,14 @@
 | NEAR-008 | frontrunning-risk | High | **Yes** | Public mempool + promise-based transfers remain susceptible to frontrunning. |
 | NEAR-009 | unsafe-storage-keys | Medium | **Yes** | Storage keys constructed from user input via `format!()` risk collision attacks. Added in Task 4 for 2024+ threats. |
 | NEAR-010 | missing-deposit-check | High | **Yes** | `#[payable]` methods without `env::attached_deposit()` check can be called with zero payment. Added in Task 4 for 2024+ threats. |
+| NEAR-011 | unguarded-storage-unregister | Medium | **Yes** | `storage_unregister` without checking non-zero token balances allows users to lose tokens. |
+| NEAR-012 | missing-gas-for-callbacks | Medium | **Yes** | Cross-contract calls without explicit gas specification risk callback failures from insufficient gas. |
 
-**Summary:** All 10 detectors fully relevant. NEAR has made no runtime changes that mitigate any of these vulnerability classes. The SDK improvements (v5.24) add safer APIs but don't enforce their use.
+**Summary:** All 12 detectors fully relevant. NEAR has made no runtime changes that mitigate any of these vulnerability classes. The SDK improvements (v5.24) add safer APIs but don't enforce their use.
 
 ---
 
-### ink! (Polkadot) — 10 detectors, **8 relevant for 2024+**
+### ink! (Polkadot) — 11 detectors, **9 relevant for 2024+**
 
 | ID | Name | Severity | 2024+ Relevant? | Notes |
 |---|---|---|---|---|
@@ -82,10 +86,11 @@
 | INK-008 | ink-result-suppression | Medium | **Yes** | `let _ = result` silently discards errors. No framework prevention. |
 | INK-009 | ink-unsafe-delegate-call | Critical | **Yes** | `delegate_call` with user-controlled code hash allows arbitrary code execution. Added in Task 4 for 2024+ threats. |
 | INK-010 | ink-missing-payable-check | Medium | **Yes** | Non-payable methods referencing `transferred_value()` have confused semantics. Added in Task 4 for 2024+ threats. |
+| INK-011 | unguarded-set-code-hash | Medium | **Yes** | `set_code_hash` without admin/owner verification allows unauthorized contract upgrades. Critical for upgradeable ink! contracts. |
 
 **Ecosystem Note:** ink! development ceased January 2026 due to lack of funding. Polkadot is pivoting to Revive/PolkaVM with EVM compatibility. Existing contracts on Astar/Aleph Zero still run, but no new security patches will be issued. This makes static analysis **more important, not less** — there's no framework team to fix issues.
 
-**Summary:** 8 of 10 detectors fully relevant. INK-002 has reduced relevance due to default overflow checks. INK-001 is relevant as it catches explicit opt-in to risky behavior.
+**Summary:** 9 of 11 detectors fully relevant. INK-002 has reduced relevance due to default overflow checks. INK-001 is relevant as it catches explicit opt-in to risky behavior.
 
 ---
 
@@ -103,15 +108,15 @@
 | Chain | Total | Fully Relevant | Reduced | Not Relevant |
 |---|---|---|---|---|
 | **Solana** | 14 | 13 | 1 (SOL-009) | 0 |
-| **CosmWasm** | 9 | 7 | 2 (CW-001, CW-002) | 0 |
-| **NEAR** | 10 | 10 | 0 | 0 |
-| **ink!** | 10 | 8 | 2 (INK-002, INK-001*) | 0 |
+| **CosmWasm** | 11 | 9 | 2 (CW-001, CW-002) | 0 |
+| **NEAR** | 12 | 12 | 0 | 0 |
+| **ink!** | 11 | 9 | 2 (INK-002, INK-001*) | 0 |
 | **Cross-chain** | 2 | 2 | 0 | 0 |
-| **Total** | **45** | **40** | **5** | **0** |
+| **Total** | **50** | **45** | **5** | **0** |
 
 *INK-001 is "reduced" in the sense that reentrancy is denied by default, but the detector correctly flags explicit opt-in — so it's still valuable.
 
-**Overall: 40 of 45 detectors (89%) are fully relevant for 2024+. The remaining 5 have reduced but non-zero relevance.**
+**Overall: 45 of 50 detectors (90%) are fully relevant for 2024+. The remaining 5 have reduced but non-zero relevance.**
 
 ---
 
@@ -277,38 +282,100 @@ Based on 2024-2026 vulnerability research, the following emerging threat categor
 | ~~Supply chain risk indicators~~ | All | **High** | Wildcard/unpinned dependency versions, typosquatting-risk crate names. Multiple real attacks in 2024-2025. | **Implemented: DEP-002** |
 | ~~`init_if_needed` reinitialization~~ | Solana | **High** | Anchor `init_if_needed` without guard checks against reinitialization attacks. | **Implemented: SOL-014** |
 | ~~Unsafe IBC entry points~~ | CosmWasm | **High** | IBC receive/ack/timeout handlers without packet validation. $150M at risk in 2024 IBC reentrancy bug. | **Implemented: CW-008** |
-| Unguarded `migrate` entry | CosmWasm | **Medium** | `migrate` handler without admin/sender check or version validation. | Open |
-| Missing reply ID validation | CosmWasm | **Medium** | `reply` handler not matching on `msg.id`, processing all submessage replies identically. | Open |
-| Unguarded storage unregister | NEAR | **Medium** | `storage_unregister` without checking non-zero token balances. | Open |
-| Missing gas for callbacks | NEAR | **Medium** | Cross-contract calls without explicit gas specification. | Open |
-| Unguarded `set_code_hash` | ink! | **Medium** | Upgradeable contracts using `set_code_hash` without admin verification. | Open |
+| ~~Unguarded `migrate` entry~~ | CosmWasm | **Medium** | `migrate` handler without admin/sender check or version validation. | **Implemented: CW-010** |
+| ~~Missing reply ID validation~~ | CosmWasm | **Medium** | `reply` handler not matching on `msg.id`, processing all submessage replies identically. | **Implemented: CW-011** |
+| ~~Unguarded storage unregister~~ | NEAR | **Medium** | `storage_unregister` without checking non-zero token balances. | **Implemented: NEAR-011** |
+| ~~Missing gas for callbacks~~ | NEAR | **Medium** | Cross-contract calls without explicit gas specification. | **Implemented: NEAR-012** |
+| ~~Unguarded `set_code_hash`~~ | ink! | **Medium** | Upgradeable contracts using `set_code_hash` without admin verification. | **Implemented: INK-011** |
 
 ---
 
-## Test Fixtures for Zero-Finding Detectors
+## Test Fixture Baseline
 
-16 detectors had zero findings in the main test corpus because those repos are well-written. To verify these detectors work end-to-end (beyond unit tests), intentionally vulnerable fixtures are provided in `test-fixtures/`.
+Test fixtures include both minimal pattern triggers and real-world vulnerable contracts (from [BlockSecOps/vulnerable-smart-contract-examples](https://github.com/BlockSecOps/vulnerable-smart-contract-examples)).
 
-| Fixture | Detector | Findings |
-|---------|----------|----------|
-| `solana/unchecked_cpi.rs` | SOL-008 | 2 |
-| `cosmwasm/missing_sender.rs` | CW-003 | 1 |
-| `cosmwasm/storage_collision.rs` | CW-004 | 2 |
-| `cosmwasm/unbounded_iteration.rs` | CW-007 | 2 |
-| `near/storage_no_auth.rs` | NEAR-003 | 3 |
-| `near/unguarded_pending.rs` | NEAR-007 | 2 |
-| `near/unsafe_storage_key.rs` | NEAR-009 | 2 |
-| `ink/allow_reentry.rs` | INK-001 | 2 |
-| `ink/timestamp_compare.rs` | INK-004 | 3 |
-| `ink/unsafe_delegate.rs` | INK-009 | 2 |
-| `Cargo.toml` | DEP-001 | 6 |
-| `solana/token2022_unsafe.rs` | SOL-012 | 2 |
-| `solana/remaining_accounts_unsafe.rs` | SOL-013 | 2 |
-| `solana/init_if_needed_unsafe.rs` | SOL-014 | 2 |
-| `cosmwasm/unsafe_ibc.rs` | CW-008 | 3 |
-| `Cargo.toml` | DEP-002 | 3 |
+### Fixture Finding Counts
 
-See `test-fixtures/README.md` for usage.
+```
+Chain       Total  Detectors Triggered
+────────────────────────────────────────────────────────
+Solana        56   SOL-002:6  SOL-003:22  SOL-004:10  SOL-005:8
+                   SOL-006:1  SOL-007:1   SOL-008:2   SOL-012:2
+                   SOL-013:2  SOL-014:2
+CosmWasm      13   CW-001:1   CW-003:1    CW-004:2    CW-006:1
+                   CW-007:2   CW-008:3    CW-010:2    CW-011:1
+NEAR          13   NEAR-001:2 NEAR-003:3  NEAR-007:2  NEAR-009:2
+                   NEAR-011:1 NEAR-012:3
+ink!          15   INK-001:2  INK-004:3   INK-005:2   INK-007:3
+                   INK-009:2  INK-010:1   INK-011:2
+DEP            9   DEP-001:6  DEP-002:3
+────────────────────────────────────────────────────────
+TOTAL        106
+```
+
+### Fixture Coverage by Detector
+
+| Detector | Fixture Coverage | Findings |
+|----------|-----------------|----------|
+| SOL-002 | `arithmetic_errors.rs`, `missing_owner_check.rs`, `account_data_matching.rs`, `remaining_accounts_unsafe.rs` | 6 |
+| SOL-003 | `arithmetic_errors.rs`, `missing_signer_check.rs`, `missing_owner_check.rs`, `type_confusion.rs`, `pda_issues.rs`, `reinitialization.rs`, `rent_exemption.rs`, `account_data_matching.rs`, `remaining_accounts_unsafe.rs` | 22 |
+| SOL-004 | `arithmetic_errors.rs`, `missing_owner_check.rs`, `type_confusion.rs`, `pda_issues.rs`, `reinitialization.rs`, `rent_exemption.rs`, `account_data_matching.rs` | 10 |
+| SOL-005 | `arithmetic_errors.rs`, `missing_signer_check.rs`, `missing_owner_check.rs`, `pda_issues.rs`, `reinitialization.rs`, `rent_exemption.rs`, `account_data_matching.rs`, `remaining_accounts_unsafe.rs` | 8 |
+| SOL-006 | `arbitrary_cpi.rs` | 1 |
+| SOL-007 | `pda_issues.rs` | 1 |
+| SOL-008 | `unchecked_cpi.rs` | 2 |
+| SOL-012 | `token2022_unsafe.rs` | 2 |
+| SOL-013 | `remaining_accounts_unsafe.rs` | 2 |
+| SOL-014 | `init_if_needed_unsafe.rs` | 2 |
+| CW-003 | `missing_sender.rs` | 1 |
+| CW-004 | `storage_collision.rs` | 2 |
+| CW-007 | `unbounded_iteration.rs` | 2 |
+| CW-008 | `unsafe_ibc.rs` | 3 |
+| CW-010 | `unguarded_migrate.rs` | 2 |
+| CW-011 | `missing_reply_id.rs` | 1 |
+| NEAR-001 | `unguarded_pending.rs` | 2 |
+| NEAR-003 | `storage_no_auth.rs` | 3 |
+| NEAR-007 | `unguarded_pending.rs` | 2 |
+| NEAR-009 | `unsafe_storage_key.rs` | 2 |
+| NEAR-011 | `unguarded_storage_unregister.rs` | 1 |
+| NEAR-012 | `missing_gas_callback.rs`, `storage_no_auth.rs` | 3 |
+| INK-001 | `allow_reentry.rs` | 2 |
+| INK-004 | `timestamp_compare.rs` | 3 |
+| INK-005 | `allow_reentry.rs` | 2 |
+| INK-007 | `timestamp_compare.rs` | 3 |
+| INK-009 | `unsafe_delegate.rs` | 2 |
+| INK-010 | `allow_reentry.rs` | 1 |
+| INK-011 | `unguarded_set_code_hash.rs` | 2 |
+| DEP-001 | `Cargo.toml` | 6 |
+| DEP-002 | `Cargo.toml` | 3 |
+
+### Detectors Without Fixture Coverage
+
+These detectors have zero findings in fixtures (covered only by unit tests):
+
+| Detector | Reason |
+|----------|--------|
+| SOL-001 (missing-signer-check) | Fixture uses `&[AccountInfo]` slice, not individual params |
+| SOL-009 (cpi-reentrancy) | No CEI violation pattern in fixtures |
+| SOL-010 (unsafe-pda-seeds) | Fixture PDAs include user-specific seeds |
+| SOL-011 (missing-rent-exempt) | Fixture uses different rent pattern |
+| CW-001 (integer-overflow) | Only 1 incidental finding from `unsafe_ibc.rs` |
+| CW-002 (reentrancy) | No CEI violation in fixtures |
+| CW-005 (unchecked-query) | No query pattern in fixtures |
+| CW-006 (improper-error) | Only 1 incidental finding from `missing_reply_id.rs` |
+| CW-009 (addr-validation) | No `Addr::unchecked` in fixtures |
+| NEAR-002 (signer-vs-predecessor) | No `signer_account_id` in fixtures |
+| NEAR-004 (callback-unwrap) | No `#[callback_unwrap]` in fixtures |
+| NEAR-005 (wrapping-arithmetic) | No `wrapping_*` in fixtures |
+| NEAR-006 (missing-private) | No `on_*` functions without `#[private]` in fixtures |
+| NEAR-008 (frontrunning) | No `Promise::new().transfer()` pattern |
+| NEAR-010 (missing-deposit) | No `#[payable]` functions in fixtures |
+| INK-002 (integer-overflow) | No Balance/u128 arithmetic in fixtures |
+| INK-003 (missing-caller) | No `#[ink(message)]` with `&mut self` in fixtures |
+| INK-006 (cross-contract) | No `try_invoke()` in fixtures |
+| INK-008 (result-suppression) | No `let _ = result` in fixtures |
+
+See `test-fixtures/README.md` for details and usage.
 
 ---
 

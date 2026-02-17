@@ -1,11 +1,13 @@
 mod improper_error;
 mod integer_overflow;
 mod missing_address_validation;
+mod missing_reply_id;
 mod missing_sender_check;
 mod reentrancy;
 mod storage_collision;
 mod unbounded_iteration;
 mod unchecked_response;
+mod unguarded_migrate;
 mod unsafe_ibc;
 
 use super::Detector;
@@ -22,4 +24,6 @@ pub fn register(detectors: &mut Vec<Box<dyn Detector>>) {
         missing_address_validation::MissingAddressValidationDetector,
     ));
     detectors.push(Box::new(unsafe_ibc::UnsafeIbcDetector));
+    detectors.push(Box::new(unguarded_migrate::UnguardedMigrateDetector));
+    detectors.push(Box::new(missing_reply_id::MissingReplyIdDetector));
 }

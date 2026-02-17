@@ -7,6 +7,7 @@ mod panic_usage;
 mod reentrancy;
 mod timestamp_dependence;
 mod unbounded_storage;
+mod unguarded_set_code_hash;
 mod unsafe_delegate_call;
 
 use super::Detector;
@@ -22,4 +23,7 @@ pub fn register(detectors: &mut Vec<Box<dyn Detector>>) {
     detectors.push(Box::new(error_handling::ErrorHandlingDetector));
     detectors.push(Box::new(unsafe_delegate_call::UnsafeDelegateCallDetector));
     detectors.push(Box::new(missing_payable_check::MissingPayableCheckDetector));
+    detectors.push(Box::new(
+        unguarded_set_code_hash::UnguardedSetCodeHashDetector,
+    ));
 }

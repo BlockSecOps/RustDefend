@@ -1,6 +1,6 @@
 # NEAR Detectors
 
-10 detectors for NEAR smart contracts.
+12 detectors for NEAR smart contracts.
 
 | ID | Name | Severity | Confidence |
 |----|------|----------|------------|
@@ -14,6 +14,8 @@
 | NEAR-008 | Frontrunning risk | High | Low |
 | NEAR-009 | Unsafe storage keys | Medium | Medium |
 | NEAR-010 | Missing deposit check on #[payable] | High | High |
+| NEAR-011 | Unguarded storage unregister | Medium | Medium |
+| NEAR-012 | Missing gas for callbacks | Medium | Medium |
 
 ---
 
@@ -72,3 +74,16 @@
 - **Severity:** High | **Confidence:** High
 - Detects `#[payable]` methods that don't reference `env::attached_deposit()`.
 - Without a deposit check, the method can be called with zero payment.
+
+## NEAR-011: unguarded-storage-unregister
+
+- **Severity:** Medium | **Confidence:** Medium
+- Detects `storage_unregister` handler without checking for non-zero token balances before removing the account.
+- Checks for balance/amount validation, `is_empty`/`is_zero` checks, and `force` parameter handling.
+
+## NEAR-012: missing-gas-for-callbacks
+
+- **Severity:** Medium | **Confidence:** Medium
+- Detects cross-contract calls (`Promise::new`, `ext_self::`, `ext_contract::`, `.function_call()`) without explicit gas specification.
+- Checks for `Gas()`, `.with_static_gas()`, `.with_attached_gas()`, `GAS_FOR_*`, `CALLBACK_GAS`, `TGAS`, `prepaid_gas` patterns.
+- Skips callback functions (`on_*` prefix, `*_callback` suffix) as they receive gas rather than specify it.

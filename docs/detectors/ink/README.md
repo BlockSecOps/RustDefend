@@ -1,6 +1,6 @@
 # ink! Detectors
 
-10 detectors for ink! smart contracts.
+11 detectors for ink! smart contracts.
 
 | ID | Name | Severity | Confidence |
 |----|------|----------|------------|
@@ -14,6 +14,7 @@
 | INK-008 | Result suppression (`let _ =`) | Medium | Medium |
 | INK-009 | Unsafe delegate call | Critical | High |
 | INK-010 | Missing payable check | Medium | Medium |
+| INK-011 | Unguarded set_code_hash | Medium | Medium |
 
 ---
 
@@ -75,3 +76,10 @@
 - **Severity:** Medium | **Confidence:** Medium
 - Detects non-payable `#[ink(message)]` methods that reference `transferred_value()`.
 - If a method uses `transferred_value()`, it should be marked `payable`.
+
+## INK-011: unguarded-set-code-hash
+
+- **Severity:** Medium | **Confidence:** Medium
+- Detects `set_code_hash` usage without admin/owner verification.
+- Checks for caller verification patterns: `caller`, `admin`, `owner`, `assert_eq!`, `ensure_owner`.
+- Without proper access control, any caller can upgrade the contract code.
