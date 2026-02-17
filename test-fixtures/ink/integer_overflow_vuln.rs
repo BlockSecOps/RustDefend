@@ -1,5 +1,6 @@
 // Test fixture for INK-002: ink-integer-overflow
 // Unchecked arithmetic on Balance/u128 types (standalone functions)
+// #[ink(storage)]
 
 fn transfer_tokens(from_balance: Balance, to_balance: Balance, value: Balance) -> (Balance, Balance) {
     let new_from = from_balance - value;

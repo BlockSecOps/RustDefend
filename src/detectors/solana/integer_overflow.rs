@@ -30,6 +30,35 @@ impl Detector for IntegerOverflowDetector {
     }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
+        // Only fire on Solana code — require Solana-specific markers in source
+        if !ctx.source.contains("solana_program")
+            && !ctx.source.contains("anchor_lang")
+            && !ctx.source.contains("Pubkey")
+            && !ctx.source.contains("AccountInfo")
+            && !ctx.source.contains("ProgramResult")
+            && !ctx.source.contains("solana_sdk")
+        {
+            return Vec::new();
+        }
+
+        // Skip framework/library source — SPL and Anchor intentionally use
+        // raw arithmetic with documented overflow properties
+        let file_str = ctx.file_path.to_string_lossy();
+        if file_str.contains("/spl-token")
+            || file_str.contains("/spl_token")
+            || file_str.contains("/anchor-lang/")
+            || file_str.contains("/anchor_lang/")
+            || file_str.contains("/anchor/lang/")
+            || file_str.contains("/solana-program/")
+            || file_str.contains("/solana_program/")
+            || file_str.contains("/token-swap/")
+            || file_str.contains("/token_swap/")
+            || file_str.contains("/stake-pool/")
+            || file_str.contains("/lending/")
+        {
+            return Vec::new();
+        }
+
         let mut findings = Vec::new();
         let mut visitor = OverflowVisitor {
             findings: &mut findings,
@@ -63,6 +92,12 @@ impl<'ast, 'a> Visit<'ast> for OverflowVisitor<'a> {
             return;
         }
 
+        // Skip fee/swap calculator functions — arithmetic is intentional and
+        // typically bounded by prior validation or uses checked math internally
+        if is_math_helper_fn(&fn_name) {
+            return;
+        }
+
         let body_src = fn_body_source(func);
         // Skip if function exclusively uses checked arithmetic
         if !body_src.contains('+')
@@ -70,6 +105,21 @@ impl<'ast, 'a> Visit<'ast> for OverflowVisitor<'a> {
             && !body_src.contains('*')
             && !body_src.contains('/')
         {
+            return;
+        }
+
+        // Skip functions that validate inputs before arithmetic
+        // (assert!, require!, ensure! guard the arithmetic)
+        let has_bounds_check = body_src.contains("assert !")
+            || body_src.contains("assert_eq !")
+            || body_src.contains("assert_ne !")
+            || body_src.contains("require !")
+            || body_src.contains("ensure !")
+            || body_src.contains("min (")
+            || body_src.contains(". min (")
+            || body_src.contains(". max (")
+            || body_src.contains("clamp");
+        if has_bounds_check {
             return;
         }
 
@@ -93,12 +143,31 @@ impl<'ast, 'a> Visit<'ast> for OverflowVisitor<'a> {
             return;
         }
 
+        // Skip fee/swap calculator functions
+        if is_math_helper_fn(&fn_name) {
+            return;
+        }
+
         let body_src = method.block.to_token_stream().to_string();
         if !body_src.contains('+')
             && !body_src.contains('-')
             && !body_src.contains('*')
             && !body_src.contains('/')
         {
+            return;
+        }
+
+        // Skip functions that validate inputs before arithmetic
+        let has_bounds_check = body_src.contains("assert !")
+            || body_src.contains("assert_eq !")
+            || body_src.contains("assert_ne !")
+            || body_src.contains("require !")
+            || body_src.contains("ensure !")
+            || body_src.contains("min (")
+            || body_src.contains(". min (")
+            || body_src.contains(". max (")
+            || body_src.contains("clamp");
+        if has_bounds_check {
             return;
         }
 
@@ -234,6 +303,29 @@ fn is_widening_cast(expr: &Expr) -> bool {
     }
 }
 
+/// Check if function name indicates a fee/swap/math calculation helper
+/// These functions exist specifically to do arithmetic and typically have
+/// pre-validated inputs or return Results for overflow.
+fn is_math_helper_fn(name: &str) -> bool {
+    let n = name.to_lowercase();
+    n.contains("_fee")
+        || n.contains("fee_")
+        || n.starts_with("calculate")
+        || n.starts_with("compute")
+        || n.starts_with("convert")
+        || n.contains("swap")
+        || n.contains("curve")
+        || n.contains("interpolat")
+        || n.contains("_amount")
+        || n.contains("amount_")
+        || n.contains("_rate")
+        || n.contains("rate_")
+        || n.contains("_price")
+        || n.contains("price_")
+        || n == "ceil_div"
+        || n == "floor_div"
+}
+
 /// Check if function name indicates a Pack/serialization impl
 fn is_pack_fn(name: &str) -> bool {
     let n = name.to_lowercase();
@@ -284,10 +376,12 @@ mod tests {
     use super::*;
 
     fn run_detector(source: &str) -> Vec<Finding> {
-        let ast = syn::parse_file(source).unwrap();
+        // Prepend Solana marker so detector recognizes file as Solana code
+        let full_source = format!("use solana_program::pubkey::Pubkey;\n{}", source);
+        let ast = syn::parse_file(&full_source).unwrap();
         let ctx = ScanContext::new(
             std::path::PathBuf::from("test.rs"),
-            source.to_string(),
+            full_source,
             ast,
             Chain::Solana,
         );
@@ -376,9 +470,40 @@ mod tests {
     }
 
     #[test]
+    fn test_no_finding_fee_calculator() {
+        let source = r#"
+            fn calculate_fee(amount: u64, fee_bps: u64) -> u64 {
+                let fee = amount * fee_bps / BPS_DENOMINATOR;
+                fee
+            }
+        "#;
+        let findings = run_detector(source);
+        assert!(
+            findings.is_empty(),
+            "Should not flag fee/swap calculator functions"
+        );
+    }
+
+    #[test]
+    fn test_no_finding_with_assert_guard() {
+        let source = r#"
+            fn withdraw(balance: u64, amount: u64) -> u64 {
+                assert!(amount <= balance);
+                let remaining = balance - amount;
+                remaining
+            }
+        "#;
+        let findings = run_detector(source);
+        assert!(
+            findings.is_empty(),
+            "Should not flag arithmetic guarded by assert"
+        );
+    }
+
+    #[test]
     fn test_division_low_confidence() {
         let source = r#"
-            fn compute_share(amount: u64, total: u64) -> u64 {
+            fn split_reward(amount: u64, total: u64) -> u64 {
                 let share = amount / total;
                 share
             }

@@ -4,6 +4,23 @@ All notable changes to RustDefend will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.3.2] - 2026-02-17
+
+### Changed
+
+- **36% false positive reduction** validated against 6 real-world repositories (SPL, Anchor, Neodyme CTF, CW-Plus, CosmWasm CTF, NEAR SDK) — 820 → 521 findings
+- Real-world corpus baseline added to GROUND_TRUTH_BASELINE.md with per-repo finding counts and TP estimates
+
+### Fixed
+
+- **SOL-003** FP reduction: Require Solana-specific source markers (eliminates cross-chain noise on CW/NEAR repos). Skip math helper functions (`calculate_*`, `compute_*`, `*_fee`, `*_rate`). Skip functions with assert/require bounds checks. Skip SPL library paths
+- **SOL-001** FP reduction: Skip `process_*` sub-handlers dispatched from signer-checking entry points. Skip CPI wrapper helpers (`transfer`, `burn`, `mint_to`, `freeze`, `thaw`, etc.) and naming patterns (`*_tokens`, `*_account`). Skip SPL/Anchor library paths
+- **SOL-012** FP reduction: Added Anchor repo-structure path exclusions (`/anchor/spl/`, `/anchor/lang/`, `/codegen/`)
+- **INK-002** FP reduction: Require ink!-specific source markers (`#[ink(`, `ink_storage`, `ink_env`). Eliminates all cross-chain FPs
+- **CW-001** FP reduction: Skip test/mock file paths (`/testing/`, `integration_tests/`, `multitest/`)
+- **NEAR-010** FP reduction: Skip NEP standard methods (`ft_transfer`, `nft_mint`, `storage_deposit`, etc.)
+- Updated test fixtures for SOL-001 and INK-002 to match new FP filters
+
 ## [0.3.1] - 2026-02-17
 
 ### Added

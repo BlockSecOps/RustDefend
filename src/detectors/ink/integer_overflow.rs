@@ -30,6 +30,16 @@ impl Detector for IntegerOverflowDetector {
     }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
+        // Only fire on ink! contracts — check for ink-specific markers in source
+        if !ctx.source.contains("#[ink(")
+            && !ctx.source.contains("#[ink::")
+            && !ctx.source.contains("ink_storage")
+            && !ctx.source.contains("ink_env")
+            && !ctx.source.contains("ink_lang")
+        {
+            return Vec::new();
+        }
+
         let mut findings = Vec::new();
         let mut visitor = OverflowVisitor {
             findings: &mut findings,
@@ -141,6 +151,7 @@ mod tests {
     #[test]
     fn test_detects_balance_overflow() {
         let source = r#"
+            // #[ink(message)]
             fn transfer(&mut self, amount: Balance) {
                 self.total = self.total + amount;
             }
@@ -155,6 +166,7 @@ mod tests {
     #[test]
     fn test_no_finding_checked() {
         let source = r#"
+            // #[ink(message)]
             fn transfer(&mut self, amount: Balance) -> Result<(), Error> {
                 self.total = self.total.checked_add(amount).ok_or(Error::Overflow)?;
                 Ok(())
