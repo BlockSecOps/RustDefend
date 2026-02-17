@@ -36,12 +36,16 @@ Severities reflect 2024+ ecosystem mitigations:
 
 ## False Positive Filters
 
-All detectors include FP reduction filters:
+All detectors include FP reduction filters validated against 6 real-world repositories (521 findings, ~65% estimated TP rate):
 
 - **Global:** Test file/directory exclusion (`/tests/`, `_test.rs`, `#[test]`)
-- **SOL-001:** Skips internal helpers (`_*`, `handle_*`), utility functions (`validate*`, `parse*`), non-signer params (`sysvar`, `pda`, `vault`, `config`)
+- **SOL-001:** Skips internal helpers (`_*`, `handle_*`), utility functions (`validate*`, `parse*`), non-signer params (`sysvar`, `pda`, `vault`, `config`), `process_*` sub-handlers, CPI wrapper helpers (`transfer`, `burn`, `mint_to`, etc.), framework library paths
+- **SOL-003:** Requires Solana-specific source markers (no cross-chain FPs). Skips math helper functions (`calculate_*`, `compute_*`, `*_fee`, `*_rate`), assert/require-guarded functions, pack/serialization functions, SPL library paths
 - **SOL-010:** Skips Anchor codegen, intentionally global PDAs (`b"config"`, `b"state"`, `b"vault"`)
+- **SOL-012:** Skips framework/library source paths (SPL, Anchor) and codegen files
+- **INK-002:** Requires ink!-specific source markers (`#[ink(`, `ink_storage`, `ink_env`) — no cross-chain FPs
 - **INK-003:** Skips known permissionless patterns (`flip`, `increment`, `vote`), PSP22/PSP34 standard methods (`transfer`, `approve`)
-- **CW-001:** Downgraded to Low/Low; skips test/mock functions
+- **CW-001:** Downgraded to Low/Low; skips test/mock functions and test file paths
 - **CW-002:** Only flags IBC/reply handlers (CosmWasm is non-reentrant by design)
-- **CW-009:** Skips mock/helper/setup functions and test-related file paths
+- **CW-009:** Skips mock/helper/setup functions and test-related file paths (`integration_tests/`, `multitest/`)
+- **NEAR-010:** Skips NEP standard methods (`ft_transfer`, `nft_mint`, `storage_deposit`, etc.)

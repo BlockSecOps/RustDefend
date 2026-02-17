@@ -74,6 +74,7 @@
 - **Severity:** High | **Confidence:** High
 - Detects `#[payable]` methods that don't reference `env::attached_deposit()`.
 - Without a deposit check, the method can be called with zero payment.
+- Skips NEP standard methods that handle deposits internally: `ft_transfer`, `ft_transfer_call`, `nft_transfer`, `nft_transfer_call`, `nft_mint`, `nft_approve`, `storage_deposit`, `storage_withdraw`, `storage_unregister`, `ft_on_*`, `nft_on_*`.
 
 ## NEAR-011: unguarded-storage-unregister
 

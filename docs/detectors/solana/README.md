@@ -26,6 +26,10 @@
 - **Severity:** Critical | **Confidence:** High
 - Detects functions accepting `AccountInfo` without verifying `is_signer`.
 - Anchor's `Signer<'info>` type is recognized as safe.
+- Skips internal helpers (`_*`, `inner_*`, `handle_*`), utility functions (`validate*`, `serialize*`, `parse*`).
+- Skips `process_*` sub-handlers (dispatched from signer-checking entry point).
+- Skips CPI wrapper helpers (`transfer`, `burn`, `mint_to`, `freeze`, `thaw`, `approve`, `close`, etc.) and naming patterns (`*_tokens`, `*_account`, `*_fees`).
+- Skips SPL and Anchor framework library source paths.
 
 ## SOL-002: missing-owner-check
 
@@ -38,7 +42,11 @@
 - **Severity:** Critical | **Confidence:** Medium
 - Detects unchecked `+`, `-`, `*`, `/` operations on integer types.
 - Solana BPF compiles in release mode with no overflow protection.
+- Requires Solana-specific source markers (`solana_program`, `anchor_lang`, `Pubkey`, `AccountInfo`) — does not cross-fire on CosmWasm/NEAR/ink code.
 - Skips: literals, string concatenation, widening casts (`a as u128`), `checked_*`/`saturating_*`/`wrapping_*` calls, pack/serialization functions.
+- Skips math helper functions (`calculate_*`, `compute_*`, `convert_*`, `*_fee`, `*_rate`, `*_price`, `*_amount`, `*_swap`, `*_curve`, `ceil_div`, `floor_div`).
+- Skips functions with assert/require/ensure bounds checks (input pre-validated).
+- Skips SPL framework library paths (`/spl-token/`, `/token-swap/`, `/anchor-lang/`).
 - Division reported at Low confidence (cannot overflow, only divide-by-zero).
 
 ## SOL-004: account-confusion
@@ -94,6 +102,7 @@
 - Trigger patterns: `spl_token_2022`, `Token2022`, `InterfaceAccount`, `token_interface`, `TokenInterface`, `transfer_checked`.
 - Skips files that implement a transfer hook themselves (`TransferHookExecute`).
 - Skips functions constrained to `spl_token::id()` (v1 only, no Token-2022).
+- Skips framework/library source paths (`/spl-token/`, `/anchor-spl/`, `/anchor/spl/`, `/anchor/lang/`, `/codegen/`).
 
 ## SOL-013: unsafe-remaining-accounts
 

@@ -29,6 +29,7 @@
 - **Severity:** Low | **Confidence:** Medium
 - Detects unchecked arithmetic on `Balance` / `u128` types.
 - Low severity because `cargo-contract` enables `overflow-checks` by default (panics safely). Use `checked_*` for graceful error handling.
+- Requires ink!-specific source markers (`#[ink(`, `#[ink::`, `ink_storage`, `ink_env`, `ink_lang`) — does not cross-fire on Solana/CosmWasm/NEAR code.
 
 ## INK-003: ink-missing-caller-check
 
