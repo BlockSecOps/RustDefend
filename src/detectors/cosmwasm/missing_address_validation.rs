@@ -82,6 +82,8 @@ impl<'ast, 'a> Visit<'ast> for AddrVisitor<'a> {
             || file_str.contains("_helpers.rs")
             || file_str.contains("test_utils")
             || file_str.contains("testing.rs")
+            || file_str.contains("integration_tests")
+            || file_str.contains("multitest")
         {
             return;
         }

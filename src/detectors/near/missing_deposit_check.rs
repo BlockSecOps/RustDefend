@@ -72,6 +72,24 @@ impl<'ast, 'a> Visit<'ast> for DepositVisitor<'a> {
             return;
         }
 
+        // Skip NEP standard methods that handle deposits internally
+        // NEP-141 (fungible token), NEP-171 (NFT), NEP-145 (storage management)
+        let fn_lower = fn_name.to_lowercase();
+        if fn_lower == "ft_transfer"
+            || fn_lower == "ft_transfer_call"
+            || fn_lower == "nft_transfer"
+            || fn_lower == "nft_transfer_call"
+            || fn_lower == "nft_mint"
+            || fn_lower == "nft_approve"
+            || fn_lower == "storage_deposit"
+            || fn_lower == "storage_withdraw"
+            || fn_lower == "storage_unregister"
+            || fn_lower.starts_with("ft_on_")
+            || fn_lower.starts_with("nft_on_")
+        {
+            return;
+        }
+
         let line = span_to_line(&method.sig.ident.span());
         self.findings.push(Finding {
             detector_id: "NEAR-010".to_string(),

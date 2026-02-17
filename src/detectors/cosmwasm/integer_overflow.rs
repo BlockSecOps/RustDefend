@@ -30,6 +30,18 @@ impl Detector for IntegerOverflowDetector {
     }
 
     fn detect(&self, ctx: &ScanContext) -> Vec<Finding> {
+        // Skip test/mock file paths
+        let file_str = ctx.file_path.to_string_lossy();
+        if file_str.contains("/testing")
+            || file_str.contains("/mock")
+            || file_str.contains("/testutils")
+            || file_str.contains("_test.rs")
+            || file_str.contains("integration_tests")
+            || file_str.contains("multitest")
+        {
+            return Vec::new();
+        }
+
         let mut findings = Vec::new();
         let mut visitor = OverflowVisitor {
             findings: &mut findings,

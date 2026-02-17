@@ -35,6 +35,25 @@ impl Detector for TokenExtensionsDetector {
             return Vec::new();
         }
 
+        // Skip framework/library source files — these implement the safe wrappers
+        // that user code calls; flagging them is noise, not actionable
+        let file_str = ctx.file_path.to_string_lossy();
+        if file_str.contains("/spl-token")
+            || file_str.contains("/spl_token")
+            || file_str.contains("/anchor-spl/")
+            || file_str.contains("/anchor_spl/")
+            || file_str.contains("/anchor/spl/")
+            || file_str.contains("/token/src/")
+            || file_str.contains("/token-2022/src/")
+            || file_str.contains("/interface/src/")
+            || file_str.contains("/anchor-lang/")
+            || file_str.contains("/anchor_lang/")
+            || file_str.contains("/anchor/lang/")
+            || file_str.contains("/codegen/")
+        {
+            return Vec::new();
+        }
+
         let mut findings = Vec::new();
         let mut visitor = TokenExtVisitor {
             findings: &mut findings,
