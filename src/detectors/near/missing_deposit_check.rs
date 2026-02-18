@@ -102,6 +102,36 @@ impl<'ast, 'a> Visit<'ast> for DepositVisitor<'a> {
             return;
         }
 
+        // Skip admin/owner-only methods where deposit is used as access control
+        // These methods use #[payable] to require 1 yoctoNEAR for access control,
+        // not to handle arbitrary deposits
+        if fn_lower.starts_with("pause")
+            || fn_lower.starts_with("resume")
+            || fn_lower.starts_with("unpause")
+            || fn_lower.starts_with("set_owner")
+            || fn_lower.starts_with("set_admin")
+            || fn_lower.starts_with("change_owner")
+            || fn_lower.starts_with("update_config")
+            || fn_lower.starts_with("add_guardian")
+            || fn_lower.starts_with("remove_guardian")
+            || fn_lower.starts_with("extend_guardians")
+            || fn_lower.starts_with("register_")
+            || fn_lower.starts_with("unregister_")
+            || fn_lower.starts_with("modify_")
+            || fn_lower.ends_with("_contract")
+            || fn_lower.ends_with("_config")
+        {
+            return;
+        }
+
+        // Check if the method body asserts 1 yoctoNEAR (access-control pattern)
+        if body_src.contains("assert_one_yocto")
+            || body_src.contains("ONE_YOCTO")
+            || body_src.contains("1_000_000_000_000_000_000_000_000")
+        {
+            return;
+        }
+
         let line = span_to_line(&method.sig.ident.span());
         self.findings.push(Finding {
             detector_id: "NEAR-010".to_string(),

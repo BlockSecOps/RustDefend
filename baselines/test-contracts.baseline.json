@@ -1,0 +1,3425 @@
+{
+  "version": 1,
+  "fingerprints": [
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/events/lib.rs",
+      "context_name": "flip_with_foreign_event",
+      "snippet_prefix": "pub fn flip_with_foreign_event(&mut self) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/events/lib.rs",
+      "context_name": "flip_with_inline_event",
+      "snippet_prefix": "pub fn flip_with_inline_event(&mut self) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/events/lib.rs",
+      "context_name": "flip_with_inline_custom_event",
+      "snippet_prefix": "pub fn flip_with_inline_custom_event(&mut self) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/trait-incrementer/lib.rs",
+      "context_name": "inc_by",
+      "snippet_prefix": "pub fn inc_by(&mut self, delta: u64) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/trait-incrementer/lib.rs",
+      "context_name": "reset",
+      "snippet_prefix": "fn reset(&mut self) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/zk-cross-contract-calls-solidity-verifiers/ink-contract/lib.rs",
+      "context_name": "cast_vote",
+      "snippet_prefix": "pub fn cast_vote("
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/zk-cross-contract-calls-solidity-verifiers/ink-contract/lib.rs",
+      "context_name": "close_poll",
+      "snippet_prefix": "pub fn close_poll(&mut self, poll_id: u128) -> result<(), er"
+    },
+    {
+      "detector_id": "INK-006",
+      "relative_file": "ink/ink-examples/zk-cross-contract-calls-solidity-verifiers/ink-contract/lib.rs",
+      "context_name": "",
+      "snippet_prefix": ".try_invoke();"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/trait-dyn-cross-contract-calls/contracts/incrementer/lib.rs",
+      "context_name": "inc_by",
+      "snippet_prefix": "pub fn inc_by(&mut self, delta: u64) {"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/ink-examples/trait-dyn-cross-contract-calls/lib.rs",
+      "context_name": "client . upload (\"trait-incrementer-caller\" , & ink_e2e :: a...",
+      "snippet_prefix": "let _ = client"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/ink-examples/trait-dyn-cross-contract-calls/lib.rs",
+      "context_name": "client . call (& ink_e2e :: alice () , & inc) . submit () . ...",
+      "snippet_prefix": "let _ = client"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/fallible-setter/lib.rs",
+      "context_name": "try_set",
+      "snippet_prefix": "pub fn try_set(&mut self, value: u8) -> result<(), error> {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/wildcard-selector/lib.rs",
+      "context_name": "wildcard",
+      "snippet_prefix": "ink::env::decode_input::<messageinput>().unwrap();"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash-migration/lib.rs",
+      "context_name": "set_code",
+      "snippet_prefix": "panic!(\"failed to `set_code_hash` to {code_hash:?} due to {e"
+    },
+    {
+      "detector_id": "INK-011",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash-migration/lib.rs",
+      "context_name": "set_code",
+      "snippet_prefix": "pub fn set_code(&mut self, code_hash: ink::h256) {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash-migration/migration/lib.rs",
+      "context_name": "migrate",
+      "snippet_prefix": "panic!(\"failed to `set_code_hash` to {code_hash:?} due to {e"
+    },
+    {
+      "detector_id": "INK-011",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash-migration/migration/lib.rs",
+      "context_name": "new",
+      "snippet_prefix": "pub fn new() -> self {"
+    },
+    {
+      "detector_id": "INK-011",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash-migration/migration/lib.rs",
+      "context_name": "migrate",
+      "snippet_prefix": "pub fn migrate(&self, inc_by: u8, code_hash: ink::h256) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash-migration/updated-incrementer/lib.rs",
+      "context_name": "set_inc_by",
+      "snippet_prefix": "pub fn set_inc_by(&mut self, inc_by: u8) {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash-migration/updated-incrementer/lib.rs",
+      "context_name": "set_code",
+      "snippet_prefix": "panic!(\"failed to `set_code_hash` to {code_hash:?} due to {e"
+    },
+    {
+      "detector_id": "INK-011",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash-migration/updated-incrementer/lib.rs",
+      "context_name": "new",
+      "snippet_prefix": "pub fn new() -> self {"
+    },
+    {
+      "detector_id": "INK-011",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash-migration/updated-incrementer/lib.rs",
+      "context_name": "set_code",
+      "snippet_prefix": "pub fn set_code(&mut self, code_hash: ink::h256) {"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/delegator/delegatee/lib.rs",
+      "context_name": "append_address_value",
+      "snippet_prefix": "pub fn append_address_value(&mut self) {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/delegator/delegatee/lib.rs",
+      "context_name": "code_hash",
+      "snippet_prefix": ".expect(\"no code hash could be found\")"
+    },
+    {
+      "detector_id": "SOL-008",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/delegator/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let _ = build_call::<defaultenvironment>()"
+    },
+    {
+      "detector_id": "SOL-008",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/delegator/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let _ = build_call::<defaultenvironment>()"
+    },
+    {
+      "detector_id": "INK-006",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/delegator/lib.rs",
+      "context_name": "",
+      "snippet_prefix": ".try_invoke();"
+    },
+    {
+      "detector_id": "INK-006",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/delegator/lib.rs",
+      "context_name": "",
+      "snippet_prefix": ".try_invoke();"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/delegator/lib.rs",
+      "context_name": "build_call :: < DefaultEnvironment > () . delegate (self . d...",
+      "snippet_prefix": "let _ = build_call::<defaultenvironment>()"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/delegator/lib.rs",
+      "context_name": "build_call :: < DefaultEnvironment > () . delegate (self . d...",
+      "snippet_prefix": "let _ = build_call::<defaultenvironment>()"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/delegator/delegatee2/lib.rs",
+      "context_name": "append_address_value",
+      "snippet_prefix": "pub fn append_address_value(&mut self) {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/delegator/delegatee2/lib.rs",
+      "context_name": "code_hash",
+      "snippet_prefix": ".expect(\"no code hash could be found\")"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash/lib.rs",
+      "context_name": "set_code",
+      "snippet_prefix": "panic!(\"failed to `set_code_hash` to {code_hash:?} due to {e"
+    },
+    {
+      "detector_id": "INK-011",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash/lib.rs",
+      "context_name": "set_code",
+      "snippet_prefix": "pub fn set_code(&mut self, code_hash: ink::h256) {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash/updated-incrementer/lib.rs",
+      "context_name": "set_code",
+      "snippet_prefix": "panic!(\"failed to `set_code_hash` to {code_hash:?} due to {e"
+    },
+    {
+      "detector_id": "INK-011",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash/updated-incrementer/lib.rs",
+      "context_name": "new",
+      "snippet_prefix": "pub fn new() -> self {"
+    },
+    {
+      "detector_id": "INK-011",
+      "relative_file": "ink/ink-examples/upgradeable-contracts/set-code-hash/updated-incrementer/lib.rs",
+      "context_name": "set_code",
+      "snippet_prefix": "pub fn set_code(&mut self, code_hash: ink::h256) {"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "ink/ink-examples/cross-contract-calls-advanced/e2e_tests.rs",
+      "context_name": "instantiate_no_limits",
+      "snippet_prefix": ".expect(\"other_contract upload failed\");"
+    },
+    {
+      "detector_id": "NEAR-003",
+      "relative_file": "ink/ink-examples/cross-contract-calls-advanced/e2e_tests.rs",
+      "context_name": "instantiate_with_insufficient_storage_deposit_limit",
+      "snippet_prefix": "async fn instantiate_with_insufficient_storage_deposit_limit"
+    },
+    {
+      "detector_id": "SOL-008",
+      "relative_file": "ink/ink-examples/cross-contract-calls-advanced/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "#![cfg_attr(not(feature = \"std\"), no_std, no_main)]"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/erc721/lib.rs",
+      "context_name": "burn",
+      "snippet_prefix": "pub fn burn(&mut self, id: tokenid) -> result<(), error> {"
+    },
+    {
+      "detector_id": "INK-002",
+      "relative_file": "ink/ink-examples/erc20/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let initial_allowance = alice_balance + 2;"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/erc20/lib.rs",
+      "context_name": "new",
+      "snippet_prefix": "pub fn new(total_supply: u256) -> self {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "instantiate_contract1",
+      "snippet_prefix": "panic!("
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "instantiate_contract1",
+      "snippet_prefix": "panic!(\"received a `langerror` while instantiating: {error:?"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "instantiate_contract2",
+      "snippet_prefix": "panic!("
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "instantiate_contract2",
+      "snippet_prefix": "panic!(\"received a `langerror` while instantiating: {error:?"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract1_get_x",
+      "snippet_prefix": "panic!(\"received an error from the environment: {env_err:?}\""
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract1_get_x",
+      "snippet_prefix": ".unwrap_or_else(|lang_err| panic!(\"received a `langerror`: {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract2_get_x",
+      "snippet_prefix": "panic!(\"received an error from the environment: {env_err:?}\""
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract2_get_x",
+      "snippet_prefix": ".unwrap_or_else(|lang_err| panic!(\"received a `langerror`: {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract1_set_x",
+      "snippet_prefix": "panic!(\"received an error from the environment: {env_err:?}\""
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract1_set_x",
+      "snippet_prefix": ".unwrap_or_else(|lang_err| panic!(\"received a `langerror`: {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract2_set_x",
+      "snippet_prefix": "panic!(\"received an error from the environment: {env_err:?}\""
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract2_set_x",
+      "snippet_prefix": ".unwrap_or_else(|lang_err| panic!(\"received a `langerror`: {"
+    },
+    {
+      "detector_id": "INK-010",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract1_get_x",
+      "snippet_prefix": "pub fn contract1_get_x(&self, contract1_address: address) ->"
+    },
+    {
+      "detector_id": "INK-010",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract2_get_x",
+      "snippet_prefix": "pub fn contract2_get_x(&self, contract2_address: address) ->"
+    },
+    {
+      "detector_id": "INK-010",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract1_set_x",
+      "snippet_prefix": "pub fn contract1_set_x(&self, contract1_address: address, ne"
+    },
+    {
+      "detector_id": "INK-010",
+      "relative_file": "ink/ink-examples/contract-invocation/lib.rs",
+      "context_name": "contract2_set_x",
+      "snippet_prefix": "pub fn contract2_set_x(&self, contract2_address: address, ne"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/contract-invocation/virtual_contract_ver1/lib.rs",
+      "context_name": "set_x",
+      "snippet_prefix": "pub fn set_x(&mut self, x: u32) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/contract-invocation/virtual_contract_ver2/lib.rs",
+      "context_name": "set_x",
+      "snippet_prefix": "pub fn set_x(&mut self, x: u32) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/contract-invocation/contract1/lib.rs",
+      "context_name": "set_x",
+      "snippet_prefix": "pub fn set_x(&mut self, x: u32) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/contract-invocation/contract2/lib.rs",
+      "context_name": "set_x",
+      "snippet_prefix": "pub fn set_x(&mut self, x: u64) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/contract-invocation/virtual_contract/lib.rs",
+      "context_name": "set_version",
+      "snippet_prefix": "pub fn set_version(&mut self, version: address) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/contract-invocation/virtual_contract/lib.rs",
+      "context_name": "real_set_x",
+      "snippet_prefix": "pub fn real_set_x(&mut self, x: u32) {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/virtual_contract/lib.rs",
+      "context_name": "set_x",
+      "snippet_prefix": "panic!(\"received an error from the environment: {env_err:?}\""
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/virtual_contract/lib.rs",
+      "context_name": "set_x",
+      "snippet_prefix": "panic!(\"received a `langerror`: {lang_err:?}\")"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/virtual_contract/lib.rs",
+      "context_name": "get_x",
+      "snippet_prefix": "panic!(\"received an error from the environment: {env_err:?}\""
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-invocation/virtual_contract/lib.rs",
+      "context_name": "get_x",
+      "snippet_prefix": ".unwrap_or_else(|lang_err| panic!(\"received a `langerror`: {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/multi-contract-caller/lib.rs",
+      "context_name": "change",
+      "snippet_prefix": "pub fn change(&mut self, by: i32) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/multi-contract-caller/lib.rs",
+      "context_name": "switch",
+      "snippet_prefix": "pub fn switch(&mut self) {"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/ink-examples/multi-contract-caller/lib.rs",
+      "context_name": "client . call (& ink_e2e :: bob () , & change) . submit () ....",
+      "snippet_prefix": "let _ = client"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/ink-examples/multi-contract-caller/lib.rs",
+      "context_name": "client . call (& ink_e2e :: bob () , & switch) . submit () ....",
+      "snippet_prefix": "let _ = client"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/ink-examples/multi-contract-caller/lib.rs",
+      "context_name": "client . call (& ink_e2e :: bob () , & change) . submit () ....",
+      "snippet_prefix": "let _ = client"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/erc1155/lib.rs",
+      "context_name": "create",
+      "snippet_prefix": "pub fn create(&mut self, value: u256) -> tokenid {"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/erc1155/lib.rs",
+      "context_name": "mint",
+      "snippet_prefix": "pub fn mint(&mut self, token_id: tokenid, value: u256) -> re"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/erc1155/lib.rs",
+      "context_name": "balance_of_batch",
+      "snippet_prefix": "fn balance_of_batch("
+    },
+    {
+      "detector_id": "INK-006",
+      "relative_file": "ink/ink-examples/erc1155/lib.rs",
+      "context_name": "",
+      "snippet_prefix": ".try_invoke();"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/erc1155/lib.rs",
+      "context_name": "on_received",
+      "snippet_prefix": "unimplemented!(\"this smart contract does not accept token tr"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/erc1155/lib.rs",
+      "context_name": "on_batch_received",
+      "snippet_prefix": "unimplemented!(\"this smart contract does not accept batch to"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/lazyvec/lib.rs",
+      "context_name": "create_proposal",
+      "snippet_prefix": "pub fn create_proposal("
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/lazyvec/lib.rs",
+      "context_name": "approve",
+      "snippet_prefix": "pub fn approve(&mut self) {"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/ink-examples/lazyvec/lib.rs",
+      "context_name": "client . call (& ink_e2e :: alice () , & create) . submit ()...",
+      "snippet_prefix": "let _ = client"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/ink-examples/lazyvec/lib.rs",
+      "context_name": "client . call (& ink_e2e :: alice () , & approve) . submit (...",
+      "snippet_prefix": "let _ = client"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/ink-examples/lazyvec/lib.rs",
+      "context_name": "client . call (& ink_e2e :: bob () , & approve) . submit () ...",
+      "snippet_prefix": "let _ = client"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "ink/ink-examples/cross-contract-calls/e2e_tests.rs",
+      "context_name": "instantiate_no_limits",
+      "snippet_prefix": ".expect(\"other-contract instantiate failed\");"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-xcm/lib.rs",
+      "context_name": "transfer_through_xcm",
+      "snippet_prefix": "let weight = self.env().xcm_weigh(&msg).expect(\"weight shoul"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-xcm/lib.rs",
+      "context_name": "reserve_transfer",
+      "snippet_prefix": "let weight = self.env().xcm_weigh(&msg).expect(\"`xcm_weigh` "
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "ink/ink-examples/runtime-call-contract/e2e_tests.rs",
+      "context_name": "instantiate_and_get",
+      "snippet_prefix": ".expect(\"instantiate failed\");"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "ink/ink-examples/runtime-call-contract/e2e_tests.rs",
+      "context_name": "instantiate_and_get",
+      "snippet_prefix": ".expect(\"runtime call failed\");"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/payment-channel/lib.rs",
+      "context_name": "claim_timeout",
+      "snippet_prefix": "pub fn claim_timeout(&mut self) -> result<()> {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "remove_owner",
+      "snippet_prefix": "pub fn remove_owner(&mut self, owner: address) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "replace_owner",
+      "snippet_prefix": "pub fn replace_owner(&mut self, old_owner: address, new_owne"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "change_requirement",
+      "snippet_prefix": "pub fn change_requirement(&mut self, new_requirement: u32) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "eval_transaction",
+      "snippet_prefix": "pub fn eval_transaction("
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "new",
+      "snippet_prefix": "pub fn new(requirement: u32, mut owners: vec<address>) -> se"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "add_owner",
+      "snippet_prefix": "pub fn add_owner(&mut self, new_owner: address) {"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "replace_owner",
+      "snippet_prefix": "pub fn replace_owner(&mut self, old_owner: address, new_owne"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "submit_transaction",
+      "snippet_prefix": "pub fn submit_transaction("
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "submit_transaction",
+      "snippet_prefix": "pub fn submit_transaction("
+    },
+    {
+      "detector_id": "INK-006",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "",
+      "snippet_prefix": ".try_invoke();"
+    },
+    {
+      "detector_id": "INK-006",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "",
+      "snippet_prefix": ".try_invoke();"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "revoke_confirmation",
+      "snippet_prefix": ".expect("
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "invoke_transaction",
+      "snippet_prefix": "let t = self.take_transaction(trans_id).expect(wrong_transac"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/multisig/lib.rs",
+      "context_name": "eval_transaction",
+      "snippet_prefix": "let t = self.take_transaction(trans_id).expect(wrong_transac"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/debugging-strategies/lib.rs",
+      "context_name": "instantiate_and_call",
+      "snippet_prefix": "panic!("
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/debugging-strategies/lib.rs",
+      "context_name": "instantiate_and_call",
+      "snippet_prefix": "panic!(\"received a `langerror` while instantiating: {error:?"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/debugging-strategies/lib.rs",
+      "context_name": "instantiate_and_call",
+      "snippet_prefix": "panic!(\"received an error from the environment: {env_err:?}\""
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/debugging-strategies/lib.rs",
+      "context_name": "instantiate_and_call",
+      "snippet_prefix": ".unwrap_or_else(|lang_err| panic!(\"received a `langerror`: {"
+    },
+    {
+      "detector_id": "INK-010",
+      "relative_file": "ink/ink-examples/debugging-strategies/lib.rs",
+      "context_name": "get",
+      "snippet_prefix": "pub fn get(&self) -> bool {"
+    },
+    {
+      "detector_id": "INK-010",
+      "relative_file": "ink/ink-examples/debugging-strategies/lib.rs",
+      "context_name": "intentional_revert",
+      "snippet_prefix": "pub fn intentional_revert(&self) {"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/ink-examples/contract-transfer/lib.rs",
+      "context_name": "give_me",
+      "snippet_prefix": "panic!("
+    },
+    {
+      "detector_id": "INK-002",
+      "relative_file": "ink/ink-examples/trait-erc20/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let initial_allowance = alice_balance + u256::from(2);"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/ink-examples/trait-erc20/lib.rs",
+      "context_name": "new",
+      "snippet_prefix": "pub fn new(total_supply: u256) -> self {"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/src/contract.rs",
+      "context_name": "instantiate",
+      "snippet_prefix": "inner_contract::contract::instantiate(deps, env, info, todo!"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/src/contract.rs",
+      "context_name": "instantiate",
+      "snippet_prefix": "inner_contract::contract::instantiate(deps, env, info, todo!"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/src/contract.rs",
+      "context_name": "instantiate",
+      "snippet_prefix": "unimplemented!()"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/src/contract.rs",
+      "context_name": "execute",
+      "snippet_prefix": "inner_contract::contract::execute(deps, env, info, todo!())."
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/src/contract.rs",
+      "context_name": "execute",
+      "snippet_prefix": "inner_contract::contract::execute(deps, env, info, todo!())."
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/src/contract.rs",
+      "context_name": "execute",
+      "snippet_prefix": "unimplemented!()"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/src/contract.rs",
+      "context_name": "query",
+      "snippet_prefix": "inner_contract::contract::query(deps, env, todo!()).unwrap()"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/src/contract.rs",
+      "context_name": "query",
+      "snippet_prefix": "inner_contract::contract::query(deps, env, todo!()).unwrap()"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/src/contract.rs",
+      "context_name": "query",
+      "snippet_prefix": "unimplemented!()"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/inner-contract/src/contract.rs",
+      "context_name": "instantiate",
+      "snippet_prefix": "unimplemented!()"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/inner-contract/src/contract.rs",
+      "context_name": "execute",
+      "snippet_prefix": "unimplemented!()"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/nested-contracts/inner-contract/src/contract.rs",
+      "context_name": "query",
+      "snippet_prefix": "unimplemented!()"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cosmwasm/contracts/staking/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "save_map(deps.storage, prefix_balance, &rcpt_raw, balance + "
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cosmwasm/contracts/staking/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "ok(acc + d.amount.amount)"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cosmwasm/contracts/staking/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "supply.bonded = bonded + payment.amount;"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cosmwasm/contracts/staking/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "save_map(deps.storage, prefix_balance, &sender_raw, balance "
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cosmwasm/contracts/staking/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "save_map(deps.storage, prefix_balance, &owner_raw, balance +"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cosmwasm/contracts/staking/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "save_map(deps.storage, prefix_claims, &sender_raw, claim + u"
+    },
+    {
+      "detector_id": "CW-009",
+      "relative_file": "cosmwasm/cosmwasm/contracts/staking/src/contract.rs",
+      "context_name": "sample_delegation",
+      "snippet_prefix": "fn sample_delegation(validator_addr: &str, amount: coin) -> "
+    },
+    {
+      "detector_id": "CW-008",
+      "relative_file": "cosmwasm/cosmwasm/contracts/ibc-reflect-send/src/ibc.rs",
+      "context_name": "ibc_packet_timeout",
+      "snippet_prefix": "pub fn ibc_packet_timeout("
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/ibc-reflect/src/contract.rs",
+      "context_name": "execute_panic",
+      "snippet_prefix": "panic!(\"this page intentionally faulted\");"
+    },
+    {
+      "detector_id": "CW-008",
+      "relative_file": "cosmwasm/cosmwasm/contracts/ibc-reflect/src/contract.rs",
+      "context_name": "ibc_packet_timeout",
+      "snippet_prefix": "pub fn ibc_packet_timeout("
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/cyberpunk/src/contract.rs",
+      "context_name": "execute_memory_loop",
+      "snippet_prefix": "data.push((*data.last().expect(\"must not be empty\")) + 1);"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/cyberpunk/src/contract.rs",
+      "context_name": "execute_panic",
+      "snippet_prefix": "panic!(\"this page intentionally faulted\");"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/cyberpunk/src/contract.rs",
+      "context_name": "execute_debug",
+      "snippet_prefix": "let _hash = argon2::hash_encoded(password, salt, &config).un"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/floaty/src/contract.rs",
+      "context_name": "query_run",
+      "snippet_prefix": "panic!();"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/replier/src/lib.rs",
+      "context_name": "execute",
+      "snippet_prefix": "let data = deps.storage.get(config_key).unwrap();"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/replier/src/lib.rs",
+      "context_name": "execute",
+      "snippet_prefix": "msg: to_json_binary(&next_msg).unwrap(),"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/replier/src/lib.rs",
+      "context_name": "reply",
+      "snippet_prefix": "let data = deps.storage.get(config_key).unwrap();"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/replier/src/lib.rs",
+      "context_name": "reply",
+      "snippet_prefix": "msg.result.unwrap()"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/queue/src/contract.rs",
+      "context_name": "query_reducer",
+      "snippet_prefix": ".expect(\"error in item\")"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/queue/src/contract.rs",
+      "context_name": "query_list",
+      "snippet_prefix": ".map(|k| u32::from_be_bytes(k.try_into().unwrap()))"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/queue/src/contract.rs",
+      "context_name": "query_list",
+      "snippet_prefix": ".map(|k| u32::from_be_bytes(k.try_into().unwrap()))"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cosmwasm/contracts/queue/src/contract.rs",
+      "context_name": "query_list",
+      "snippet_prefix": ".map(|k| u32::from_be_bytes(k.try_into().unwrap()))"
+    },
+    {
+      "detector_id": "CW-010",
+      "relative_file": "cosmwasm/cosmwasm/contracts/queue/src/contract.rs",
+      "context_name": "migrate",
+      "snippet_prefix": "pub fn migrate(deps: depsmut, _env: env, _msg: migratemsg) -"
+    },
+    {
+      "detector_id": "CW-010",
+      "relative_file": "cosmwasm/cosmwasm/contracts/burner/src/contract.rs",
+      "context_name": "migrate",
+      "snippet_prefix": "pub fn migrate(deps: depsmut, env: env, msg: migratemsg) -> "
+    },
+    {
+      "detector_id": "CW-008",
+      "relative_file": "cosmwasm/cosmwasm/contracts/ibc-callbacks/src/contract.rs",
+      "context_name": "ibc_source_callback",
+      "snippet_prefix": "pub fn ibc_source_callback("
+    },
+    {
+      "detector_id": "CW-008",
+      "relative_file": "cosmwasm/cosmwasm/contracts/ibc-callbacks/src/contract.rs",
+      "context_name": "ibc_destination_callback",
+      "snippet_prefix": "pub fn ibc_destination_callback("
+    },
+    {
+      "detector_id": "CW-008",
+      "relative_file": "cosmwasm/cosmwasm/packages/vm/src/testing/calls.rs",
+      "context_name": "ibc_packet_timeout",
+      "snippet_prefix": "pub fn ibc_packet_timeout<a, s, q, u>("
+    },
+    {
+      "detector_id": "CW-010",
+      "relative_file": "cosmwasm/cosmwasm/packages/vm/src/testing/calls.rs",
+      "context_name": "migrate",
+      "snippet_prefix": "pub fn migrate<a, s, q, m, u>("
+    },
+    {
+      "detector_id": "CW-010",
+      "relative_file": "cosmwasm/cosmwasm/packages/vm/src/testing/calls.rs",
+      "context_name": "migrate_with_info",
+      "snippet_prefix": "pub fn migrate_with_info<a, s, q, m, u>("
+    },
+    {
+      "detector_id": "CW-011",
+      "relative_file": "cosmwasm/cosmwasm/packages/vm/src/testing/calls.rs",
+      "context_name": "reply",
+      "snippet_prefix": "pub fn reply<a, s, q, u>("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "cosmwasm/cosmwasm/packages/vm/src/imports.rs",
+      "context_name": "",
+      "snippet_prefix": "(max_length_ed25519_message + 4) * max_count_ed25519_batch,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "cosmwasm/cosmwasm/packages/vm/src/imports.rs",
+      "context_name": "",
+      "snippet_prefix": "(max_length_ed25519_signature + 4) * max_count_ed25519_batch"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "cosmwasm/cosmwasm/packages/vm/src/imports.rs",
+      "context_name": "",
+      "snippet_prefix": "(eddsa_pubkey_len + 4) * max_count_ed25519_batch,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "cosmwasm/cosmwasm/packages/std/src/testing/mock.rs",
+      "context_name": "",
+      "snippet_prefix": ".amount += coin.amount;"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw4-stake/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "ok(total + new.unwrap_or_default() - old.unwrap_or_default()"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw4-stake/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "ok(total + new.unwrap_or_default() - old.unwrap_or_default()"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw4-stake/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "let w = stake.u128() / (cfg.tokens_per_weight.u128());"
+    },
+    {
+      "detector_id": "CW-009",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw4-stake/src/contract.rs",
+      "context_name": "cw20_instantiate",
+      "snippet_prefix": "fn cw20_instantiate(deps: depsmut, unbonding_period: duratio"
+    },
+    {
+      "detector_id": "CW-002",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw20-ics20/src/ibc.rs",
+      "context_name": "do_ibc_packet_receive",
+      "snippet_prefix": "fn do_ibc_packet_receive("
+    },
+    {
+      "detector_id": "CW-008",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw20-ics20/src/ibc.rs",
+      "context_name": "ibc_packet_timeout",
+      "snippet_prefix": "pub fn ibc_packet_timeout("
+    },
+    {
+      "detector_id": "CW-009",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw20-ics20/src/contract.rs",
+      "context_name": "query_config",
+      "snippet_prefix": "fn query_config(deps: deps) -> stdresult<configresponse> {"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw20-base/src/allowances.rs",
+      "context_name": "",
+      "snippet_prefix": "|balance: option<uint128>| -> stdresult<_> { ok(balance.unwr"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw20-base/src/allowances.rs",
+      "context_name": "",
+      "snippet_prefix": "|balance: option<uint128>| -> stdresult<_> { ok(balance.unwr"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw20-base/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "|balance: option<uint128>| -> stdresult<_> { ok(balance.unwr"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw20-base/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "|balance: option<uint128>| -> stdresult<_> { ok(balance.unwr"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw20-base/src/contract.rs",
+      "context_name": "",
+      "snippet_prefix": "|balance: option<uint128>| -> stdresult<_> { ok(balance.unwr"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw20-base/src/contract.rs",
+      "context_name": "migrate",
+      "snippet_prefix": "if original_version < \"0.14.0\".parse::<semver::version>().un"
+    },
+    {
+      "detector_id": "CW-013",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw20-base/src/contract.rs",
+      "context_name": "migrate",
+      "snippet_prefix": "pub fn migrate(deps: depsmut, _env: env, _msg: migratemsg) -"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw3-flex-multisig/src/contract.rs",
+      "context_name": "instantiate_group",
+      "snippet_prefix": ".unwrap()"
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw3-flex-multisig/src/contract.rs",
+      "context_name": "instantiate_flex",
+      "snippet_prefix": ".unwrap()"
+    },
+    {
+      "detector_id": "CW-009",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw3-flex-multisig/src/contract.rs",
+      "context_name": "instantiate_group",
+      "snippet_prefix": "fn instantiate_group(app: &mut app, members: vec<member>) ->"
+    },
+    {
+      "detector_id": "CW-009",
+      "relative_file": "cosmwasm/cw-plus/contracts/cw3-flex-multisig/src/contract.rs",
+      "context_name": "instantiate_flex",
+      "snippet_prefix": "fn instantiate_flex("
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/packages/cw3/src/proposal.rs",
+      "context_name": "",
+      "snippet_prefix": "let applied = uint128::new(precision_factor * weight as u128"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/packages/cw3/src/proposal.rs",
+      "context_name": "",
+      "snippet_prefix": "((applied.u128() + precision_factor - 1) / precision_factor)"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/packages/cw3/src/proposal.rs",
+      "context_name": "",
+      "snippet_prefix": "((applied.u128() + precision_factor - 1) / precision_factor)"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/cw-plus/packages/cw3/src/proposal.rs",
+      "context_name": "",
+      "snippet_prefix": "((applied.u128() + precision_factor - 1) / precision_factor)"
+    },
+    {
+      "detector_id": "NEAR-006",
+      "relative_file": "near/near-sdk-rs/examples/adder/src/lib.rs",
+      "context_name": "add_callback_vec",
+      "snippet_prefix": "pub fn add_callback_vec(&self, #[callback_vec] elements: vec"
+    },
+    {
+      "detector_id": "NEAR-010",
+      "relative_file": "near/near-sdk-rs/examples/non-fungible-token/nft/src/lib.rs",
+      "context_name": "nft_revoke",
+      "snippet_prefix": "fn nft_revoke(&mut self, token_id: tokenid, account_id: acco"
+    },
+    {
+      "detector_id": "NEAR-010",
+      "relative_file": "near/near-sdk-rs/examples/non-fungible-token/nft/src/lib.rs",
+      "context_name": "nft_revoke_all",
+      "snippet_prefix": "fn nft_revoke_all(&mut self, token_id: tokenid) {"
+    },
+    {
+      "detector_id": "SOL-011",
+      "relative_file": "near/near-sdk-rs/examples/test-contract/src/lib.rs",
+      "context_name": "private_init_cannot_be_called_by_external_account",
+      "snippet_prefix": "async fn private_init_cannot_be_called_by_external_account()"
+    },
+    {
+      "detector_id": "NEAR-010",
+      "relative_file": "near/near-sdk-rs/examples/status-message/src/lib.rs",
+      "context_name": "set_status",
+      "snippet_prefix": "pub fn set_status(&mut self, message: string) {"
+    },
+    {
+      "detector_id": "NEAR-004",
+      "relative_file": "near/near-sdk-rs/examples/callback-results/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "#[callback_unwrap] a: u8,"
+    },
+    {
+      "detector_id": "NEAR-004",
+      "relative_file": "near/near-sdk-rs/examples/callback-results/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "#[callback_unwrap] a: u8,"
+    },
+    {
+      "detector_id": "NEAR-004",
+      "relative_file": "near/near-sdk-rs/examples/cross-contract-calls/high-level/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "pub fn factorial_mult(&self, n: u32, #[callback_unwrap] cur:"
+    },
+    {
+      "detector_id": "SOL-011",
+      "relative_file": "near/near-sdk-rs/examples/mpc-contract/src/lib.rs",
+      "context_name": "mpc_loop",
+      "snippet_prefix": "async fn mpc_loop("
+    },
+    {
+      "detector_id": "SOL-011",
+      "relative_file": "near/near-sdk-rs/examples/mpc-contract/src/lib.rs",
+      "context_name": "happy_path",
+      "snippet_prefix": "async fn happy_path() -> result<(), box<dyn std::error::erro"
+    },
+    {
+      "detector_id": "SOL-011",
+      "relative_file": "near/near-sdk-rs/examples/mpc-contract/src/lib.rs",
+      "context_name": "negative_path",
+      "snippet_prefix": "async fn negative_path() -> result<(), box<dyn std::error::e"
+    },
+    {
+      "detector_id": "NEAR-004",
+      "relative_file": "near/near-sdk-rs/examples/mpc-contract/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "pub fn do_something(#[callback_unwrap] signature_result: str"
+    },
+    {
+      "detector_id": "NEAR-006",
+      "relative_file": "near/near-sdk-rs/near-sdk-macros/src/core_impl/code_generator/attr_sig_info.rs",
+      "context_name": "callback_deserialization",
+      "snippet_prefix": "pub fn callback_deserialization(&self) -> tokenstream2 {"
+    },
+    {
+      "detector_id": "NEAR-006",
+      "relative_file": "near/near-sdk-rs/near-sdk-macros/src/core_impl/code_generator/attr_sig_info.rs",
+      "context_name": "callback_vec_deserialization",
+      "snippet_prefix": "pub fn callback_vec_deserialization(&self) -> tokenstream2 {"
+    },
+    {
+      "detector_id": "NEAR-001",
+      "relative_file": "near/near-sdk-rs/near-sdk-macros/src/core_impl/code_generator/ext.rs",
+      "context_name": "generate_ext_structs",
+      "snippet_prefix": "pub(crate) fn generate_ext_structs("
+    },
+    {
+      "detector_id": "NEAR-001",
+      "relative_file": "near/near-sdk-rs/near-sdk-macros/src/core_impl/code_generator/ext.rs",
+      "context_name": "generate_ext_function",
+      "snippet_prefix": "fn generate_ext_function(attr_signature_info: &attrsiginfo) "
+    },
+    {
+      "detector_id": "NEAR-012",
+      "relative_file": "near/near-sdk-rs/near-sdk-macros/src/core_impl/code_generator/ext.rs",
+      "context_name": "generate_ext_function",
+      "snippet_prefix": "fn generate_ext_function(attr_signature_info: &attrsiginfo) "
+    },
+    {
+      "detector_id": "NEAR-010",
+      "relative_file": "near/near-sdk-rs/near-sdk/compilation_tests/payable_view.rs",
+      "context_name": "pay",
+      "snippet_prefix": "pub fn pay(&self) {}"
+    },
+    {
+      "detector_id": "SOL-011",
+      "relative_file": "near/near-sdk-rs/near-sdk/src/environment/env.rs",
+      "context_name": "promise_batch_action_create_account",
+      "snippet_prefix": "pub fn promise_batch_action_create_account(promise_index: pr"
+    },
+    {
+      "detector_id": "CW-010",
+      "relative_file": "near/near-sdk-rs/near-sdk/src/environment/env.rs",
+      "context_name": "migrate_to_allowance",
+      "snippet_prefix": "pub(crate) fn migrate_to_allowance(allowance: neartoken) -> "
+    },
+    {
+      "detector_id": "NEAR-002",
+      "relative_file": "near/near-sdk-rs/near-sdk/src/environment/env.rs",
+      "context_name": "signer_account_id",
+      "snippet_prefix": "pub fn signer_account_id() -> accountid {"
+    },
+    {
+      "detector_id": "SOL-011",
+      "relative_file": "near/near-sdk-rs/near-sdk/src/environment/mock/mocked_blockchain.rs",
+      "context_name": "promise_batch_action_create_account",
+      "snippet_prefix": "extern \"c-unwind\" fn promise_batch_action_create_account(pro"
+    },
+    {
+      "detector_id": "NEAR-005",
+      "relative_file": "near/near-sdk-rs/near-contract-standards/src/non_fungible_token/utils.rs",
+      "context_name": "",
+      "snippet_prefix": "let refund = attached_deposit.saturating_sub(required_cost);"
+    },
+    {
+      "detector_id": "NEAR-008",
+      "relative_file": "near/near-sdk-rs/near-contract-standards/src/non_fungible_token/utils.rs",
+      "context_name": "refund_approved_account_ids_iter",
+      "snippet_prefix": "pub fn refund_approved_account_ids_iter<'a, i>("
+    },
+    {
+      "detector_id": "NEAR-008",
+      "relative_file": "near/near-sdk-rs/near-contract-standards/src/non_fungible_token/utils.rs",
+      "context_name": "refund_deposit_to_account",
+      "snippet_prefix": "pub fn refund_deposit_to_account(storage_used: u64, account_"
+    },
+    {
+      "detector_id": "NEAR-012",
+      "relative_file": "near/near-sdk-rs/near-contract-standards/src/non_fungible_token/utils.rs",
+      "context_name": "refund_approved_account_ids_iter",
+      "snippet_prefix": "pub fn refund_approved_account_ids_iter<'a, i>("
+    },
+    {
+      "detector_id": "NEAR-012",
+      "relative_file": "near/near-sdk-rs/near-contract-standards/src/non_fungible_token/utils.rs",
+      "context_name": "refund_deposit_to_account",
+      "snippet_prefix": "pub fn refund_deposit_to_account(storage_used: u64, account_"
+    },
+    {
+      "detector_id": "SOL-006",
+      "relative_file": "solana/anchor/examples/tutorial/basic-3/programs/puppet-master/src/lib.rs",
+      "context_name": "pull_strings",
+      "snippet_prefix": "pub fn pull_strings(ctx: context<pullstrings>, data: u64) ->"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/spl/src/token.rs",
+      "context_name": "amount",
+      "snippet_prefix": "pub fn amount(account: &accountinfo) -> result<u64> {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/spl/src/token.rs",
+      "context_name": "mint",
+      "snippet_prefix": "pub fn mint(account: &accountinfo) -> result<pubkey> {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/spl/src/token.rs",
+      "context_name": "authority",
+      "snippet_prefix": "pub fn authority(account: &accountinfo) -> result<pubkey> {"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/anchor/spl/src/token.rs",
+      "context_name": "amount",
+      "snippet_prefix": "pub fn amount(account: &accountinfo) -> result<u64> {"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/anchor/spl/src/token.rs",
+      "context_name": "mint",
+      "snippet_prefix": "pub fn mint(account: &accountinfo) -> result<pubkey> {"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/anchor/spl/src/token.rs",
+      "context_name": "authority",
+      "snippet_prefix": "pub fn authority(account: &accountinfo) -> result<pubkey> {"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/anchor/spl/src/token_2022.rs",
+      "context_name": "get_account_data_size",
+      "snippet_prefix": "anchor_lang::solana_program::program::get_return_data()"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/anchor/spl/src/token_2022.rs",
+      "context_name": "amount_to_ui_amount",
+      "snippet_prefix": "anchor_lang::solana_program::program::get_return_data()"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/anchor/spl/src/token_2022.rs",
+      "context_name": "ui_amount_to_amount",
+      "snippet_prefix": "anchor_lang::solana_program::program::get_return_data()"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/spl/src/token_interface.rs",
+      "context_name": "get_mint_extension_data",
+      "snippet_prefix": "pub fn get_mint_extension_data<t: extension + pod>("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/anchor/spl/src/token_interface.rs",
+      "context_name": "get_mint_extension_data",
+      "snippet_prefix": "pub fn get_mint_extension_data<t: extension + pod>("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/anchor/spl/src/token_interface.rs",
+      "context_name": "get_mint_extension_data",
+      "snippet_prefix": "pub fn get_mint_extension_data<t: extension + pod>("
+    },
+    {
+      "detector_id": "SOL-011",
+      "relative_file": "solana/anchor/lang/src/system_program.rs",
+      "context_name": "create_account",
+      "snippet_prefix": "pub fn create_account<'info>("
+    },
+    {
+      "detector_id": "SOL-011",
+      "relative_file": "solana/anchor/lang/src/system_program.rs",
+      "context_name": "create_account_with_seed",
+      "snippet_prefix": "pub fn create_account_with_seed<'info>("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/anchor/lang/src/accounts/migration.rs",
+      "context_name": "test_try_from_fails_with_uninitialized_account",
+      "snippet_prefix": "fn test_try_from_fails_with_uninitialized_account() {"
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/anchor/lang/src/vec.rs",
+      "context_name": "test_accounts_trait_for_vec",
+      "snippet_prefix": "fn test_accounts_trait_for_vec() {"
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/anchor/lang/src/common.rs",
+      "context_name": "close",
+      "snippet_prefix": "pub fn close<'info>(info: accountinfo<'info>, sol_destinatio"
+    },
+    {
+      "detector_id": "SOL-019",
+      "relative_file": "solana/anchor/lang/src/common.rs",
+      "context_name": "close",
+      "snippet_prefix": "pub fn close<'info>(info: accountinfo<'info>, sol_destinatio"
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/anchor/lang/src/common.rs",
+      "context_name": "close",
+      "snippet_prefix": "pub fn close<'info>(info: accountinfo<'info>, sol_destinatio"
+    },
+    {
+      "detector_id": "SOL-014",
+      "relative_file": "solana/anchor/lang/syn/src/parser/accounts/constraints.rs",
+      "context_name": "parse_token",
+      "snippet_prefix": "pub fn parse_token(stream: parsestream) -> parseresult<const"
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/anchor/lang/syn/src/codegen/accounts/constraints.rs",
+      "context_name": "generate_constraint_realloc",
+      "snippet_prefix": "fn generate_constraint_realloc("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/anchor/lang/syn/src/codegen/accounts/constraints.rs",
+      "context_name": "generate_create_account",
+      "snippet_prefix": "fn generate_create_account("
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/anchor/lang/syn/src/codegen/accounts/constraints.rs",
+      "context_name": "generate_constraint_realloc",
+      "snippet_prefix": "fn generate_constraint_realloc("
+    },
+    {
+      "detector_id": "SOL-013",
+      "relative_file": "solana/anchor/lang/syn/src/codegen/accounts/try_accounts.rs",
+      "context_name": "generate_duplicate_mutable_checks",
+      "snippet_prefix": "fn generate_duplicate_mutable_checks(accs: &accountsstruct) "
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/anchor/lang/syn/src/codegen/program/cpi.rs",
+      "context_name": "generate",
+      "snippet_prefix": "quote! {"
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/anchor/lang/syn/src/codegen/program/idl.rs",
+      "context_name": "idl_accounts_and_functions",
+      "snippet_prefix": "pub fn idl_accounts_and_functions() -> proc_macro2::tokenstr"
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/anchor/lang/syn/src/codegen/program/idl.rs",
+      "context_name": "idl_accounts_and_functions",
+      "snippet_prefix": "pub fn idl_accounts_and_functions() -> proc_macro2::tokenstr"
+    },
+    {
+      "detector_id": "SOL-013",
+      "relative_file": "solana/anchor/lang/syn/src/codegen/program/handlers.rs",
+      "context_name": "generate",
+      "snippet_prefix": "pub fn generate(program: &program) -> proc_macro2::tokenstre"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/anchor/lang/syn/src/codegen/program/handlers.rs",
+      "context_name": "generate",
+      "snippet_prefix": "pub fn generate(program: &program) -> proc_macro2::tokenstre"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/lang/attribute/account/src/lib.rs",
+      "context_name": "account",
+      "snippet_prefix": "pub fn account("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/lang/attribute/program/src/declare_program/mods/cpi.rs",
+      "context_name": "gen_cpi_return_type",
+      "snippet_prefix": "fn gen_cpi_return_type() -> proc_macro2::tokenstream {"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/anchor/lang/attribute/program/src/declare_program/mods/cpi.rs",
+      "context_name": "gen_cpi_return_type",
+      "snippet_prefix": "fn gen_cpi_return_type() -> proc_macro2::tokenstream {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/lang/attribute/program/src/declare_program/mods/parsers.rs",
+      "context_name": "gen_account",
+      "snippet_prefix": "fn gen_account(idl: &idl) -> proc_macro2::tokenstream {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/lang/attribute/program/src/declare_program/mods/parsers.rs",
+      "context_name": "gen_event",
+      "snippet_prefix": "fn gen_event(idl: &idl) -> proc_macro2::tokenstream {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/lang/attribute/program/src/declare_program/mods/parsers.rs",
+      "context_name": "gen_instruction",
+      "snippet_prefix": "fn gen_instruction(idl: &idl) -> proc_macro2::tokenstream {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/cli/src/config.rs",
+      "context_name": "des_cluster",
+      "snippet_prefix": "fn des_cluster<'de, d>(deserializer: d) -> result<cluster, d"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/anchor/cli/src/config.rs",
+      "context_name": "des_cluster",
+      "snippet_prefix": "fn des_cluster<'de, d>(deserializer: d) -> result<cluster, d"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "deserialize_idl_type_to_json",
+      "snippet_prefix": "fn deserialize_idl_type_to_json("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let ws_port = rpc_port + websocket_port_offset;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let first_slot_in_epoch = epoch_info.absolute_slot - epoch_i"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let last_slot_in_epoch = first_slot_in_epoch + epoch_info.sl"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "epoch_info.slot_index as f64 / epoch_info.slots_in_epoch as "
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let remaining_slots = epoch_info.slots_in_epoch - epoch_info"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let avg_slot_time_ms = (total_secs * 1000) / total_slots;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let remaining_secs = (remaining_slots * avg_slot_time_ms) / "
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let time_adjustment = (slot_diff * avg_slot_time_ms / 1000) "
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "((current_time - start_time) as u64, false)"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "((epoch_info.slot_index * avg_slot_time_ms) / 1000, true)"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "",
+      "snippet_prefix": "let total_secs = elapsed_secs + remaining_secs;"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "validator_flags",
+      "snippet_prefix": "fn validator_flags("
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "migrate",
+      "snippet_prefix": "std::process::exit(exit.status.code().unwrap());"
+    },
+    {
+      "detector_id": "CW-010",
+      "relative_file": "solana/anchor/cli/src/lib.rs",
+      "context_name": "migrate",
+      "snippet_prefix": "fn migrate(cfg_override: &configoverride) -> result<()> {"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/anchor/cli/src/account.rs",
+      "context_name": "",
+      "snippet_prefix": "let offset = i * bytes_per_line;"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/cli/src/program.rs",
+      "context_name": "verify_buffer_account",
+      "snippet_prefix": "fn verify_buffer_account("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/cli/src/program.rs",
+      "context_name": "program_show",
+      "snippet_prefix": "fn program_show("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/cli/src/program.rs",
+      "context_name": "program_dump",
+      "snippet_prefix": "fn program_dump(cfg_override: &configoverride, account: pubk"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/anchor/cli/src/program.rs",
+      "context_name": "verify_buffer_account",
+      "snippet_prefix": "fn verify_buffer_account("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/anchor/cli/src/program.rs",
+      "context_name": "verify_program_can_be_upgraded",
+      "snippet_prefix": "fn verify_program_can_be_upgraded("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/anchor/cli/src/program.rs",
+      "context_name": "program_set_upgrade_authority",
+      "snippet_prefix": "fn program_set_upgrade_authority("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/anchor/cli/src/program.rs",
+      "context_name": "program_show",
+      "snippet_prefix": "fn program_show("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/anchor/cli/src/program.rs",
+      "context_name": "program_dump",
+      "snippet_prefix": "fn program_dump(cfg_override: &configoverride, account: pubk"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/anchor/cli/src/program.rs",
+      "context_name": "program_extend",
+      "snippet_prefix": "fn program_extend("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/anchor/client/src/lib.rs",
+      "context_name": "handle_program_log",
+      "snippet_prefix": "pub fn handle_program_log<t: anchor_lang::event + anchor_lan"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/binary-oracle-pair/program/src/state.rs",
+      "context_name": "test_pool_pack_unpack",
+      "snippet_prefix": "pub fn test_pool_pack_unpack() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/examples/rust/transfer-tokens/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/examples/rust/transfer-tokens/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-012",
+      "relative_file": "solana/spl/examples/rust/transfer-tokens/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/spl/examples/rust/transfer-lamports/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-007",
+      "relative_file": "solana/spl/examples/rust/cross-program-invocation/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/examples/rust/cross-program-invocation/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pubkey::create_program_address(&[b\"you pass butter\", &[instr"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/name-service/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "let lamports_to_add = required_lamports - name_account.lampo"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/name-service/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "let lamports_to_remove = name_account.lamports() - required_"
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/spl/name-service/program/src/state.rs",
+      "context_name": "write_data",
+      "snippet_prefix": "pub fn write_data(account: &accountinfo, input: &[u8], offse"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/name-service/program/src/state.rs",
+      "context_name": "write_data",
+      "snippet_prefix": "pub fn write_data(account: &accountinfo, input: &[u8], offse"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/stateless-asks/program/src/processor.rs",
+      "context_name": "process_accept_offer",
+      "snippet_prefix": "fn process_accept_offer("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/stateless-asks/program/src/processor.rs",
+      "context_name": "pay_creator_fees",
+      "snippet_prefix": "fn pay_creator_fees<'a>("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/stateless-asks/program/src/processor.rs",
+      "context_name": "process_accept_offer",
+      "snippet_prefix": "fn process_accept_offer("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/stateless-asks/program/src/processor.rs",
+      "context_name": "pay_creator_fees",
+      "snippet_prefix": "fn pay_creator_fees<'a>("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/instruction.rs",
+      "context_name": "pack_intialize",
+      "snippet_prefix": "fn pack_intialize() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/instruction.rs",
+      "context_name": "pack_swap",
+      "snippet_prefix": "fn pack_swap() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/instruction.rs",
+      "context_name": "pack_deposit",
+      "snippet_prefix": "fn pack_deposit() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/instruction.rs",
+      "context_name": "pack_withdraw",
+      "snippet_prefix": "fn pack_withdraw() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/instruction.rs",
+      "context_name": "pack_deposit_one_exact_in",
+      "snippet_prefix": "fn pack_deposit_one_exact_in() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/instruction.rs",
+      "context_name": "pack_withdraw_one_exact_out",
+      "snippet_prefix": "fn pack_withdraw_one_exact_out() {"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-swap/program/src/processor.rs",
+      "context_name": "check_valid_swap_curve",
+      "snippet_prefix": "fn check_valid_swap_curve("
+    },
+    {
+      "detector_id": "SOL-006",
+      "relative_file": "solana/spl/token-swap/program/src/processor.rs",
+      "context_name": "invoke_signed_wrapper",
+      "snippet_prefix": "fn invoke_signed_wrapper<t>("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/curve/constant_price.rs",
+      "context_name": "pack_flat_curve",
+      "snippet_prefix": "fn pack_flat_curve() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/curve/fees.rs",
+      "context_name": "pack_fees",
+      "snippet_prefix": "fn pack_fees() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/curve/offset.rs",
+      "context_name": "pack_curve",
+      "snippet_prefix": "fn pack_curve() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/curve/base.rs",
+      "context_name": "pack_swap_curve",
+      "snippet_prefix": "fn pack_swap_curve() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/curve/constant_product.rs",
+      "context_name": "pack_constant_product_curve",
+      "snippet_prefix": "fn pack_constant_product_curve() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-swap/program/src/state.rs",
+      "context_name": "swap_version_pack",
+      "snippet_prefix": "fn swap_version_pack() {"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-upgrade/program/src/processor.rs",
+      "context_name": "process_exchange",
+      "snippet_prefix": "fn process_exchange(program_id: &pubkey, accounts: &[account"
+    },
+    {
+      "detector_id": "SOL-012",
+      "relative_file": "solana/spl/token-upgrade/program/src/processor.rs",
+      "context_name": "burn_original_tokens",
+      "snippet_prefix": "fn burn_original_tokens<'a>("
+    },
+    {
+      "detector_id": "SOL-012",
+      "relative_file": "solana/spl/token-upgrade/program/src/processor.rs",
+      "context_name": "transfer_new_tokens",
+      "snippet_prefix": "fn transfer_new_tokens<'a>("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-upgrade/cli/src/main.rs",
+      "context_name": "get_mint_owner_checked",
+      "snippet_prefix": "async fn get_mint_owner_checked("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-upgrade/cli/src/main.rs",
+      "context_name": "escrow_exists_checked",
+      "snippet_prefix": "async fn escrow_exists_checked("
+    },
+    {
+      "detector_id": "SOL-012",
+      "relative_file": "solana/spl/token-upgrade/cli/src/main.rs",
+      "context_name": "main",
+      "snippet_prefix": "async fn main() -> result<(), box<dyn error>> {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/governance/chat/program/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/governance/chat/program/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/chat/program/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "solana/spl/governance/program/src/instruction.rs",
+      "context_name": "execute_transaction",
+      "snippet_prefix": "data: borsh::to_vec(&instruction).unwrap(),"
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/spl/governance/program/src/state/vote_record.rs",
+      "context_name": "test_vote_record_v1_to_v2_serialisation_roundtrip",
+      "snippet_prefix": "fn test_vote_record_v1_to_v2_serialisation_roundtrip() {"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/governance/program/src/state/realm.rs",
+      "context_name": "test_deserialize_v1_create_realm_instruction_from_v2",
+      "snippet_prefix": "fn test_deserialize_v1_create_realm_instruction_from_v2() {"
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/realm.rs",
+      "context_name": "get_realm_address",
+      "snippet_prefix": "pubkey::find_program_address(&get_realm_address_seeds(name),"
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/realm.rs",
+      "context_name": "get_governing_token_holding_address",
+      "snippet_prefix": "pubkey::find_program_address(&get_realm_address_seeds(name),"
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_program_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_program_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_program_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_mint_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_mint_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_mint_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_token_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_token_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_token_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/governance.rs",
+      "context_name": "get_governance_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/required_signatory.rs",
+      "context_name": "get_required_signatory_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/spl/governance/program/src/state/proposal.rs",
+      "context_name": "test_proposal_v1_to_v2_serialisation_roundtrip",
+      "snippet_prefix": "fn test_proposal_v1_to_v2_serialisation_roundtrip() {"
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/program/src/state/proposal.rs",
+      "context_name": "get_min_vote_threshold_weight",
+      "snippet_prefix": "fn get_min_vote_threshold_weight("
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/program/src/state/proposal.rs",
+      "context_name": "get_min_vote_threshold_weight",
+      "snippet_prefix": "fn get_min_vote_threshold_weight("
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/program/src/state/proposal.rs",
+      "context_name": "get_min_vote_threshold_weight",
+      "snippet_prefix": "fn get_min_vote_threshold_weight("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/signatory_record.rs",
+      "context_name": "get_signatory_record_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/signatory_record.rs",
+      "context_name": "get_signatory_record_address",
+      "snippet_prefix": "let (signatory_record_address, _) = pubkey::find_program_add"
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/signatory_record.rs",
+      "context_name": "get_signatory_record_data_for_seeds",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/signatory_record.rs",
+      "context_name": "get_signatory_record_data_for_seeds",
+      "snippet_prefix": "let (signatory_record_address, _) = pubkey::find_program_add"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/governance/program/src/state/proposal_transaction.rs",
+      "context_name": "test_upgrade_instruction_serialization",
+      "snippet_prefix": "fn test_upgrade_instruction_serialization() {"
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/spl/governance/program/src/state/proposal_transaction.rs",
+      "context_name": "test_proposal_transaction_v1_to_v2_serialization_roundtrip",
+      "snippet_prefix": "fn test_proposal_transaction_v1_to_v2_serialization_roundtri"
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/state/proposal_transaction.rs",
+      "context_name": "get_proposal_transaction_address",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_relinquish_token_owner_record_locks.rs",
+      "context_name": "process_relinquish_token_owner_record_locks",
+      "snippet_prefix": "pub fn process_relinquish_token_owner_record_locks("
+    },
+    {
+      "detector_id": "SOL-006",
+      "relative_file": "solana/spl/governance/program/src/processor/process_execute_transaction.rs",
+      "context_name": "process_execute_transaction",
+      "snippet_prefix": "pub fn process_execute_transaction(program_id: &pubkey, acco"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/governance/program/src/processor/process_execute_transaction.rs",
+      "context_name": "process_execute_transaction",
+      "snippet_prefix": "if proposal_data.state == proposalstate::succeeded {"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/governance/program/src/processor/process_execute_transaction.rs",
+      "context_name": "process_execute_transaction",
+      "snippet_prefix": "let option = &mut proposal_data.options[proposal_transaction"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/governance/program/src/processor/process_execute_transaction.rs",
+      "context_name": "process_execute_transaction",
+      "snippet_prefix": "if (proposal_data.state == proposalstate::executing"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/governance/program/src/processor/process_execute_transaction.rs",
+      "context_name": "process_execute_transaction",
+      "snippet_prefix": "proposal_data.serialize(&mut proposal_info.data.borrow_mut()"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/governance/program/src/processor/process_execute_transaction.rs",
+      "context_name": "process_execute_transaction",
+      "snippet_prefix": "proposal_transaction_data.executed_at = some(clock.unix_time"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/governance/program/src/processor/process_execute_transaction.rs",
+      "context_name": "process_execute_transaction",
+      "snippet_prefix": "proposal_transaction_data.execution_status = transactionexec"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/governance/program/src/processor/process_execute_transaction.rs",
+      "context_name": "process_execute_transaction",
+      "snippet_prefix": "proposal_transaction_data.serialize(&mut proposal_transactio"
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/processor/process_execute_transaction.rs",
+      "context_name": "process_execute_transaction",
+      "snippet_prefix": "pubkey::find_program_address(&treasury_seeds, program_id);"
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/program/src/processor/process_execute_transaction.rs",
+      "context_name": "process_execute_transaction",
+      "snippet_prefix": "pub fn process_execute_transaction(program_id: &pubkey, acco"
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/program/src/processor/process_sign_off_proposal.rs",
+      "context_name": "process_sign_off_proposal",
+      "snippet_prefix": "pub fn process_sign_off_proposal(program_id: &pubkey, accoun"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_update_program_metadata.rs",
+      "context_name": "process_update_program_metadata",
+      "snippet_prefix": "pub fn process_update_program_metadata("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_set_governance_config.rs",
+      "context_name": "process_set_governance_config",
+      "snippet_prefix": "pub fn process_set_governance_config("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_set_governance_delegate.rs",
+      "context_name": "process_set_governance_delegate",
+      "snippet_prefix": "pub fn process_set_governance_delegate("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_withdraw_governing_tokens.rs",
+      "context_name": "process_withdraw_governing_tokens",
+      "snippet_prefix": "pub fn process_withdraw_governing_tokens("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_finalize_vote.rs",
+      "context_name": "process_finalize_vote",
+      "snippet_prefix": "pub fn process_finalize_vote(program_id: &pubkey, accounts: "
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_deposit_governing_tokens.rs",
+      "context_name": "process_deposit_governing_tokens",
+      "snippet_prefix": "pub fn process_deposit_governing_tokens("
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/program/src/processor/process_cast_vote.rs",
+      "context_name": "process_cast_vote",
+      "snippet_prefix": "pub fn process_cast_vote("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_remove_transaction.rs",
+      "context_name": "process_remove_transaction",
+      "snippet_prefix": "pub fn process_remove_transaction(program_id: &pubkey, accou"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_insert_transaction.rs",
+      "context_name": "process_insert_transaction",
+      "snippet_prefix": "pub fn process_insert_transaction("
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/program/src/processor/process_insert_transaction.rs",
+      "context_name": "process_insert_transaction",
+      "snippet_prefix": "pub fn process_insert_transaction("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_create_proposal.rs",
+      "context_name": "process_create_proposal",
+      "snippet_prefix": "pub fn process_create_proposal("
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/program/src/processor/process_create_proposal.rs",
+      "context_name": "process_create_proposal",
+      "snippet_prefix": "pub fn process_create_proposal("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_complete_proposal.rs",
+      "context_name": "process_complete_proposal",
+      "snippet_prefix": "pub fn process_complete_proposal(program_id: &pubkey, accoun"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/processor/process_cancel_proposal.rs",
+      "context_name": "process_cancel_proposal",
+      "snippet_prefix": "pub fn process_cancel_proposal(program_id: &pubkey, accounts"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/governance/program/src/processor/mod.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/program/src/processor/process_relinquish_vote.rs",
+      "context_name": "process_relinquish_vote",
+      "snippet_prefix": "pub fn process_relinquish_vote(program_id: &pubkey, accounts"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "assert_is_valid_spl_token_mint",
+      "snippet_prefix": "pub fn assert_is_valid_spl_token_mint(mint_info: &accountinf"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "get_spl_token_mint",
+      "snippet_prefix": "pub fn get_spl_token_mint(token_account_info: &accountinfo) "
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "get_spl_token_mint_supply",
+      "snippet_prefix": "pub fn get_spl_token_mint_supply(mint_info: &accountinfo) ->"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "get_spl_token_mint_authority",
+      "snippet_prefix": "pub fn get_spl_token_mint_authority("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "get_spl_token_mint_authority",
+      "snippet_prefix": "pub fn get_spl_token_mint_authority("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "create_spl_token_account_signed",
+      "snippet_prefix": "pubkey::find_program_address(token_account_address_seeds, pr"
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "transfer_spl_tokens_signed",
+      "snippet_prefix": "pubkey::find_program_address(token_account_address_seeds, pr"
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "burn_spl_tokens_signed",
+      "snippet_prefix": "pubkey::find_program_address(token_account_address_seeds, pr"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "get_spl_token_mint",
+      "snippet_prefix": "pub fn get_spl_token_mint(token_account_info: &accountinfo) "
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "get_spl_token_owner",
+      "snippet_prefix": "pub fn get_spl_token_owner(token_account_info: &accountinfo)"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "get_spl_token_mint_supply",
+      "snippet_prefix": "pub fn get_spl_token_mint_supply(mint_info: &accountinfo) ->"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "get_spl_token_mint_authority",
+      "snippet_prefix": "pub fn get_spl_token_mint_authority("
+    },
+    {
+      "detector_id": "SOL-021",
+      "relative_file": "solana/spl/governance/program/src/tools/spl_token.rs",
+      "context_name": "create_spl_token_account_signed",
+      "snippet_prefix": "pub fn create_spl_token_account_signed<'a>("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/governance/program/src/tools/bpf_loader_upgradeable.rs",
+      "context_name": "assert_program_upgrade_authority_is_signer",
+      "snippet_prefix": "pub fn assert_program_upgrade_authority_is_signer("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/governance/program/src/tools/bpf_loader_upgradeable.rs",
+      "context_name": "assert_program_upgrade_authority_is_signer",
+      "snippet_prefix": "pub fn assert_program_upgrade_authority_is_signer("
+    },
+    {
+      "detector_id": "SOL-006",
+      "relative_file": "solana/spl/governance/program/src/tools/bpf_loader_upgradeable.rs",
+      "context_name": "set_program_upgrade_authority",
+      "snippet_prefix": "pub fn set_program_upgrade_authority<'a>("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/governance/addin-mock/program/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/governance/addin-mock/program/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/governance/addin-mock/program/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "create_and_serialize_account_with_owner_signed",
+      "snippet_prefix": "pub fn create_and_serialize_account_with_owner_signed<'a, t:"
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "dispose_account",
+      "snippet_prefix": "pub fn dispose_account("
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "create_and_serialize_account",
+      "snippet_prefix": "if let some(serialized_data) = serialized_data {"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "create_and_serialize_account_with_owner_signed",
+      "snippet_prefix": "if let some(serialized_data) = serialized_data {"
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "create_and_serialize_account_with_owner_signed",
+      "snippet_prefix": "pubkey::find_program_address(account_address_seeds, program_"
+    },
+    {
+      "detector_id": "SOL-018",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "dispose_account",
+      "snippet_prefix": "pub fn dispose_account("
+    },
+    {
+      "detector_id": "SOL-018",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "extend_account_size",
+      "snippet_prefix": "pub fn extend_account_size<'a>("
+    },
+    {
+      "detector_id": "SOL-019",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "create_and_serialize_account",
+      "snippet_prefix": "pub fn create_and_serialize_account<'a, t: borshserialize + "
+    },
+    {
+      "detector_id": "SOL-019",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "create_and_serialize_account_with_owner_signed",
+      "snippet_prefix": "pub fn create_and_serialize_account_with_owner_signed<'a, t:"
+    },
+    {
+      "detector_id": "SOL-019",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "dispose_account",
+      "snippet_prefix": "pub fn dispose_account("
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "create_and_serialize_account_with_owner_signed",
+      "snippet_prefix": "pub fn create_and_serialize_account_with_owner_signed<'a, t:"
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/governance/tools/src/account.rs",
+      "context_name": "dispose_account",
+      "snippet_prefix": "pub fn dispose_account("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-collection/program/src/processor.rs",
+      "context_name": "check_mint_and_metadata",
+      "snippet_prefix": "fn check_mint_and_metadata("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-collection/program/src/processor.rs",
+      "context_name": "process_initialize_collection",
+      "snippet_prefix": "pub fn process_initialize_collection("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-collection/program/src/processor.rs",
+      "context_name": "process_initialize_collection_member",
+      "snippet_prefix": "pub fn process_initialize_collection_member("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-collection/program/src/processor.rs",
+      "context_name": "process",
+      "snippet_prefix": "pub fn process(program_id: &pubkey, accounts: &[accountinfo]"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-collection/program/src/processor.rs",
+      "context_name": "check_mint_and_metadata",
+      "snippet_prefix": "fn check_mint_and_metadata("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-collection/program/src/processor.rs",
+      "context_name": "process_initialize_collection",
+      "snippet_prefix": "pub fn process_initialize_collection("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-collection/program/src/processor.rs",
+      "context_name": "process_initialize_collection_member",
+      "snippet_prefix": "pub fn process_initialize_collection_member("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-collection/program/src/processor.rs",
+      "context_name": "process",
+      "snippet_prefix": "pub fn process(program_id: &pubkey, accounts: &[accountinfo]"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-lending/flash_loan_receiver/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-lending/flash_loan_receiver/src/processor.rs",
+      "context_name": "unpack_amount",
+      "snippet_prefix": "fn unpack_amount(input: &[u8]) -> result<u64, programerror> "
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/flash_loan_receiver/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "let mut end = start + length;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "start += length;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "end = start + length;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "start += length;"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_set_lending_market_owner",
+      "snippet_prefix": "fn process_set_lending_market_owner("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_init_reserve",
+      "snippet_prefix": "fn process_init_reserve("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_refresh_reserve",
+      "snippet_prefix": "fn process_refresh_reserve(program_id: &pubkey, accounts: &["
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_deposit_reserve_liquidity",
+      "snippet_prefix": "fn process_deposit_reserve_liquidity("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_redeem_reserve_collateral",
+      "snippet_prefix": "fn process_redeem_reserve_collateral("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_init_obligation",
+      "snippet_prefix": "fn process_init_obligation(program_id: &pubkey, accounts: &["
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_refresh_obligation",
+      "snippet_prefix": "fn process_refresh_obligation(program_id: &pubkey, accounts:"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_deposit_obligation_collateral",
+      "snippet_prefix": "fn process_deposit_obligation_collateral("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_withdraw_obligation_collateral",
+      "snippet_prefix": "fn process_withdraw_obligation_collateral("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_borrow_obligation_liquidity",
+      "snippet_prefix": "fn process_borrow_obligation_liquidity("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_repay_obligation_liquidity",
+      "snippet_prefix": "fn process_repay_obligation_liquidity("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_liquidate_obligation",
+      "snippet_prefix": "fn process_liquidate_obligation("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_flash_loan",
+      "snippet_prefix": "fn process_flash_loan("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_modify_reserve_config",
+      "snippet_prefix": "fn process_modify_reserve_config("
+    },
+    {
+      "detector_id": "SOL-006",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "invoke_optionally_signed",
+      "snippet_prefix": "fn invoke_optionally_signed("
+    },
+    {
+      "detector_id": "SOL-007",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_init_reserve",
+      "snippet_prefix": "fn process_init_reserve("
+    },
+    {
+      "detector_id": "SOL-007",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_deposit_reserve_liquidity",
+      "snippet_prefix": "fn process_deposit_reserve_liquidity("
+    },
+    {
+      "detector_id": "SOL-007",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_redeem_reserve_collateral",
+      "snippet_prefix": "fn process_redeem_reserve_collateral("
+    },
+    {
+      "detector_id": "SOL-007",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_withdraw_obligation_collateral",
+      "snippet_prefix": "fn process_withdraw_obligation_collateral("
+    },
+    {
+      "detector_id": "SOL-007",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_borrow_obligation_liquidity",
+      "snippet_prefix": "fn process_borrow_obligation_liquidity("
+    },
+    {
+      "detector_id": "SOL-007",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_liquidate_obligation",
+      "snippet_prefix": "fn process_liquidate_obligation("
+    },
+    {
+      "detector_id": "SOL-007",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_flash_loan",
+      "snippet_prefix": "fn process_flash_loan("
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_flash_loan",
+      "snippet_prefix": "reserve = reserve::unpack(&reserve_info.data.borrow())?;"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_flash_loan",
+      "snippet_prefix": "reserve::pack(reserve, &mut reserve_info.data.borrow_mut())?"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/spl/token-lending/program/src/processor.rs",
+      "context_name": "process_flash_loan",
+      "snippet_prefix": "let actual_balance_after_flash_loan ="
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/token-lending/program/src/state/mod.rs",
+      "context_name": "unpack_bool",
+      "snippet_prefix": "fn unpack_bool(src: &[u8; 1]) -> result<bool, programerror> "
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/program/src/math/decimal.rs",
+      "context_name": "",
+      "snippet_prefix": "self(u192::from(percent as u64 * percent_scaler))"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/program/src/math/decimal.rs",
+      "context_name": "",
+      "snippet_prefix": "self(self::wad() * u192::from(val))"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/program/src/math/decimal.rs",
+      "context_name": "",
+      "snippet_prefix": "self(self::wad() * u192::from(val))"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/program/src/math/rate.rs",
+      "context_name": "",
+      "snippet_prefix": "self(u128::from(percent as u64 * percent_scaler))"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "let borrow_fee_wad = (borrow_fee * wad as f64) as u64;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "let flash_loan_fee_wad = (flash_loan_fee * wad as f64) as u6"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "lending_market_balance + config.rpc_client.get_fee_for_messa"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "+ liquidity_fee_receiver_balance;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "+ liquidity_supply_balance"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "+ user_collateral_balance"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "+ collateral_supply_balance"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "+ collateral_mint_balance"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "+ config.rpc_client.get_fee_for_message(&message_3)?,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "+ config.rpc_client.get_fee_for_message(&message_2)?"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "",
+      "snippet_prefix": "+ config.rpc_client.get_fee_for_message(&message_1)?"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "command_add_reserve",
+      "snippet_prefix": "fn command_add_reserve("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/token-lending/cli/src/main.rs",
+      "context_name": "command_add_reserve",
+      "snippet_prefix": "fn command_add_reserve("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "multiplicand * multiplier"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "dividend / divisor"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "multiplicand * multiplier"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "dividend / divisor"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "multiplicand * multiplier"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "dividend / divisor"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "multiplicand * multiplier"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "dividend / divisor"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/libraries/math-example/src/processor.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/shared-memory/program/src/lib.rs",
+      "context_name": "entrypoint",
+      "snippet_prefix": "pub unsafe extern \"c\" fn entrypoint(input: *mut u8) -> u64 {"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/shared-memory/program/src/lib.rs",
+      "context_name": "entrypoint",
+      "snippet_prefix": "pub unsafe extern \"c\" fn entrypoint(input: *mut u8) -> u64 {"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/shared-memory/program/src/lib.rs",
+      "context_name": "entrypoint",
+      "snippet_prefix": "pub unsafe extern \"c\" fn entrypoint(input: *mut u8) -> u64 {"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/events/changelog_event.rs",
+      "context_name": "",
+      "snippet_prefix": "(1 << (path_len - lvl as u32)) + (changelog.index >> lvl),"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/events/changelog_event.rs",
+      "context_name": "",
+      "snippet_prefix": "(1 << (path_len - lvl as u32)) + (changelog.index >> lvl),"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "init_empty_merkle_tree",
+      "snippet_prefix": "pub fn init_empty_merkle_tree("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "prepare_batch_merkle_tree",
+      "snippet_prefix": "pub fn prepare_batch_merkle_tree("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "append_canopy_nodes",
+      "snippet_prefix": "pub fn append_canopy_nodes("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "init_prepared_tree_with_root",
+      "snippet_prefix": "pub fn init_prepared_tree_with_root("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "replace_leaf",
+      "snippet_prefix": "pub fn replace_leaf("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "transfer_authority",
+      "snippet_prefix": "pub fn transfer_authority("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "verify_leaf",
+      "snippet_prefix": "pub fn verify_leaf("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "append",
+      "snippet_prefix": "pub fn append(ctx: context<modify>, leaf: [u8; 32]) -> resul"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "insert_or_append",
+      "snippet_prefix": "pub fn insert_or_append("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "close_empty_tree",
+      "snippet_prefix": "pub fn close_empty_tree(ctx: context<closetree>) -> result<("
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/lib.rs",
+      "context_name": "close_empty_tree",
+      "snippet_prefix": "pub fn close_empty_tree(ctx: context<closetree>) -> result<("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/canopy.rs",
+      "context_name": "",
+      "snippet_prefix": "let mut node_idx = ((1 << max_depth) + index) >> (max_depth "
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/canopy.rs",
+      "context_name": "",
+      "snippet_prefix": "let mut node_idx = ((1 << max_depth) + index) >> (max_depth "
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/canopy.rs",
+      "context_name": "",
+      "snippet_prefix": "let level = max_depth - (31 - node_idx.leading_zeros());"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/canopy.rs",
+      "context_name": "",
+      "snippet_prefix": "canopy[start_canopy_idx + i] = *node;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/canopy.rs",
+      "context_name": "",
+      "snippet_prefix": "let leaf_node_level = max_depth - path_len;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/canopy.rs",
+      "context_name": "",
+      "snippet_prefix": "let mut node_idx = ((1 << max_depth) + index) >> (max_depth "
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/account-compression/programs/account-compression/src/canopy.rs",
+      "context_name": "",
+      "snippet_prefix": "let mut node_idx = ((1 << max_depth) + index) >> (max_depth "
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "process_settle",
+      "snippet_prefix": "pub fn process_settle(_program_id: &pubkey, accounts: &[acco"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n * sell_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n * buy_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "b_s -= n;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "s_l -= n;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "b_s -= n_b;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "s_l -= n_s;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n - n_b,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n - n_s,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "b_l += n - n_b;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "b_l += n - n_b;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "s_s += n - n_s;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "s_s += n - n_s;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "(n - n_b) * buy_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "(n - n_b) * buy_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "(n - n_s) * sell_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "(n - n_s) * sell_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n_b * sell_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n_s * buy_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "if n > n_b + n_s {"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "binary_option.increment_supply(n - n_b - n_s)?;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "binary_option.increment_supply(n - n_b - n_s)?;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "binary_option.decrement_supply(n - n_b - n_s)?;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "binary_option.decrement_supply(n - n_b - n_s)?;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "b_s -= n;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "s_l -= n_s;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n - n_s,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "s_s += n - n_s;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "s_s += n - n_s;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "(n - n_s) * sell_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "(n - n_s) * sell_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n_s * buy_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n * sell_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "b_s -= n_b;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "s_l -= n;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n - n_b,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "b_l += n - n_b;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "b_l += n - n_b;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "(n - n_b) * buy_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "(n - n_b) * buy_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n_b * sell_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "n * buy_price,"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "",
+      "snippet_prefix": "let amount = amount / binary_option.circulation;"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "process_initialize_binary_option",
+      "snippet_prefix": "pub fn process_initialize_binary_option("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "process_settle",
+      "snippet_prefix": "pub fn process_settle(_program_id: &pubkey, accounts: &[acco"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/binary-option/program/src/processor.rs",
+      "context_name": "process_initialize_binary_option",
+      "snippet_prefix": "pub fn process_initialize_binary_option("
+    },
+    {
+      "detector_id": "SOL-021",
+      "relative_file": "solana/spl/binary-option/program/src/system_utils.rs",
+      "context_name": "create_or_allocate_account_raw",
+      "snippet_prefix": "pub fn create_or_allocate_account_raw<'a>("
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/spl/binary-option/program/src/spl_utils.rs",
+      "context_name": "spl_initialize",
+      "snippet_prefix": "pub fn spl_initialize<'a>("
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/spl/binary-option/program/src/spl_utils.rs",
+      "context_name": "spl_mint_initialize",
+      "snippet_prefix": "pub fn spl_mint_initialize<'a>("
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/spl/binary-option/program/src/spl_utils.rs",
+      "context_name": "spl_approve",
+      "snippet_prefix": "pub fn spl_approve<'a>("
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/spl/binary-option/program/src/spl_utils.rs",
+      "context_name": "spl_burn",
+      "snippet_prefix": "pub fn spl_burn<'a>("
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/spl/binary-option/program/src/spl_utils.rs",
+      "context_name": "spl_burn_signed",
+      "snippet_prefix": "pub fn spl_burn_signed<'a>("
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/spl/binary-option/program/src/spl_utils.rs",
+      "context_name": "spl_mint_to",
+      "snippet_prefix": "pub fn spl_mint_to<'a>("
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/spl/binary-option/program/src/spl_utils.rs",
+      "context_name": "spl_token_transfer",
+      "snippet_prefix": "pub fn spl_token_transfer<'a>("
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/spl/binary-option/program/src/spl_utils.rs",
+      "context_name": "spl_set_authority",
+      "snippet_prefix": "pub fn spl_set_authority<'a>("
+    },
+    {
+      "detector_id": "SOL-021",
+      "relative_file": "solana/spl/binary-option/program/src/spl_utils.rs",
+      "context_name": "spl_initialize",
+      "snippet_prefix": "pub fn spl_initialize<'a>("
+    },
+    {
+      "detector_id": "SOL-021",
+      "relative_file": "solana/spl/binary-option/program/src/spl_utils.rs",
+      "context_name": "spl_mint_initialize",
+      "snippet_prefix": "pub fn spl_mint_initialize<'a>("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/spl/binary-option/program/src/state.rs",
+      "context_name": "",
+      "snippet_prefix": "self.circulation -= n;"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/binary-option/program/src/validation_utils.rs",
+      "context_name": "assert_initialized",
+      "snippet_prefix": "pub fn assert_initialized<t: pack + isinitialized>("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/spl/managed-token/program/src/lib.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/spl/managed-token/program/src/lib.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/spl/managed-token/program/src/lib.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "DEP-002",
+      "relative_file": "ink/ink-examples/fuzz-testing/Cargo.toml",
+      "context_name": "ink_sandbox",
+      "snippet_prefix": "ink_sandbox = { git = \"https://github.com/use-ink/ink\", bran"
+    },
+    {
+      "detector_id": "DEP-002",
+      "relative_file": "ink/ink-examples/runtime-call-contract/Cargo.toml",
+      "context_name": "ink_sandbox",
+      "snippet_prefix": "ink_sandbox = { git = \"https://github.com/use-ink/ink\", bran"
+    },
+    {
+      "detector_id": "DEP-002",
+      "relative_file": "ink/ink-examples/runtime-call-contract/sandbox-runtime/Cargo.toml",
+      "context_name": "ink_sandbox",
+      "snippet_prefix": "ink_sandbox = { git = \"https://github.com/use-ink/ink\", bran"
+    },
+    {
+      "detector_id": "DEP-002",
+      "relative_file": "ink/ink-examples/runtime-call-contract/sandbox-runtime/pallet-revive-caller/Cargo.toml",
+      "context_name": "ink_sandbox",
+      "snippet_prefix": "ink_sandbox = { git = \"https://github.com/use-ink/ink\", bran"
+    },
+    {
+      "detector_id": "DEP-002",
+      "relative_file": "ink/ink-examples/assets-precompile/Cargo.toml",
+      "context_name": "ink_sandbox",
+      "snippet_prefix": "ink_sandbox = { git = \"https://github.com/use-ink/ink\", bran"
+    },
+    {
+      "detector_id": "DEP-002",
+      "relative_file": "ink/ink-examples/contract-transfer/Cargo.toml",
+      "context_name": "ink_sandbox",
+      "snippet_prefix": "ink_sandbox = { git = \"https://github.com/use-ink/ink\", bran"
+    },
+    {
+      "detector_id": "DEP-004",
+      "relative_file": "cosmwasm/cosmwasm/packages/schema-derive/Cargo.toml",
+      "context_name": "proc-macro2",
+      "snippet_prefix": "proc-macro2 = \"1\""
+    },
+    {
+      "detector_id": "DEP-004",
+      "relative_file": "cosmwasm/cw-plus/packages/easy-addr/Cargo.toml",
+      "context_name": "proc-macro2",
+      "snippet_prefix": "proc-macro2 = \"1\""
+    },
+    {
+      "detector_id": "DEP-004",
+      "relative_file": "near/near-sdk-rs/near-sdk-macros/Cargo.toml",
+      "context_name": "proc-macro2",
+      "snippet_prefix": "proc-macro2 = { version = \"1\", default-features = false }"
+    },
+    {
+      "detector_id": "DEP-004",
+      "relative_file": "solana/anchor/lang/derive/space/Cargo.toml",
+      "context_name": "proc-macro2",
+      "snippet_prefix": "proc-macro2 = \"1\""
+    },
+    {
+      "detector_id": "DEP-004",
+      "relative_file": "solana/anchor/lang/derive/serde/Cargo.toml",
+      "context_name": "proc-macro2",
+      "snippet_prefix": "proc-macro2 = \"1\""
+    },
+    {
+      "detector_id": "DEP-004",
+      "relative_file": "solana/anchor/lang/attribute/event/Cargo.toml",
+      "context_name": "proc-macro2",
+      "snippet_prefix": "proc-macro2 = \"1\""
+    },
+    {
+      "detector_id": "DEP-004",
+      "relative_file": "solana/anchor/lang/attribute/account/Cargo.toml",
+      "context_name": "proc-macro2",
+      "snippet_prefix": "proc-macro2 = \"1\""
+    },
+    {
+      "detector_id": "DEP-004",
+      "relative_file": "solana/anchor/lang/attribute/program/Cargo.toml",
+      "context_name": "proc-macro2",
+      "snippet_prefix": "proc-macro2 = \"1\""
+    },
+    {
+      "detector_id": "DEP-004",
+      "relative_file": "solana/anchor/lang/attribute/access-control/Cargo.toml",
+      "context_name": "proc-macro2",
+      "snippet_prefix": "proc-macro2 = \"1\""
+    },
+    {
+      "detector_id": "DEP-002",
+      "relative_file": "solana/anchor/tests/idl/programs/idl/Cargo.toml",
+      "context_name": "bytemuck",
+      "snippet_prefix": "bytemuck = { version = \"*\", features = [\"derive\", \"min_const"
+    }
+  ]
+}
