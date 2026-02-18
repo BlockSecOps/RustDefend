@@ -1,0 +1,995 @@
+{
+  "version": 1,
+  "fingerprints": [
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/unchecked_invoke_vuln.rs",
+      "context_name": "call_external",
+      "snippet_prefix": "pub fn call_external(&mut self, target: accountid, value: ba"
+    },
+    {
+      "detector_id": "INK-006",
+      "relative_file": "ink/unchecked_invoke_vuln.rs",
+      "context_name": "",
+      "snippet_prefix": "// try_invoke() without result checking"
+    },
+    {
+      "detector_id": "INK-006",
+      "relative_file": "ink/unchecked_invoke_vuln.rs",
+      "context_name": "",
+      "snippet_prefix": ".try_invoke();"
+    },
+    {
+      "detector_id": "INK-006",
+      "relative_file": "ink/unchecked_invoke_vuln.rs",
+      "context_name": "",
+      "snippet_prefix": ".try_invoke();"
+    },
+    {
+      "detector_id": "INK-010",
+      "relative_file": "ink/unchecked_invoke_vuln.rs",
+      "context_name": "call_external",
+      "snippet_prefix": "pub fn call_external(&mut self, target: accountid, value: ba"
+    },
+    {
+      "detector_id": "INK-002",
+      "relative_file": "ink/integer_overflow_vuln.rs",
+      "context_name": "",
+      "snippet_prefix": "let new_from = from_balance - value;"
+    },
+    {
+      "detector_id": "INK-002",
+      "relative_file": "ink/integer_overflow_vuln.rs",
+      "context_name": "",
+      "snippet_prefix": "let new_to = to_balance + value;"
+    },
+    {
+      "detector_id": "INK-002",
+      "relative_file": "ink/integer_overflow_vuln.rs",
+      "context_name": "",
+      "snippet_prefix": "amount * rate"
+    },
+    {
+      "detector_id": "INK-011",
+      "relative_file": "ink/unguarded_set_code_hash.rs",
+      "context_name": "upgrade",
+      "snippet_prefix": "pub fn upgrade(&mut self, new_code_hash: hash) {"
+    },
+    {
+      "detector_id": "INK-011",
+      "relative_file": "ink/unguarded_set_code_hash.rs",
+      "context_name": "migrate_code",
+      "snippet_prefix": "pub fn migrate_code(&mut self, code_hash: hash) {"
+    },
+    {
+      "detector_id": "SOL-008",
+      "relative_file": "ink/unsafe_delegate.rs",
+      "context_name": "",
+      "snippet_prefix": "// ink-009: unsafe delegate call with user-controlled code h"
+    },
+    {
+      "detector_id": "INK-009",
+      "relative_file": "ink/unsafe_delegate.rs",
+      "context_name": "forward",
+      "snippet_prefix": "pub fn forward("
+    },
+    {
+      "detector_id": "INK-009",
+      "relative_file": "ink/unsafe_delegate.rs",
+      "context_name": "upgrade",
+      "snippet_prefix": "pub fn upgrade(&mut self, target: hash) {"
+    },
+    {
+      "detector_id": "INK-004",
+      "relative_file": "ink/timestamp_compare.rs",
+      "context_name": "",
+      "snippet_prefix": "end_time: self::env().block_timestamp() + duration,"
+    },
+    {
+      "detector_id": "INK-004",
+      "relative_file": "ink/timestamp_compare.rs",
+      "context_name": "",
+      "snippet_prefix": "if self.env().block_timestamp() < self.end_time {"
+    },
+    {
+      "detector_id": "INK-004",
+      "relative_file": "ink/timestamp_compare.rs",
+      "context_name": "",
+      "snippet_prefix": "self.end_time - self.env().block_timestamp()"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/timestamp_compare.rs",
+      "context_name": "bid",
+      "snippet_prefix": "panic!(\"auction has ended\");"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/timestamp_compare.rs",
+      "context_name": "finalize",
+      "snippet_prefix": "panic!(\"auction still active\");"
+    },
+    {
+      "detector_id": "INK-007",
+      "relative_file": "ink/timestamp_compare.rs",
+      "context_name": "finalize",
+      "snippet_prefix": "self.env().transfer(self.owner, self.highest_bid).unwrap();"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/missing_caller_vuln.rs",
+      "context_name": "set_owner",
+      "snippet_prefix": "pub fn set_owner(&mut self, new_owner: accountid) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/missing_caller_vuln.rs",
+      "context_name": "update_admin",
+      "snippet_prefix": "pub fn update_admin(&mut self, admin: accountid) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/missing_caller_vuln.rs",
+      "context_name": "set_fee",
+      "snippet_prefix": "pub fn set_fee(&mut self, fee: u128) {"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/result_suppression_vuln.rs",
+      "context_name": "process_payment",
+      "snippet_prefix": "pub fn process_payment(&mut self, recipient: accountid, amou"
+    },
+    {
+      "detector_id": "INK-003",
+      "relative_file": "ink/result_suppression_vuln.rs",
+      "context_name": "save_state",
+      "snippet_prefix": "pub fn save_state(&mut self) {"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/result_suppression_vuln.rs",
+      "context_name": "self . env () . transfer (recipient , amount)",
+      "snippet_prefix": "let _ = self.env().transfer(recipient, amount);"
+    },
+    {
+      "detector_id": "INK-008",
+      "relative_file": "ink/result_suppression_vuln.rs",
+      "context_name": "self . try_save_checkpoint ()",
+      "snippet_prefix": "let _ = self.try_save_checkpoint();"
+    },
+    {
+      "detector_id": "INK-001",
+      "relative_file": "ink/allow_reentry.rs",
+      "context_name": "",
+      "snippet_prefix": "// ink-001: reentrancy via set_allow_reentry(true)"
+    },
+    {
+      "detector_id": "INK-001",
+      "relative_file": "ink/allow_reentry.rs",
+      "context_name": "",
+      "snippet_prefix": ".call_flags(ink::env::callflags::default().set_allow_reentry"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/allow_reentry.rs",
+      "context_name": "deposit",
+      "snippet_prefix": "pub fn deposit(&mut self) {"
+    },
+    {
+      "detector_id": "INK-005",
+      "relative_file": "ink/allow_reentry.rs",
+      "context_name": "withdraw",
+      "snippet_prefix": "pub fn withdraw(&mut self, amount: balance) {"
+    },
+    {
+      "detector_id": "INK-010",
+      "relative_file": "ink/allow_reentry.rs",
+      "context_name": "withdraw",
+      "snippet_prefix": "pub fn withdraw(&mut self, amount: balance) {"
+    },
+    {
+      "detector_id": "CW-010",
+      "relative_file": "cosmwasm/unguarded_migrate.rs",
+      "context_name": "migrate",
+      "snippet_prefix": "fn migrate(deps: depsmut, env: env, msg: migratemsg) -> stdr"
+    },
+    {
+      "detector_id": "CW-010",
+      "relative_file": "cosmwasm/unguarded_migrate.rs",
+      "context_name": "migrate_v2",
+      "snippet_prefix": "fn migrate_v2(deps: depsmut, env: env, msg: migratemsg) -> s"
+    },
+    {
+      "detector_id": "CW-009",
+      "relative_file": "cosmwasm/unchecked_addr_vuln.rs",
+      "context_name": "instantiate",
+      "snippet_prefix": "fn instantiate("
+    },
+    {
+      "detector_id": "CW-009",
+      "relative_file": "cosmwasm/unchecked_addr_vuln.rs",
+      "context_name": "execute_update_admin",
+      "snippet_prefix": "fn execute_update_admin("
+    },
+    {
+      "detector_id": "CW-007",
+      "relative_file": "cosmwasm/unbounded_iteration.rs",
+      "context_name": "execute_tally_votes",
+      "snippet_prefix": "pub fn execute_tally_votes("
+    },
+    {
+      "detector_id": "CW-007",
+      "relative_file": "cosmwasm/unbounded_iteration.rs",
+      "context_name": "execute_distribute_rewards",
+      "snippet_prefix": "pub fn execute_distribute_rewards("
+    },
+    {
+      "detector_id": "CW-005",
+      "relative_file": "cosmwasm/unchecked_query_vuln.rs",
+      "context_name": "execute_oracle_update",
+      "snippet_prefix": "fn execute_oracle_update("
+    },
+    {
+      "detector_id": "CW-003",
+      "relative_file": "cosmwasm/missing_sender.rs",
+      "context_name": "execute_update_config",
+      "snippet_prefix": "pub fn execute_update_config("
+    },
+    {
+      "detector_id": "CW-006",
+      "relative_file": "cosmwasm/missing_reply_id.rs",
+      "context_name": "reply",
+      "snippet_prefix": "let event = result.events.iter().find(|e| e.ty == \"instantia"
+    },
+    {
+      "detector_id": "CW-011",
+      "relative_file": "cosmwasm/missing_reply_id.rs",
+      "context_name": "reply",
+      "snippet_prefix": "fn reply(deps: depsmut, env: env, msg: reply) -> stdresult<r"
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/unsafe_ibc.rs",
+      "context_name": "",
+      "snippet_prefix": "ok(balance.unwrap_or_default() + data.amount)"
+    },
+    {
+      "detector_id": "CW-008",
+      "relative_file": "cosmwasm/unsafe_ibc.rs",
+      "context_name": "ibc_packet_receive",
+      "snippet_prefix": "fn ibc_packet_receive("
+    },
+    {
+      "detector_id": "CW-008",
+      "relative_file": "cosmwasm/unsafe_ibc.rs",
+      "context_name": "ibc_packet_timeout",
+      "snippet_prefix": "fn ibc_packet_timeout("
+    },
+    {
+      "detector_id": "CW-008",
+      "relative_file": "cosmwasm/unsafe_ibc.rs",
+      "context_name": "ibc_packet_ack",
+      "snippet_prefix": "fn ibc_packet_ack("
+    },
+    {
+      "detector_id": "CW-001",
+      "relative_file": "cosmwasm/reentrancy_vuln.rs",
+      "context_name": "",
+      "snippet_prefix": "let new_balance = old_balance + amount;"
+    },
+    {
+      "detector_id": "CW-002",
+      "relative_file": "cosmwasm/reentrancy_vuln.rs",
+      "context_name": "ibc_packet_receive",
+      "snippet_prefix": "fn ibc_packet_receive("
+    },
+    {
+      "detector_id": "CW-002",
+      "relative_file": "cosmwasm/reentrancy_vuln.rs",
+      "context_name": "reply_handler",
+      "snippet_prefix": "fn reply_handler("
+    },
+    {
+      "detector_id": "CW-004",
+      "relative_file": "cosmwasm/storage_collision.rs",
+      "context_name": "config",
+      "snippet_prefix": "pub const admin_settings: map<&str, string> = map::new(\"conf"
+    },
+    {
+      "detector_id": "CW-004",
+      "relative_file": "cosmwasm/storage_collision.rs",
+      "context_name": "balances",
+      "snippet_prefix": "pub const allowances: map<(&str, &str), u128> = map::new(\"ba"
+    },
+    {
+      "detector_id": "NEAR-002",
+      "relative_file": "near/signer_confusion_vuln.rs",
+      "context_name": "withdraw",
+      "snippet_prefix": "let signer = env::signer_account_id();"
+    },
+    {
+      "detector_id": "NEAR-002",
+      "relative_file": "near/signer_confusion_vuln.rs",
+      "context_name": "update_config",
+      "snippet_prefix": "let signer = env::signer_account_id();"
+    },
+    {
+      "detector_id": "NEAR-008",
+      "relative_file": "near/signer_confusion_vuln.rs",
+      "context_name": "withdraw",
+      "snippet_prefix": "fn withdraw(&mut self, amount: u128) {"
+    },
+    {
+      "detector_id": "NEAR-012",
+      "relative_file": "near/signer_confusion_vuln.rs",
+      "context_name": "withdraw",
+      "snippet_prefix": "fn withdraw(&mut self, amount: u128) {"
+    },
+    {
+      "detector_id": "NEAR-011",
+      "relative_file": "near/unguarded_storage_unregister.rs",
+      "context_name": "storage_unregister",
+      "snippet_prefix": "fn storage_unregister(account_id: accountid) -> bool {"
+    },
+    {
+      "detector_id": "NEAR-001",
+      "relative_file": "near/frontrunning_vuln.rs",
+      "context_name": "execute_payment",
+      "snippet_prefix": "fn execute_payment(&mut self, recipient: accountid, amount: "
+    },
+    {
+      "detector_id": "NEAR-001",
+      "relative_file": "near/frontrunning_vuln.rs",
+      "context_name": "send_reward",
+      "snippet_prefix": "fn send_reward(&mut self, winner: accountid, prize: u128) {"
+    },
+    {
+      "detector_id": "NEAR-008",
+      "relative_file": "near/frontrunning_vuln.rs",
+      "context_name": "execute_payment",
+      "snippet_prefix": "fn execute_payment(&mut self, recipient: accountid, amount: "
+    },
+    {
+      "detector_id": "NEAR-008",
+      "relative_file": "near/frontrunning_vuln.rs",
+      "context_name": "send_reward",
+      "snippet_prefix": "fn send_reward(&mut self, winner: accountid, prize: u128) {"
+    },
+    {
+      "detector_id": "NEAR-012",
+      "relative_file": "near/frontrunning_vuln.rs",
+      "context_name": "execute_payment",
+      "snippet_prefix": "fn execute_payment(&mut self, recipient: accountid, amount: "
+    },
+    {
+      "detector_id": "NEAR-012",
+      "relative_file": "near/frontrunning_vuln.rs",
+      "context_name": "send_reward",
+      "snippet_prefix": "fn send_reward(&mut self, winner: accountid, prize: u128) {"
+    },
+    {
+      "detector_id": "NEAR-012",
+      "relative_file": "near/missing_gas_callback.rs",
+      "context_name": "transfer_and_call",
+      "snippet_prefix": "fn transfer_and_call(receiver_id: accountid, amount: u128) {"
+    },
+    {
+      "detector_id": "NEAR-012",
+      "relative_file": "near/missing_gas_callback.rs",
+      "context_name": "execute_swap",
+      "snippet_prefix": "fn execute_swap(pool_id: u64, token_in: accountid, amount: u"
+    },
+    {
+      "detector_id": "NEAR-001",
+      "relative_file": "near/unguarded_pending.rs",
+      "context_name": "stake",
+      "snippet_prefix": "fn stake(&mut self, amount: u128) {"
+    },
+    {
+      "detector_id": "NEAR-001",
+      "relative_file": "near/unguarded_pending.rs",
+      "context_name": "unstake",
+      "snippet_prefix": "fn unstake(&mut self, amount: u128) {"
+    },
+    {
+      "detector_id": "NEAR-007",
+      "relative_file": "near/unguarded_pending.rs",
+      "context_name": "stake",
+      "snippet_prefix": "fn stake(&mut self, amount: u128) {"
+    },
+    {
+      "detector_id": "NEAR-007",
+      "relative_file": "near/unguarded_pending.rs",
+      "context_name": "unstake",
+      "snippet_prefix": "fn unstake(&mut self, amount: u128) {"
+    },
+    {
+      "detector_id": "NEAR-010",
+      "relative_file": "near/missing_deposit_vuln.rs",
+      "context_name": "buy_token",
+      "snippet_prefix": "pub fn buy_token(&mut self, token_id: tokenid) {"
+    },
+    {
+      "detector_id": "NEAR-009",
+      "relative_file": "near/unsafe_storage_key.rs",
+      "context_name": "register_user",
+      "snippet_prefix": "fn register_user(username: string, data: vec<u8>) {"
+    },
+    {
+      "detector_id": "NEAR-009",
+      "relative_file": "near/unsafe_storage_key.rs",
+      "context_name": "get_user_data",
+      "snippet_prefix": "fn get_user_data(username: string) -> option<vec<u8>> {"
+    },
+    {
+      "detector_id": "NEAR-003",
+      "relative_file": "near/storage_no_auth.rs",
+      "context_name": "storage_deposit",
+      "snippet_prefix": "fn storage_deposit(account_id: option<accountid>) -> storage"
+    },
+    {
+      "detector_id": "NEAR-003",
+      "relative_file": "near/storage_no_auth.rs",
+      "context_name": "storage_withdraw",
+      "snippet_prefix": "fn storage_withdraw(amount: option<u128>) -> storagebalance "
+    },
+    {
+      "detector_id": "NEAR-003",
+      "relative_file": "near/storage_no_auth.rs",
+      "context_name": "storage_unregister",
+      "snippet_prefix": "fn storage_unregister(force: option<bool>) -> bool {"
+    },
+    {
+      "detector_id": "NEAR-012",
+      "relative_file": "near/storage_no_auth.rs",
+      "context_name": "storage_withdraw",
+      "snippet_prefix": "fn storage_withdraw(amount: option<u128>) -> storagebalance "
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/arithmetic_errors.rs",
+      "context_name": "stake",
+      "snippet_prefix": "pub fn stake("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/arithmetic_errors.rs",
+      "context_name": "calculate_rewards",
+      "snippet_prefix": "pub fn calculate_rewards("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/arithmetic_errors.rs",
+      "context_name": "",
+      "snippet_prefix": "**from_account.try_borrow_mut_lamports()? -= amount;  // sho"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/arithmetic_errors.rs",
+      "context_name": "",
+      "snippet_prefix": "**to_account.try_borrow_mut_lamports()? += amount;"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/arithmetic_errors.rs",
+      "context_name": "stake",
+      "snippet_prefix": "pub fn stake("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/arithmetic_errors.rs",
+      "context_name": "calculate_rewards",
+      "snippet_prefix": "pub fn calculate_rewards("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/arithmetic_errors.rs",
+      "context_name": "vulnerable_transfer",
+      "snippet_prefix": "pub fn vulnerable_transfer("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/arithmetic_errors.rs",
+      "context_name": "stake",
+      "snippet_prefix": "pub fn stake("
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/arithmetic_errors.rs",
+      "context_name": "calculate_rewards",
+      "snippet_prefix": "pub fn calculate_rewards("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/cpi_reentrancy_vuln.rs",
+      "context_name": "process_liquidate",
+      "snippet_prefix": "fn process_liquidate(accounts: &[accountinfo]) {"
+    },
+    {
+      "detector_id": "SOL-006",
+      "relative_file": "solana/cpi_reentrancy_vuln.rs",
+      "context_name": "process_swap",
+      "snippet_prefix": "fn process_swap(accounts: &[accountinfo], amount: u64) {"
+    },
+    {
+      "detector_id": "SOL-006",
+      "relative_file": "solana/cpi_reentrancy_vuln.rs",
+      "context_name": "process_liquidate",
+      "snippet_prefix": "fn process_liquidate(accounts: &[accountinfo]) {"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/cpi_reentrancy_vuln.rs",
+      "context_name": "process_swap",
+      "snippet_prefix": "let mut data = accounts[0].try_borrow_mut_data().unwrap();"
+    },
+    {
+      "detector_id": "SOL-009",
+      "relative_file": "solana/cpi_reentrancy_vuln.rs",
+      "context_name": "process_liquidate",
+      "snippet_prefix": "let mut lamports = accounts[0].try_borrow_mut_lamports().unw"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/type_confusion.rs",
+      "context_name": "",
+      "snippet_prefix": "if user_data.balance + user_data.rewards < amount {"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/type_confusion.rs",
+      "context_name": "withdraw_user",
+      "snippet_prefix": "pub fn withdraw_user("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/type_confusion.rs",
+      "context_name": "admin_action",
+      "snippet_prefix": "pub fn admin_action("
+    },
+    {
+      "detector_id": "SOL-011",
+      "relative_file": "solana/missing_rent_vuln.rs",
+      "context_name": "initialize_account",
+      "snippet_prefix": "fn initialize_account(payer: &pubkey, new_account: &pubkey, "
+    },
+    {
+      "detector_id": "SOL-011",
+      "relative_file": "solana/missing_rent_vuln.rs",
+      "context_name": "create_data_account",
+      "snippet_prefix": "fn create_data_account(payer: &pubkey, data_account: &pubkey"
+    },
+    {
+      "detector_id": "SOL-006",
+      "relative_file": "solana/arbitrary_cpi.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-014",
+      "relative_file": "solana/init_if_needed_unsafe.rs",
+      "context_name": "initialize_user_profile",
+      "snippet_prefix": "fn initialize_user_profile(ctx: context<inituserprofile>) {"
+    },
+    {
+      "detector_id": "SOL-014",
+      "relative_file": "solana/init_if_needed_unsafe.rs",
+      "context_name": "setup_vault",
+      "snippet_prefix": "fn setup_vault(ctx: context<setupvault>) {"
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/missing_signer_vuln.rs",
+      "context_name": "withdraw_from_vault",
+      "snippet_prefix": "fn withdraw_from_vault("
+    },
+    {
+      "detector_id": "SOL-001",
+      "relative_file": "solana/missing_signer_vuln.rs",
+      "context_name": "update_admin",
+      "snippet_prefix": "fn update_admin("
+    },
+    {
+      "detector_id": "SOL-019",
+      "relative_file": "solana/missing_signer_vuln.rs",
+      "context_name": "withdraw_from_vault",
+      "snippet_prefix": "fn withdraw_from_vault("
+    },
+    {
+      "detector_id": "SOL-019",
+      "relative_file": "solana/missing_signer_vuln.rs",
+      "context_name": "update_admin",
+      "snippet_prefix": "fn update_admin("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/duplicate_mutable_accounts_vuln.rs",
+      "context_name": "",
+      "snippet_prefix": "from_data[..8].copy_from_slice(&(from_balance - amount).to_l"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/duplicate_mutable_accounts_vuln.rs",
+      "context_name": "",
+      "snippet_prefix": "to_data[..8].copy_from_slice(&(to_balance + amount).to_le_by"
+    },
+    {
+      "detector_id": "SOL-019",
+      "relative_file": "solana/duplicate_mutable_accounts_vuln.rs",
+      "context_name": "transfer_tokens",
+      "snippet_prefix": "pub fn transfer_tokens("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/missing_signer_check.rs",
+      "context_name": "",
+      "snippet_prefix": "**user_account.try_borrow_mut_lamports()? -= amount;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/missing_signer_check.rs",
+      "context_name": "",
+      "snippet_prefix": "**destination_account.try_borrow_mut_lamports()? += amount;"
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/missing_signer_check.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-008",
+      "relative_file": "solana/unchecked_cpi.rs",
+      "context_name": "",
+      "snippet_prefix": "let _ = invoke(&instruction, accounts);"
+    },
+    {
+      "detector_id": "SOL-008",
+      "relative_file": "solana/unchecked_cpi.rs",
+      "context_name": "",
+      "snippet_prefix": "let _ = invoke_signed(&instruction, accounts, &[signer_seeds"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/reinitialization.rs",
+      "context_name": "",
+      "snippet_prefix": "vault_config.total_deposited += amount;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/reinitialization.rs",
+      "context_name": "",
+      "snippet_prefix": "**user_account.try_borrow_mut_lamports()? -= amount;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/reinitialization.rs",
+      "context_name": "",
+      "snippet_prefix": "**vault_account.try_borrow_mut_lamports()? += amount;"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/reinitialization.rs",
+      "context_name": "deposit",
+      "snippet_prefix": "pub fn deposit("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/reinitialization.rs",
+      "context_name": "deposit",
+      "snippet_prefix": "pub fn deposit("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/rent_exemption.rs",
+      "context_name": "",
+      "snippet_prefix": "**recipient_account.try_borrow_mut_lamports()? += balance;"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/rent_exemption.rs",
+      "context_name": "withdraw_all",
+      "snippet_prefix": "pub fn withdraw_all("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/rent_exemption.rs",
+      "context_name": "withdraw_all",
+      "snippet_prefix": "pub fn withdraw_all("
+    },
+    {
+      "detector_id": "SOL-018",
+      "relative_file": "solana/unsafe_reallocation_vuln.rs",
+      "context_name": "resize_account",
+      "snippet_prefix": "pub fn resize_account(account: &accountinfo, new_size: usize"
+    },
+    {
+      "detector_id": "SOL-018",
+      "relative_file": "solana/unsafe_reallocation_vuln.rs",
+      "context_name": "expand_data",
+      "snippet_prefix": "pub fn expand_data(account: &accountinfo, payer: &accountinf"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/missing_owner_check.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/missing_owner_check.rs",
+      "context_name": "",
+      "snippet_prefix": "vault_data.balance -= amount;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/missing_owner_check.rs",
+      "context_name": "",
+      "snippet_prefix": "**vault_account.try_borrow_mut_lamports()? -= amount;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/missing_owner_check.rs",
+      "context_name": "",
+      "snippet_prefix": "**recipient_account.try_borrow_mut_lamports()? += amount;"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/missing_owner_check.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/missing_owner_check.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/account_data_matching_vuln.rs",
+      "context_name": "load_pool_state",
+      "snippet_prefix": "pub fn load_pool_state(pool_account: &accountinfo) -> result"
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/account_data_matching_vuln.rs",
+      "context_name": "process_swap",
+      "snippet_prefix": "pub fn process_swap(source: &accountinfo, dest: &accountinfo"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/account_data_matching_vuln.rs",
+      "context_name": "load_pool_state",
+      "snippet_prefix": "pub fn load_pool_state(pool_account: &accountinfo) -> result"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/account_data_matching_vuln.rs",
+      "context_name": "process_swap",
+      "snippet_prefix": "pub fn process_swap(source: &accountinfo, dest: &accountinfo"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/account_data_matching_vuln.rs",
+      "context_name": "load_pool_state",
+      "snippet_prefix": "pub fn load_pool_state(pool_account: &accountinfo) -> result"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/account_data_matching_vuln.rs",
+      "context_name": "process_swap",
+      "snippet_prefix": "pub fn process_swap(source: &accountinfo, dest: &accountinfo"
+    },
+    {
+      "detector_id": "SOL-012",
+      "relative_file": "solana/token2022_unsafe.rs",
+      "context_name": "process_deposit",
+      "snippet_prefix": "fn process_deposit("
+    },
+    {
+      "detector_id": "SOL-012",
+      "relative_file": "solana/token2022_unsafe.rs",
+      "context_name": "process_withdrawal",
+      "snippet_prefix": "fn process_withdrawal("
+    },
+    {
+      "detector_id": "SOL-013",
+      "relative_file": "solana/remaining_accounts_unsafe.rs",
+      "context_name": "process_batch_transfer",
+      "snippet_prefix": "fn process_batch_transfer(ctx: context<batchtransfer>) {"
+    },
+    {
+      "detector_id": "SOL-013",
+      "relative_file": "solana/remaining_accounts_unsafe.rs",
+      "context_name": "collect_fees",
+      "snippet_prefix": "fn collect_fees(ctx: context<collectfees>) {"
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/checked_arithmetic_unwrap_vuln.rs",
+      "context_name": "calculate_fee",
+      "snippet_prefix": "pub fn calculate_fee(amount: u64, fee_bps: u64) -> u64 {"
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/checked_arithmetic_unwrap_vuln.rs",
+      "context_name": "calculate_fee",
+      "snippet_prefix": "pub fn calculate_fee(amount: u64, fee_bps: u64) -> u64 {"
+    },
+    {
+      "detector_id": "SOL-020",
+      "relative_file": "solana/checked_arithmetic_unwrap_vuln.rs",
+      "context_name": "add_rewards",
+      "snippet_prefix": "pub fn add_rewards(balance: u64, reward: u64) -> u64 {"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/pda_issues.rs",
+      "context_name": "",
+      "snippet_prefix": "user_data.balance -= amount;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/pda_issues.rs",
+      "context_name": "",
+      "snippet_prefix": "**pda_account.try_borrow_mut_lamports()? -= amount;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/pda_issues.rs",
+      "context_name": "",
+      "snippet_prefix": "**recipient_account.try_borrow_mut_lamports()? += amount;"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/pda_issues.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/pda_issues.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-007",
+      "relative_file": "solana/pda_issues.rs",
+      "context_name": "vulnerable_with_bump",
+      "snippet_prefix": "pub fn vulnerable_with_bump("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/unvalidated_sysvar_vuln.rs",
+      "context_name": "process_with_clock",
+      "snippet_prefix": "pub fn process_with_clock("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/unvalidated_sysvar_vuln.rs",
+      "context_name": "check_rent",
+      "snippet_prefix": "pub fn check_rent(rent_account: &accountinfo, target: &accou"
+    },
+    {
+      "detector_id": "SOL-017",
+      "relative_file": "solana/unvalidated_sysvar_vuln.rs",
+      "context_name": "process_with_clock",
+      "snippet_prefix": "pub fn process_with_clock("
+    },
+    {
+      "detector_id": "SOL-021",
+      "relative_file": "solana/unvalidated_sysvar_vuln.rs",
+      "context_name": "process_with_clock",
+      "snippet_prefix": "pub fn process_with_clock("
+    },
+    {
+      "detector_id": "SOL-021",
+      "relative_file": "solana/unvalidated_sysvar_vuln.rs",
+      "context_name": "check_rent",
+      "snippet_prefix": "pub fn check_rent(rent_account: &accountinfo, target: &accou"
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/unsafe_pda_vuln.rs",
+      "context_name": "get_escrow_pda",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-010",
+      "relative_file": "solana/unsafe_pda_vuln.rs",
+      "context_name": "get_reward_pool_pda",
+      "snippet_prefix": "pubkey::find_program_address("
+    },
+    {
+      "detector_id": "SOL-002",
+      "relative_file": "solana/account_data_matching.rs",
+      "context_name": "vulnerable_token_withdraw",
+      "snippet_prefix": "pub fn vulnerable_token_withdraw("
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/account_data_matching.rs",
+      "context_name": "",
+      "snippet_prefix": "**escrow_account.try_borrow_mut_lamports()? -= amount;"
+    },
+    {
+      "detector_id": "SOL-003",
+      "relative_file": "solana/account_data_matching.rs",
+      "context_name": "",
+      "snippet_prefix": "**beneficiary_account.try_borrow_mut_lamports()? += amount;"
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/account_data_matching.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "SOL-004",
+      "relative_file": "solana/account_data_matching.rs",
+      "context_name": "vulnerable_token_withdraw",
+      "snippet_prefix": "pub fn vulnerable_token_withdraw("
+    },
+    {
+      "detector_id": "SOL-005",
+      "relative_file": "solana/account_data_matching.rs",
+      "context_name": "process_instruction",
+      "snippet_prefix": "pub fn process_instruction("
+    },
+    {
+      "detector_id": "DEP-001",
+      "relative_file": "Cargo.toml",
+      "context_name": "",
+      "snippet_prefix": "cosmwasm-std = \"1.3.0\""
+    },
+    {
+      "detector_id": "DEP-001",
+      "relative_file": "Cargo.toml",
+      "context_name": "",
+      "snippet_prefix": "cosmwasm-vm = \"1.5.0\""
+    },
+    {
+      "detector_id": "DEP-001",
+      "relative_file": "Cargo.toml",
+      "context_name": "",
+      "snippet_prefix": "near-sdk = \"3.1.0\""
+    },
+    {
+      "detector_id": "DEP-001",
+      "relative_file": "Cargo.toml",
+      "context_name": "",
+      "snippet_prefix": "ink = \"3.4.0\""
+    },
+    {
+      "detector_id": "DEP-001",
+      "relative_file": "Cargo.toml",
+      "context_name": "",
+      "snippet_prefix": "anchor-lang = \"0.27.0\""
+    },
+    {
+      "detector_id": "DEP-001",
+      "relative_file": "Cargo.toml",
+      "context_name": "",
+      "snippet_prefix": "solana-program = \"1.14.0\""
+    },
+    {
+      "detector_id": "DEP-002",
+      "relative_file": "Cargo.toml",
+      "context_name": "rustdecimal",
+      "snippet_prefix": "rustdecimal = ..."
+    },
+    {
+      "detector_id": "DEP-002",
+      "relative_file": "Cargo.toml",
+      "context_name": "unpinned-lib",
+      "snippet_prefix": "unpinned-lib = { git = \"https://github.com/example/unpinned-"
+    },
+    {
+      "detector_id": "DEP-002",
+      "relative_file": "Cargo.toml",
+      "context_name": "unsafe-wildcard",
+      "snippet_prefix": "unsafe-wildcard = \"*\""
+    }
+  ]
+}

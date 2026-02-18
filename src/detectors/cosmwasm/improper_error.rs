@@ -63,10 +63,24 @@ impl<'ast, 'a> Visit<'ast> for ErrorVisitor<'a> {
 
         // Skip test functions that happen to start with entry point names
         // e.g., "execute_works", "instantiate_test", "query_balance_test"
+        // Skip test helper files entirely
+        let file_str = self.ctx.file_path.to_string_lossy();
+        if file_str.contains("/testing/")
+            || file_str.contains("/tests/")
+            || file_str.contains("/testutils/")
+            || file_str.contains("helpers.rs")
+            || file_str.contains("multitest")
+            || file_str.contains("integration_tests")
+        {
+            return;
+        }
+
         let is_test = fn_name.contains("test")
             || fn_name.contains("_works")
             || fn_name.contains("_mock")
             || fn_name.contains("_should")
+            || fn_name.contains("_helper")
+            || fn_name.starts_with("instantiate_with_")
             || has_attribute(&func.attrs, "test");
 
         if is_entry && !is_test {

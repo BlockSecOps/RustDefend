@@ -40,6 +40,20 @@ impl Detector for AccountConfusionDetector {
             return Vec::new();
         }
 
+        // Skip framework/library source files and code generators
+        let file_str = ctx.file_path.to_string_lossy();
+        if file_str.contains("/anchor-spl/")
+            || file_str.contains("/anchor_spl/")
+            || file_str.contains("/anchor-lang/")
+            || file_str.contains("/anchor_lang/")
+            || file_str.contains("/codegen/")
+            || file_str.contains("/interface/src/")
+            || file_str.contains("/spl-token/")
+            || file_str.contains("/spl_token/")
+        {
+            return Vec::new();
+        }
+
         let mut findings = Vec::new();
         let mut visitor = ConfusionVisitor {
             findings: &mut findings,

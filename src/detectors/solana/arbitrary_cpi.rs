@@ -40,6 +40,23 @@ impl Detector for ArbitraryCpiDetector {
             return Vec::new();
         }
 
+        // Skip framework/library source files — these implement typed CPI
+        // wrappers that ARE the validation layer
+        let file_str = ctx.file_path.to_string_lossy();
+        if file_str.contains("/anchor-spl/")
+            || file_str.contains("/anchor_spl/")
+            || file_str.contains("/anchor/spl/")
+            || file_str.contains("/anchor-lang/")
+            || file_str.contains("/anchor_lang/")
+            || file_str.contains("/anchor/lang/")
+            || file_str.contains("/spl-token/")
+            || file_str.contains("/spl_token/")
+            || file_str.contains("/codegen/")
+            || file_str.contains("/interface/src/")
+        {
+            return Vec::new();
+        }
+
         let mut findings = Vec::new();
         let mut visitor = CpiVisitor {
             findings: &mut findings,
